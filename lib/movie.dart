@@ -1,4 +1,4 @@
-import 'package:provider/provider.dart';
+// import 'package:provider/provider.dart';
 import 'package:flutter/foundation.dart';
 import 'package:collection/collection.dart';
 
@@ -6,7 +6,8 @@ import 'package:collection/collection.dart';
 class Movie {
   final String title;
   final String description;
-  late final double rating;
+  late  double rating;
+  var year;
   // final double rDirecting;
   // final double rProductDesign;
   // final double rSound;
@@ -21,6 +22,7 @@ class Movie {
     required this.title,
     required this.description,
     required this.rating,
+    required this.year,
 
 
   });
@@ -29,9 +31,9 @@ class Movie {
 }
 class MovieData extends ChangeNotifier {
   List<Movie> _movies = [
-    Movie(title: 'First movie', description: 'asdasd', rating: 5.0),
-    Movie(title: 'Second milk', description: 'asdasd', rating: 5.0),
-    Movie(title: 'Anan movie', description: 'asda', rating: 3.0),
+    Movie(title: 'First movie', description: 'asdasd', rating: 5.0,year: 1995),
+    Movie(title: 'Second milk', description: 'asdasd', rating: 5.0,year: 1995),
+    Movie(title: 'Anan movie', description: 'asda', rating: 3.0,year: 1995),
   ];
   UnmodifiableListView<Movie> get movies {
     return UnmodifiableListView(_movies);
@@ -41,8 +43,8 @@ class MovieData extends ChangeNotifier {
     return _movies.length;
   }
 
-  void addMovie(String newMovieTitle, String description, double rating)  {
-    final movie = Movie(title: newMovieTitle, description: description, rating: rating);
+  void addMovie(String newMovieTitle, String description, double rating, int year)  {
+    final movie = Movie(title: newMovieTitle, description: description, rating: rating, year: year);
     _movies.add(movie);
     notifyListeners();
   }

@@ -14,12 +14,14 @@ class MoviesList extends StatelessWidget {
                 movietitle: movie.title,
                 moviedescription: movie.description,
                 movierating: movie.rating,
-                checkboxCallback: (bool checkboxState) {
-                  // MovieData.updateTask((movie));
-                },
-                longCallBack: () {
-                  movieData.deleteMovie(movie);
-                });
+                movieyear: movie.year,
+                // checkboxCallback: (bool checkboxState) {
+                //   // MovieData.updateTask((movie));
+                // },
+                // longCallBack: () {
+                //   movieData.deleteMovie(movie);
+                // }
+                );
           },
           itemCount: movieData.movieCount,
         );
@@ -32,15 +34,18 @@ class MovieTile extends StatelessWidget {
   final String movietitle;
   final String moviedescription;
   final double movierating;
-  final Function checkboxCallback;
-  final VoidCallback longCallBack;
+  var movieyear;
+  // final Function checkboxCallback;
+  // final VoidCallback longCallBack;
 
   MovieTile(
       {required this.moviedescription,
         required this.movierating,
         required this.movietitle,
-        required this.checkboxCallback,
-        required this.longCallBack});
+        required this.movieyear,
+        // required this.checkboxCallback,
+        // required this.longCallBack
+      });
 
   // void checkboxCallback(checkBoxState) {
   //   setState(() {
@@ -65,6 +70,10 @@ class MovieTile extends StatelessWidget {
           ),
           ),
           Text('$movierating',
+            style: TextStyle(
+              fontSize: 20,
+            ),),
+          Text('$movieyear',
             style: TextStyle(
               fontSize: 20,
             ),),

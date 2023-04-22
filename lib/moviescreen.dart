@@ -10,7 +10,7 @@ class MovieScreen extends StatelessWidget {
 
   // MovieScreen(this.rating,);
 
-  double rating = 3.5;
+  // double rating = 3.5;
 
 
   @override
