@@ -50,34 +50,44 @@ class MovieTile extends StatelessWidget {
   // ValueChanged<bool?>? checkboxCallback;
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: <Widget>[
-        Container(
-          padding: EdgeInsets.only(top: 20),
-          child: Text('Movie List'),),
+    return Container(
+      child: Row(
+        children: <Widget>[
 
-        Container(
-          child: Row(
-            children: <Widget>[
-
-              Text(movietitle,
-                style: TextStyle(
-                  fontSize: 20,
-                ),
-              ),
-              Text(moviedescription,
-                style: TextStyle(
-                  fontSize: 20,
-                ),
-              ),
-              Text('$movierating',
-                style: TextStyle(
-                  fontSize: 20,
-                ),),
-            ],
+          Text(movietitle,
+          style: TextStyle(
+            fontSize: 20,
           ),
-        ),
-      ]
+          ),
+          Text(moviedescription,
+            style: TextStyle(
+            fontSize: 20,
+          ),
+          ),
+          Text('$movierating',
+            style: TextStyle(
+              fontSize: 20,
+            ),),
+        ],
+      ),
+    );
+  }
+}
+
+class MovieScreenList extends StatelessWidget {
+  const MovieScreenList({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Column(
+        children: <Widget>[
+          Container(
+            padding: EdgeInsets.only(top: 20),
+            child: Text('Movie List'),),
+          // MoviesList(),
+        ],
+      ),
     );
   }
 }

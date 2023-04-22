@@ -120,7 +120,7 @@ class MovieScreen extends StatelessWidget {
                   // size: 50,
                   // ),
                   onPressed:  () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => MoviesList()));
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => MovieScreenList()));
                   },),
               ),
             ],
