@@ -2,6 +2,7 @@ import 'package:chatgpt_movierater_app/movie_list.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'add_movie.dart';
 import 'movie.dart';
 import 'package:smooth_star_rating/smooth_star_rating.dart';
 
@@ -53,23 +54,6 @@ class MovieScreen extends StatelessWidget {
                             fontWeight: FontWeight.w700,
                           ),
                         ),
-                        SmoothStarRating(
-                          rating: rating,
-                          isReadOnly: false,
-                          size: 30,
-                          filledIconData: Icons.star,
-                          halfFilledIconData: Icons.star_half,
-                          defaultIconData: Icons.star_border,
-                          starCount: 5,
-                          allowHalfRating: true,
-                          spacing: 2.0,
-                          onRated: (value) {
-                            print("rating value -> $value");
-                            // Movie.rating =
-                            // print("rating value dd -> ${value.truncate()}");
-                          },
-                        ),
-
                         Text(
                           '${Provider.of<MovieData>(context).movieCount} number of Movie',
                           style: TextStyle(
@@ -98,16 +82,27 @@ class MovieScreen extends StatelessWidget {
                 padding: EdgeInsets.only(bottom: 30,
                   right: 20
                    ),
-                child: FloatingActionButton.extended(
-                  label: Text('Add Movie!'),
-                  backgroundColor: Colors.blueAccent,
-                  icon: FaIcon(FontAwesomeIcons.plusMinus,color: Colors.white,),
-                  // Icon(Icons.add,
-                  // color: Colors.lightBlueAccent,
-                  // size: 50,
-                  // ),
-                  onPressed:  () {
-                  },),
+                child:
+                  TextButton(
+
+                    child: FaIcon(FontAwesomeIcons.plusMinus,color: Colors.white,),
+                    onPressed: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => AddMovie()));
+                  },
+
+                  ),
+                // FloatingActionButton.extended(
+                //   label: Text('Add Movie!'),
+                //   backgroundColor: Colors.blueAccent,
+                //   icon: FaIcon(FontAwesomeIcons.plusMinus,color: Colors.white,),
+                //   // Icon(Icons.add,
+                //   // color: Colors.lightBlueAccent,
+                //   // size: 50,
+                //   // ),
+                //   onPressed:  () {
+                //     // Navigator.pushNamed(context, '/add_movie');
+                //     Navigator.push(context, MaterialPageRoute(builder: (context) => AddMovie()));
+                //   },),
               ),
 
               Container(

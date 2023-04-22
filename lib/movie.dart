@@ -41,8 +41,8 @@ class MovieData extends ChangeNotifier {
     return _movies.length;
   }
 
-  void addMovie(String newMovieTitle) {
-    final movie = Movie(title: newMovieTitle, description: '', rating: 5.0);
+  Future addMovie(String newMovieTitle, String description, double rating) async {
+    final movie = await Movie(title: newMovieTitle, description: description, rating: rating);
     _movies.add(movie);
     notifyListeners();
   }

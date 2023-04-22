@@ -1,6 +1,7 @@
 import 'package:chatgpt_movierater_app/moviescreen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'add_movie.dart';
 import 'movie.dart';
 import 'movie_provider.dart';
 
@@ -17,6 +18,8 @@ class MyApp extends StatelessWidget {
       ChangeNotifierProvider(
         create: (context) => MovieData(),
         child: MaterialApp(
+          initialRoute: '/',
+          routes: {'/add_movie': (context) => AddMovie()},
           debugShowCheckedModeBanner: false,
           // theme: ThemeData().copyWith(
           //     textButtonTheme: TextButtonThemeData(
