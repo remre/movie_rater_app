@@ -31,7 +31,7 @@ class MovieData extends ChangeNotifier {
   List<Movie> _movies = [
     Movie(title: 'First movie', description: 'asdasd', rating: 5.0),
     Movie(title: 'Second milk', description: 'asdasd', rating: 5.0),
-    Movie(title: 'Anan movie', description: 'asda', rating: 5.0),
+    Movie(title: 'Anan movie', description: 'asda', rating: 3.0),
   ];
   UnmodifiableListView<Movie> get movies {
     return UnmodifiableListView(_movies);
@@ -41,8 +41,8 @@ class MovieData extends ChangeNotifier {
     return _movies.length;
   }
 
-  Future addMovie(String newMovieTitle, String description, double rating) async {
-    final movie = await Movie(title: newMovieTitle, description: description, rating: rating);
+  void addMovie(String newMovieTitle, String description, double rating)  {
+    final movie = Movie(title: newMovieTitle, description: description, rating: rating);
     _movies.add(movie);
     notifyListeners();
   }

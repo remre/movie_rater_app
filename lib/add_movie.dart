@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:smooth_star_rating/smooth_star_rating.dart';
+// import 'package:smooth_star_rating/smooth_star_rating.dart';
 import 'package:provider/provider.dart';
 import 'movie.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+
 
 
 class AddMovie extends StatefulWidget {
@@ -56,20 +58,38 @@ class _AddMovieState extends State<AddMovie> {
                   textAlign: TextAlign.center,
                 ),
               ),
-              SmoothStarRating(
-                rating: rating,
-                isReadOnly: false,
-                size: 30,
-                filledIconData: Icons.star,
-                halfFilledIconData: Icons.star_half,
-                defaultIconData: Icons.star_border,
-                starCount: 5,
+              // SmoothStarRating(
+              //   rating: rating,
+              //   isReadOnly: false,
+              //   size: 30,
+              //   filledIconData: Icons.star,
+              //   halfFilledIconData: Icons.star_half,
+              //   defaultIconData: Icons.star_border,
+              //   starCount: 5,
+              //   allowHalfRating: true,
+              //   spacing: 2.0,
+              //   onRated: (value) {
+              //     print("rating value -> $value");
+              //     rating = value;
+              //     // print("rating value dd -> ${value.truncate()}");
+              //   },
+              // ),
+              RatingBar(
+                initialRating: 0,
+                minRating: 0,
+                maxRating: 5,
                 allowHalfRating: true,
-                spacing: 2.0,
-                onRated: (value) {
-                  print("rating value -> $value");
+                itemSize: 30.0,
+                ratingWidget: RatingWidget(
+                  full: const Icon(Icons.star, color: Colors.blueAccent),
+                  half: const Icon(Icons.star_half, color: Colors.blueAccent),
+                  empty: const Icon(Icons.star_border, color: Colors.blueAccent),
+                ),
+                onRatingUpdate: (value) {
+                  // Rating is updated
+                  print('rating update to: $value');
                   rating = value;
-                  // print("rating value dd -> ${value.truncate()}");
+
                 },
               ),
               TextButton(
@@ -82,12 +102,12 @@ class _AddMovieState extends State<AddMovie> {
                 style: TextButton.styleFrom(
                     foregroundColor: Colors.green,
                     textStyle: const TextStyle(fontSize: 20)),
-                onPressed: ()  async {
+                onPressed: ()   {
                   print(titlecontroller.text + descriptioncontroller.text);
                   // print(textController.text);
 
                   // final task = Task(name: newTasksTitle);
-                  await Provider.of<MovieData>(context, listen: false)
+                   Provider.of<MovieData>(context, listen: false)
                       .addMovie(titlecontroller.text,descriptioncontroller.text,rating);
 
                   // refreshText;

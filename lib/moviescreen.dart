@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'add_movie.dart';
 import 'movie.dart';
-import 'package:smooth_star_rating/smooth_star_rating.dart';
+// import 'package:smooth_star_rating/smooth_star_rating.dart';
 
 class MovieScreen extends StatelessWidget {
 
@@ -83,37 +83,36 @@ class MovieScreen extends StatelessWidget {
                   right: 20
                    ),
                 child:
-                  TextButton(
-
-                    child: FaIcon(FontAwesomeIcons.plusMinus,color: Colors.white,),
-                    onPressed: () {
+                  // TextButton(
+                  //
+                  //   child: FaIcon(FontAwesomeIcons.plusMinus,color: Colors.white,),
+                  //   onPressed: () {
+                  //   Navigator.push(context, MaterialPageRoute(builder: (context) => AddMovie()));
+                  // },
+                  //
+                  // ),
+                FloatingActionButton.extended(
+                  heroTag: "btn1",
+                  label: Text('Add Movie!'),
+                  backgroundColor: Colors.blueAccent,
+                  icon: FaIcon(FontAwesomeIcons.plusMinus,color: Colors.white,),
+                  // Icon(Icons.add,
+                  // color: Colors.lightBlueAccent,
+                  // size: 50,
+                  // ),
+                  onPressed:  () {
+                    // Navigator.pushNamed(context, '/add_movie');
                     Navigator.push(context, MaterialPageRoute(builder: (context) => AddMovie()));
-                  },
-
-                  ),
-                // FloatingActionButton.extended(
-                //   label: Text('Add Movie!'),
-                //   backgroundColor: Colors.blueAccent,
-                //   icon: FaIcon(FontAwesomeIcons.plusMinus,color: Colors.white,),
-                //   // Icon(Icons.add,
-                //   // color: Colors.lightBlueAccent,
-                //   // size: 50,
-                //   // ),
-                //   onPressed:  () {
-                //     // Navigator.pushNamed(context, '/add_movie');
-                //     Navigator.push(context, MaterialPageRoute(builder: (context) => AddMovie()));
-                //   },),
+                  },),
               ),
 
               Container(
                 padding: EdgeInsets.only(bottom: 30,
                     left: 20),
-
                 child:
                 FloatingActionButton.extended(
-
+                  heroTag: "btn2",
                   label: Text('Movie List!'),
-
                   backgroundColor: Colors.blueAccent,
                   icon: FaIcon(FontAwesomeIcons.list,color: Colors.white, ),
                   // Icon(Icons.add,
@@ -121,6 +120,7 @@ class MovieScreen extends StatelessWidget {
                   // size: 50,
                   // ),
                   onPressed:  () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => MoviesList()));
                   },),
               ),
             ],
