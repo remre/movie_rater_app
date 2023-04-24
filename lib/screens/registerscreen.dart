@@ -3,6 +3,7 @@ import 'loginscreen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 // import 'package:flutter_progress_hud/flutter_progress_hud.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
+import 'package:chatgpt_movierater_app/constants.dart';
 
 
 class RegistrationScreen extends StatefulWidget {
@@ -33,7 +34,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                 child: Hero(tag: 'logo',
                   child: Container(
                     height: 250.0,
-                    child: Image.asset('images/logo.png'),
+                    // child: Image.asset('images/logo.png'),
                   ),
                 ),
               ),
@@ -46,7 +47,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                 onChanged: (value) {
 
                 },
-                // decoration:kTextFieldDecoration,
+                decoration:kTextFieldDecoration,
               ),
               SizedBox(
                 height: 8.0,
@@ -57,7 +58,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                 onChanged: (value) {
                   password = value;
                 },
-                // decoration: kTextFieldDecoration.copyWith(hintText: 'Enter your password'),
+                decoration: kTextFieldDecoration.copyWith(hintText: 'Enter your password'),
               ),
               SizedBox(
                 height: 10.0,

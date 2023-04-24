@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
+import 'package:chatgpt_movierater_app/constants.dart';
 
 class LoginScreen extends StatefulWidget {
 
@@ -31,7 +32,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 child: Hero(tag: 'logo',
                   child: Container(
                     height: 250.0,
-                    child: Image.asset('images/logo.png'),
+                    // child: Image.asset('images/logo.png'),
                   ),
                 ),
               ),
@@ -44,7 +45,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 onChanged: (value) {
                   email = value;
                 },
-                // decoration: kTextFieldDecoration.copyWith(fillColor: Colors.lightBlueAccent),
+                decoration: kTextFieldDecoration.copyWith(fillColor: Colors.lightBlueAccent),
               ),
               SizedBox(
                 height: 8.0,
@@ -55,7 +56,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 onChanged: (value) {
                   password = value;
                 },
-                // decoration: kTextFieldDecoration.copyWith(hintText: 'Enter your password',),
+                decoration: kTextFieldDecoration.copyWith(hintText: 'Enter your password',),
               ),
               SizedBox(
                 height: 15.0,
