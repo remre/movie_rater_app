@@ -1,4 +1,7 @@
 import 'package:chatgpt_movierater_app/screens/moviescreen.dart';
+import 'screens/registerscreen.dart';
+import 'screens/loginscreen.dart';
+import 'screens/welcomescreen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'add_movie.dart';
@@ -13,8 +16,6 @@ void main() async {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return
@@ -23,15 +24,22 @@ class MyApp extends StatelessWidget {
 
         child: MaterialApp(
           // theme: ThemeData.dark().copyWith(textTheme:  TextTheme(bodyLarge:TextStyle(color: Colors.black))),
-          initialRoute: '/',
-          routes: {'/add_movie': (context) => AddMovie()},
+            initialRoute: '/',
+            routes: {
+              '/add_movie': (context) => AddMovie(),
+              '/login': (context) =>  LoginScreen(),
+              '/registration' : (context) =>  RegistrationScreen(),
+              '/': (context) =>  WelcomeScreen(),
+            },
+
           debugShowCheckedModeBanner: false,
           // theme: ThemeData().copyWith(
           //     textButtonTheme: TextButtonThemeData(
           //         style: ButtonStyle(
           //             foregroundColor: MaterialStateProperty.resolveWith(
           //                     (state) => Colors.orange)))),
-            home: MovieScreen()),
+          //   home: WelcomeScreen()
+        ),
       );
 
   }

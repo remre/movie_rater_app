@@ -1,9 +1,12 @@
+import 'package:chatgpt_movierater_app/screens/welcomescreen.dart';
 import 'package:flutter/material.dart';
 import 'loginscreen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'moviescreen.dart';
 // import 'package:flutter_progress_hud/flutter_progress_hud.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:chatgpt_movierater_app/constants.dart';
+import 'package:chatgpt_movierater_app/roundedbutton.dart';
 
 
 class RegistrationScreen extends StatefulWidget {
@@ -63,29 +66,30 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               SizedBox(
                 height: 10.0,
               ),
-              // RoundedButton(colour: Colors.blueAccent, bTitle: 'Register', NextScreen:() async {
-              //   setState(() {
-              //     showSpinner = true;
-              //   });
-              //
-              //   // Navigator.pushNamed(context, LoginScreen.id);
-              //   // print(email);
-              //   // print(password);
-              //   try{
-              //     final newUser= await _auth.createUserWithEmailAndPassword(
-              //       email: email, password: password,);
-              //     if (newUser != null) {
-              //       Navigator.pushNamed(context, ChatScreen.id);
-              //     }
-              //     setState(() {
-              //       showSpinner = false;
-              //     });
-              //
-              //   }
-              //   catch (e){
-              //     print(e);
-              //   }
-              // },),
+              RoundedButton(colour: Colors.blueAccent, bTitle: 'Register', NextScreen:() async {
+                setState(() {
+                  showSpinner = true;
+                });
+
+                // Navigator.pushNamed(context, LoginScreen.id);
+                // print(email);
+                // print(password);
+                try{
+                  final newUser= await _auth.createUserWithEmailAndPassword(
+                    email: email!, password: password!,);
+                  if (newUser != null) {
+                    Navigator.pushNamed(context, MovieScreen.id);
+                  }
+                  setState(() {
+                    showSpinner = false;
+                  });
+
+                }
+                catch (e){
+                  Navigator.pushNamed(context, MovieScreen.id);
+                  print(e);
+                }
+              },),
             ],
           ),
         ),

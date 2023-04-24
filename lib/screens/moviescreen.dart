@@ -4,15 +4,45 @@ import 'registerscreen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import '../add_movie.dart';
 import '../movie.dart';
 // import 'package:smooth_star_rating/smooth_star_rating.dart';
 
-class MovieScreen extends StatelessWidget {
+// User?  loggedInUser;
+
+class MovieScreen extends StatefulWidget {
+
+
+  static String id = '/add_movie';
+
+  @override
+  State<MovieScreen> createState() => _MovieScreenState();
+}
+
+class _MovieScreenState extends State<MovieScreen> {
+  final _auth = FirebaseAuth.instance;
+  @override
+  void initState() {
+    // getCurrentUser();
+    super.initState();
+  }
+
+
+
+  // void getCurrentUser()  async {
+  //   try {
+  //     final user = await _auth.currentUser!;
+  //     if (user != null) {
+  //       loggedInUser = user;
+  //       // print(loggedInUser!.email);
+  //     }
+  //   }
+  //   catch(e) {
+  //     print(e);
+  //   }
+  // }
   // MovieScreen(this.rating,);
-
-  // double rating = 3.5;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -75,46 +105,6 @@ class MovieScreen extends StatelessWidget {
               child: MoviesList(),
             ),
           ),
-          Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
-            Padding(
-              padding: EdgeInsets.symmetric(vertical: 16.0),
-              child: Material(
-                elevation: 5.0,
-                color: Colors.red,
-                borderRadius: BorderRadius.circular(30.0),
-                child: MaterialButton(
-                  onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreen()));
-                  },
-                  minWidth: 200.0,
-                  height: 42.0,
-                  child: Text(
-                    'Login',
-                    style: TextStyle(color: Colors.white),
-                  ),
-                ),
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(vertical: 16.0),
-              child: Material(
-                elevation: 5.0,
-                color: Colors.green,
-                borderRadius: BorderRadius.circular(30.0),
-                child: MaterialButton(
-                  onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => RegistrationScreen()));
-                  },
-                  minWidth: 200.0,
-                  height: 42.0,
-                  child: Text(
-                    'Register',
-                    style: TextStyle(color: Colors.white),
-                  ),
-                ),
-              ),
-            ),
-          ]),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[

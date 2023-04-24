@@ -1,7 +1,10 @@
+import 'package:chatgpt_movierater_app/screens/moviescreen.dart';
+import 'package:chatgpt_movierater_app/screens/welcomescreen.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:chatgpt_movierater_app/constants.dart';
+import 'package:chatgpt_movierater_app/roundedbutton.dart';
 
 class LoginScreen extends StatefulWidget {
 
@@ -61,25 +64,26 @@ class _LoginScreenState extends State<LoginScreen> {
               SizedBox(
                 height: 15.0,
               ),
-              // RoundedButton(colour: Colors.blueAccent, bTitle: 'login', NextScreen:()  async {
-              //   setState(() {
-              //     showSpinner = true;
-              //   });
-              //   try {
-              //     final user = await _auth.signInWithEmailAndPassword(email: email, password: password);
-              //     if(user != null){
-              //       Navigator.pushNamed(context, ChatScreen.id);
-              //     }
-              //     setState(() {
-              //       showSpinner = false;
-              //     });
-              //   }
-              //   catch(e) {
-              //     print(e);
-              //   }
-              //
-              // },
-              // ),
+              RoundedButton(colour: Colors.blueAccent, bTitle: 'login', NextScreen:()  async {
+                setState(() {
+                  showSpinner = true;
+                });
+                try {
+                  final user = await _auth.signInWithEmailAndPassword(email: email, password: password);
+                  if(user != null){
+                    Navigator.pushNamed(context, MovieScreen.id);
+                  }
+                  setState(() {
+                    showSpinner = false;
+                  });
+                }
+                catch(e) {
+                  print(e);
+                  Navigator.pushNamed(context, WelcomeScreen.id);
+                }
+
+              },
+              ),
             ],
           ),
         ),
