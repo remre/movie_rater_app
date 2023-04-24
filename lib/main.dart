@@ -1,12 +1,15 @@
-import 'package:chatgpt_movierater_app/moviescreen.dart';
+import 'package:chatgpt_movierater_app/screens/moviescreen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'add_movie.dart';
 import 'movie.dart';
 import 'movie_provider.dart';
+import 'package:firebase_core/firebase_core.dart';
 
-void main() {
-  runApp(const MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -17,7 +20,9 @@ class MyApp extends StatelessWidget {
     return
       ChangeNotifierProvider(
         create: (context) => MovieData(),
+
         child: MaterialApp(
+          // theme: ThemeData.dark().copyWith(textTheme:  TextTheme(bodyLarge:TextStyle(color: Colors.black))),
           initialRoute: '/',
           routes: {'/add_movie': (context) => AddMovie()},
           debugShowCheckedModeBanner: false,

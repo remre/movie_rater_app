@@ -45,10 +45,13 @@ class _AddMovieState extends State<AddMovie> {
                 style: TextStyle(color: Colors.lightBlueAccent, fontSize: 30),
               ),
             ),
+            SizedBox(
+              height: 20,
+            ),
             Card(
-
               child: TextField(
-                decoration: InputDecoration(hintText: 'Enter the movie name'),
+                maxLength: 100,
+                decoration: InputDecoration(hintText: 'Enter the movie name', counterText: ''),
                 controller: titlecontroller,
                 // autofocus: true,
                 // onChanged: (newText) {
@@ -59,8 +62,14 @@ class _AddMovieState extends State<AddMovie> {
             ),
             Card(
               child: TextField(
-                decoration: InputDecoration(hintText: 'Enter the movie description'),
+                maxLines: 3,
+                maxLength: 250,
+                decoration: InputDecoration(hintText: 'Enter the movie description',
+                  counterText: '',
+                  border: OutlineInputBorder(),
+                  contentPadding: EdgeInsets.symmetric(vertical: 40),),
                 controller: descriptioncontroller,
+
                 // autofocus: true,
                 // onChanged: (newText) {
                 //   newTasksTitle = newText;
@@ -70,8 +79,10 @@ class _AddMovieState extends State<AddMovie> {
             ),
             Card(
               child: TextField(
+                maxLength: 4,
                 controller: yearcontroller ,
-                decoration: InputDecoration(labelText: "Enter the year"),
+                decoration: InputDecoration(labelText: "Enter the year",
+                    counterText: ''),
                 keyboardType: TextInputType.number,
                 inputFormatters: <TextInputFormatter>[
                   FilteringTextInputFormatter.digitsOnly
@@ -94,23 +105,29 @@ class _AddMovieState extends State<AddMovie> {
             //     // print("rating value dd -> ${value.truncate()}");
             //   },
             // ),
-            RatingBar(
-              initialRating: 0,
-              minRating: 0,
-              maxRating: 5,
-              allowHalfRating: true,
-              itemSize: 30.0,
-              ratingWidget: RatingWidget(
-                full: const Icon(Icons.star, color: Colors.blueAccent),
-                half: const Icon(Icons.star_half, color: Colors.blueAccent),
-                empty: const Icon(Icons.star_border, color: Colors.blueAccent),
-              ),
-              onRatingUpdate: (value) {
-                // Rating is updated
-                print('rating update to: $value');
-                rating = value;
+            Center(
+              child: Column(
+                children:<Widget>[
+                  Text('Rate The movie!'),
+                  RatingBar(
+                  initialRating: 0,
+                  minRating: 0,
+                  maxRating: 5,
+                  allowHalfRating: true,
+                  itemSize: 30.0,
+                  ratingWidget: RatingWidget(
+                    full: const Icon(Icons.star, color: Colors.blueAccent),
+                    half: const Icon(Icons.star_half, color: Colors.blueAccent),
+                    empty: const Icon(Icons.star_border, color: Colors.blueAccent),
+                  ),
+                  onRatingUpdate: (value) {
+                    // Rating is updated
+                    print('rating update to: $value');
+                    rating = value;
 
-              },
+                  },
+                ),]
+              ),
             ),
             TextButton(
               child: Text(
