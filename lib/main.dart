@@ -27,6 +27,7 @@ class MyApp extends StatelessWidget {
             initialRoute: '/',
             routes: {
               '/add_movie': (context) => AddMovie(),
+              '/movie': (context) => MovieScreen(),
               '/login': (context) =>  LoginScreen(),
               '/registration' : (context) =>  RegistrationScreen(),
               '/': (context) =>  WelcomeScreen(),

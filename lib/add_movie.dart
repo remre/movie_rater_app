@@ -1,20 +1,51 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 // import 'package:smooth_star_rating/smooth_star_rating.dart';
 import 'package:provider/provider.dart';
 import 'movie.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 
+// User?  loggedInUser;
 
+late User  loggedInUser;
 class AddMovie extends StatefulWidget {
+  static String id = '/add_movie';
   const AddMovie({Key? key}) : super(key: key);
+
+
+
+
 
   @override
   State<AddMovie> createState() => _AddMovieState();
 }
 
 class _AddMovieState extends State<AddMovie> {
+  final _firestore  = FirebaseFirestore.instance;
+  final _auth = FirebaseAuth.instance;
+  @override
+  void initState() {
+    getCurrentUser();
+    super.initState();
+  }
+
+
+
+  void getCurrentUser()  async {
+    try {
+      final user = await _auth.currentUser!;
+      if (user != null) {
+        loggedInUser = user;
+        // print(loggedInUser!.email);
+      }
+    }
+    catch(e) {
+      print(e);
+    }
+  }
 
   TextEditingController titlecontroller = TextEditingController();
   TextEditingController descriptioncontroller = TextEditingController();
@@ -142,6 +173,13 @@ class _AddMovieState extends State<AddMovie> {
               onPressed: ()   {
                 print(titlecontroller.text + descriptioncontroller.text + yearcontroller.text);
                 // print(textController.text);
+                _firestore.collection('movies').add({
+                  'description' : descriptioncontroller.text,
+                  'title' : titlecontroller.text,
+                  'rating' : rating,
+                  'user' : loggedInUser.email,
+                  'year' : int.parse(yearcontroller.text),
+                });
 
                 // final task = Task(name: newTasksTitle);
                  Provider.of<MovieData>(context, listen: false)

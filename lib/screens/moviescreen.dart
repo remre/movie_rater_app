@@ -9,41 +9,23 @@ import '../add_movie.dart';
 import '../movie.dart';
 // import 'package:smooth_star_rating/smooth_star_rating.dart';
 
-// User?  loggedInUser;
+User?  loggedInUser;
 
 class MovieScreen extends StatefulWidget {
 
 
-  static String id = '/add_movie';
+  static String id = '/movie';
 
   @override
   State<MovieScreen> createState() => _MovieScreenState();
 }
 
 class _MovieScreenState extends State<MovieScreen> {
-  final _auth = FirebaseAuth.instance;
-  @override
-  void initState() {
-    // getCurrentUser();
-    super.initState();
-  }
 
 
-
-  // void getCurrentUser()  async {
-  //   try {
-  //     final user = await _auth.currentUser!;
-  //     if (user != null) {
-  //       loggedInUser = user;
-  //       // print(loggedInUser!.email);
-  //     }
-  //   }
-  //   catch(e) {
-  //     print(e);
-  //   }
-  // }
   // MovieScreen(this.rating,);
   @override
+
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.orange,

@@ -73,13 +73,15 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                   ),
                 ),
                 // SizedBox(:),
-                Text(
-                  // '${ controller.value.toInt()} %',
-                  'Flash Chat',
-                  style: TextStyle(
-                    color: Colors.black38,
-                    fontSize: 45.0,
-                    fontWeight: FontWeight.w900,
+                Flexible(
+                  child: Text(
+                    // '${ controller.value.toInt()} %',
+                    'Movie Rater App Bitchez',
+                    style: TextStyle(
+                      color: Colors.black38,
+                      fontSize: 45.0,
+                      fontWeight: FontWeight.w900,
+                    ),
                   ),
                 ),
               ],

@@ -48,7 +48,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                 keyboardType: TextInputType.emailAddress,
                 textAlign: TextAlign.center,
                 onChanged: (value) {
-
+                  email = value;
                 },
                 decoration:kTextFieldDecoration,
               ),
@@ -76,9 +76,9 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                 // print(password);
                 try{
                   final newUser= await _auth.createUserWithEmailAndPassword(
-                    email: email!, password: password!,);
+                    email: email, password: password,);
                   if (newUser != null) {
-                    Navigator.pushNamed(context, MovieScreen.id);
+                    Navigator.pushNamed(context, LoginScreen.id);
                   }
                   setState(() {
                     showSpinner = false;
@@ -86,7 +86,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
 
                 }
                 catch (e){
-                  Navigator.pushNamed(context, MovieScreen.id);
+                  // Navigator.pushNamed(context, MovieScreen.id);
                   print(e);
                 }
               },),
