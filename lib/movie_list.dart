@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'movie.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+
+
 
 class MoviesList extends StatelessWidget {
+
+  final _firestore  = FirebaseFirestore.instance;
+
   @override
   Widget build(BuildContext context) {
     return Consumer<MovieData>(
@@ -58,25 +64,33 @@ class MovieTile extends StatelessWidget {
     return Container(
       child: Row(
         children: <Widget>[
+          Container(
+              height: 850,
+              width: 100,
+              child: MoviesListData()),
 
-          Text(movietitle,
-          style: TextStyle(
-            fontSize: 20,
-          ),
-          ),
-          Text(moviedescription,
-            style: TextStyle(
-            fontSize: 20,
-          ),
-          ),
-          Text('$movierating',
-            style: TextStyle(
-              fontSize: 20,
-            ),),
-          Text('$movieyear',
-            style: TextStyle(
-              fontSize: 20,
-            ),),
+          // Text(movietitle,
+          // style: TextStyle(
+          //   fontSize: 20,
+          // ),
+          // ),
+          // Flexible(
+          //   child: Text(moviedescription,
+          //     style: TextStyle(
+          //     fontSize: 20,
+          //   ),
+          //   ),
+          // ),
+          // Text('$movierating',
+          //   style: TextStyle(
+          //     fontSize: 20,
+          //   ),),
+          // Text('$movieyear',
+          //   style: TextStyle(
+          //     fontSize: 20,
+          //     color: Colors.orange,
+          //
+          //   ),),
         ],
       ),
     );
@@ -84,19 +98,70 @@ class MovieTile extends StatelessWidget {
 }
 
 class MovieScreenList extends StatelessWidget {
+  static String id = '/movielist';
+
   const MovieScreenList({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Column(
-        children: <Widget>[
-          Container(
-            padding: EdgeInsets.only(top: 20),
-            child: Text('Movie List'),),
-          // MoviesList(),
-        ],
+    return Scaffold(
+      body: Container(
+        child: Column(
+          children: <Widget>[
+            Container(
+              padding: EdgeInsets.only(top: 20),
+              child: Text('Movie List'),),
+            // Expanded(
+            //   child:
+              Container(
+                height: 550,
+                // padding: EdgeInsets.symmetric(horizontal: 10),
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(15),
+                        topRight: Radius.circular(15))),
+                child: MoviesList(),
+              ),
+            // ),
+          ],
+        ),
       ),
+    );
+  }
+}
+class MoviesListData extends StatefulWidget {
+  @override
+  _MoviesListDataState createState() => _MoviesListDataState();
+}
+
+class _MoviesListDataState extends State<MoviesListData> {
+  final Stream<QuerySnapshot> _moviesStream = FirebaseFirestore.instance.collection('movies').snapshots();
+
+  @override
+  Widget build(BuildContext context) {
+    return StreamBuilder<QuerySnapshot>(
+      stream: _moviesStream,
+      builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+        if (snapshot.hasError) {
+          return Text('Something went wrong');
+        }
+
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return Text("Loading");
+        }
+
+        return ListView(
+          children: snapshot.data!.docs.map((DocumentSnapshot document) {
+            Map<String, dynamic> data = document.data()! as Map<String, dynamic>;
+            return ListTile(
+              title: Text(data['title']),
+              // subtitle: Text(data['rating'].toString()),
+              trailing: Text(data['year'].toString()),
+            );
+          }).toList(),
+        );
+      },
     );
   }
 }

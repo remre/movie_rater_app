@@ -115,8 +115,8 @@ class _MovieScreenState extends State<MovieScreen> {
                   // ),
                   onPressed: () {
                     // Navigator.pushNamed(context, '/add_movie');
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => AddMovie()));
+                    Navigator.pushNamed(context,
+                        AddMovie.id);
                   },
                 ),
               ),
