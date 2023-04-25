@@ -5,97 +5,102 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 
 
-class MoviesList extends StatelessWidget {
+// class MoviesList extends StatelessWidget {
+//
+//   final _firestore  = FirebaseFirestore.instance;
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return Consumer<MovieData>(
+//       builder: (context, movieData, child) {
+//         return ListView.builder(
+//           itemBuilder: (context, index) {
+//             final movie = movieData.movies[index];
+//             return MovieTile(
+//                 movietitle: movie.title,
+//                 moviedescription: movie.description,
+//                 movierating: movie.rating,
+//                 movieyear: movie.year,
+//                 // checkboxCallback: (bool checkboxState) {
+//                 //   // MovieData.updateTask((movie));
+//                 // },
+//                 // longCallBack: () {
+//                 //   movieData.deleteMovie(movie);
+//                 // }
+//                 );
+//           },
+//           itemCount: movieData.movieCount,
+//         );
+//       },
+//     );
+//   }
+// }
 
-  final _firestore  = FirebaseFirestore.instance;
-
-  @override
-  Widget build(BuildContext context) {
-    return Consumer<MovieData>(
-      builder: (context, movieData, child) {
-        return ListView.builder(
-          itemBuilder: (context, index) {
-            final movie = movieData.movies[index];
-            return MovieTile(
-                movietitle: movie.title,
-                moviedescription: movie.description,
-                movierating: movie.rating,
-                movieyear: movie.year,
-                // checkboxCallback: (bool checkboxState) {
-                //   // MovieData.updateTask((movie));
-                // },
-                // longCallBack: () {
-                //   movieData.deleteMovie(movie);
-                // }
-                );
-          },
-          itemCount: movieData.movieCount,
-        );
-      },
-    );
-  }
-}
-
-class MovieTile extends StatelessWidget {
-  final String movietitle;
-  final String moviedescription;
-  final double movierating;
-  var movieyear;
-  // final Function checkboxCallback;
-  // final VoidCallback longCallBack;
-
-  MovieTile(
-      {required this.moviedescription,
-        required this.movierating,
-        required this.movietitle,
-        required this.movieyear,
-        // required this.checkboxCallback,
-        // required this.longCallBack
-      });
-
-  // void checkboxCallback(checkBoxState) {
-  //   setState(() {
-  //     isChecked = checkBoxState;
-  //   },);
-
-  // ValueChanged<bool?>? checkboxCallback;
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      child: Row(
-        children: <Widget>[
-          Container(
-              height: 850,
-              width: 100,
-              child: MoviesListData()),
-
-          // Text(movietitle,
-          // style: TextStyle(
-          //   fontSize: 20,
-          // ),
-          // ),
-          // Flexible(
-          //   child: Text(moviedescription,
-          //     style: TextStyle(
-          //     fontSize: 20,
-          //   ),
-          //   ),
-          // ),
-          // Text('$movierating',
-          //   style: TextStyle(
-          //     fontSize: 20,
-          //   ),),
-          // Text('$movieyear',
-          //   style: TextStyle(
-          //     fontSize: 20,
-          //     color: Colors.orange,
-          //
-          //   ),),
-        ],
-      ),
-    );
-  }
-}
+// class MovieTile extends StatelessWidget {
+//   final String movietitle;
+//   final String moviedescription;
+//   final double movierating;
+//   var movieyear;
+//   // final Function checkboxCallback;
+//   // final VoidCallback longCallBack;
+//
+//   MovieTile(
+//       {required this.moviedescription,
+//         required this.movierating,
+//         required this.movietitle,
+//         required this.movieyear,
+//         // required this.checkboxCallback,
+//         // required this.longCallBack
+//       });
+//
+//   // void checkboxCallback(checkBoxState) {
+//   //   setState(() {
+//   //     isChecked = checkBoxState;
+//   //   },);
+//
+//   // ValueChanged<bool?>? checkboxCallback;
+//   @override
+//   Widget build(BuildContext context) {
+//     return SingleChildScrollView(
+//       // padding: EdgeInsets.only(top:20),
+//       child: Column(
+//
+//         // crossAxisAlignment: CrossAxisAlignment.stretch,
+//         children: <Widget>[
+//           Padding(
+//             padding: EdgeInsets.only(top: 20),
+//               // height: 850,
+//               // width: 100,
+//               child: MoviesListData()
+//           ),
+//
+//           // Text(movietitle,
+//           // style: TextStyle(
+//           //   fontSize: 20,
+//           // ),
+//           // ),
+//           // Flexible(
+//           //   child: Text(moviedescription,
+//           //     style: TextStyle(
+//           //     fontSize: 20,
+//           //   ),
+//           //   ),
+//           // ),
+//           // Text('$movierating',
+//           //   style: TextStyle(
+//           //     fontSize: 20,
+//           //   ),),
+//           // Text('$movieyear',
+//           //   style: TextStyle(
+//           //     fontSize: 20,
+//           //     color: Colors.orange,
+//           //
+//           //   ),),
+//         ],
+//       ),
+//     );
+//   }
+// }
 
 class MovieScreenList extends StatelessWidget {
   static String id = '/movielist';
@@ -105,27 +110,27 @@ class MovieScreenList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        child: Column(
-          children: <Widget>[
+      body: Column(
+
+        children: <Widget>[
+          Container(
+            padding: EdgeInsets.only(top: 20),
+            child: Text('Movie List'),),
+          // Expanded(
+          //   child:
             Container(
-              padding: EdgeInsets.only(top: 20),
-              child: Text('Movie List'),),
-            // Expanded(
-            //   child:
-              Container(
-                height: 550,
-                // padding: EdgeInsets.symmetric(horizontal: 10),
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(15),
-                        topRight: Radius.circular(15))),
-                child: MoviesList(),
-              ),
-            // ),
-          ],
-        ),
+              height: 640,
+              // width: 200,
+              // padding: EdgeInsets.symmetric(horizontal: 10),
+              decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(15),
+                      topRight: Radius.circular(15))),
+              child: MoviesListData(),
+            ),
+          // ),
+        ],
       ),
     );
   }
@@ -151,15 +156,18 @@ class _MoviesListDataState extends State<MoviesListData> {
           return Text("Loading");
         }
 
-        return ListView(
-          children: snapshot.data!.docs.map((DocumentSnapshot document) {
-            Map<String, dynamic> data = document.data()! as Map<String, dynamic>;
-            return ListTile(
-              title: Text(data['title']),
-              // subtitle: Text(data['rating'].toString()),
-              trailing: Text(data['year'].toString()),
-            );
-          }).toList(),
+        return Card(
+          child: ListView(
+            shrinkWrap: true,
+            children: snapshot.data!.docs.map((DocumentSnapshot document) {
+              Map<String, dynamic> data = document.data()! as Map<String, dynamic>;
+              return ListTile(
+                title: Text(data['title']),
+                // subtitle: Text(data['rating'].toString()),
+                trailing: Text(data['year'].toString()),
+              );
+            }).toList(),
+          ),
         );
       },
     );
