@@ -18,6 +18,8 @@ class Movie {
   late double color;
   late double editing;
   late double story;
+  late Timestamp cTime;
+
 
   // double ratingCalculator (directing, productDesign, mSound, music, color, editing, story) {
   //   double _rrating = (directing+ productDesign + mSound+ music + color  + editing +story)/ 7;
@@ -42,6 +44,7 @@ class Movie {
     required this.story,
 
     required this.rating,
+    required this.cTime,
 
 
   });
@@ -75,6 +78,7 @@ class MovieData extends ChangeNotifier {
       double directing,
       double story,
       double rating,
+      Timestamp cTime,
       ) {
     final movie = Movie(title: newMovieTitle, description: description, year: year,
     mSound: mSound,
@@ -84,8 +88,10 @@ class MovieData extends ChangeNotifier {
     color: color,
     directing: directing,
     story: story,
+    cTime: cTime,
 
-    rating: rating
+    rating: rating,
+
     );
     // _firestore.collection('movies').add({
     //   'description' : descriptioncontroller.text,

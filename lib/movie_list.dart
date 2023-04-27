@@ -182,7 +182,9 @@ class _MoviesListDataState extends State<MoviesListData> {
                     FontAwesomeIcons.star,
                     color: Colors.white,
                   ),),
-                  subtitle: Row(children:<Widget>[Text(data['rating'].toString()), FaIcon(FontAwesomeIcons.minus,)] ),
+                  subtitle: Row(children:<Widget>[Text(data['rating'].toString()
+                      // + DateTime.fromMicrosecondsSinceEpoch(data['cTime'])
+                  ), FaIcon(FontAwesomeIcons.minus,)] ),
 
                 // subtitle: Text(data['rating'].toString()),
                 // trailing: Text(data['year'].toString()),

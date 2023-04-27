@@ -58,6 +58,7 @@ class _AddMovieState extends State<AddMovie> {
   late  double color = 0.0;
   late  double directing = 0.0;
   late  double story = 0.0;
+  Timestamp cTime = Timestamp.now();
   double ratingCalculator (directing, productDesign, mSound, music, color, editing, story) {
     double _rrating = (directing+ productDesign + mSound+ music + color  + editing +story)/ 7;
     String inString = _rrating.toStringAsFixed(2);
@@ -205,11 +206,19 @@ class _AddMovieState extends State<AddMovie> {
                 'story' : story,
                 'user' : loggedInUser.email,
                 'year' : int.parse(yearcontroller.text),
+                'cTime' : cTime,
               });
 
               // final task = Task(name: newTasksTitle);
                Provider.of<MovieData>(context, listen: false)
-                  .addMovie(titlecontroller.text,descriptioncontroller.text,int.parse(yearcontroller.text),mSound,editing,productDesign,  music, color, directing, story,rating);
+                  .addMovie(titlecontroller.text,descriptioncontroller.text,int.parse(yearcontroller.text),
+                 mSound,
+                 editing,
+                 productDesign,
+                 music,
+                 color, directing, story,rating,
+                 cTime,
+               );
 
               // refreshText;
               Navigator.pop(context);
