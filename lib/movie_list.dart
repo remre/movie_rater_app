@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import 'movie.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -115,7 +116,8 @@ class MovieScreenList extends StatelessWidget {
         children: <Widget>[
           Container(
             padding: EdgeInsets.only(top: 20),
-            child: Text('Movie List'),),
+            child: Text('Movie List'),
+          ),
           // Expanded(
           //   child:
             Container(
@@ -162,9 +164,19 @@ class _MoviesListDataState extends State<MoviesListData> {
             children: snapshot.data!.docs.map((DocumentSnapshot document) {
               Map<String, dynamic> data = document.data()! as Map<String, dynamic>;
               return ListTile(
-                title: Text(data['title']),
+                leading: Text('anan'),
+                title: FloatingActionButton.extended(heroTag: null,
+                  label: Text(data['title'] + ' ' + data['rating'].toString()), onPressed: (){
+
+                  },
+                  icon: FaIcon(
+                    FontAwesomeIcons.star,
+                    color: Colors.white,
+                  ),),
+                  subtitle: Row(children:<Widget>[Text(data['rating'].toString()), FaIcon(FontAwesomeIcons.minus,)] ),
+
                 // subtitle: Text(data['rating'].toString()),
-                trailing: Text(data['year'].toString()),
+                // trailing: Text(data['year'].toString()),
               );
             }).toList(),
           ),

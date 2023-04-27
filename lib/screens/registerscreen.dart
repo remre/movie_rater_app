@@ -7,7 +7,7 @@ import 'moviescreen.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:chatgpt_movierater_app/constants.dart';
 import 'package:chatgpt_movierater_app/roundedbutton.dart';
-
+import 'package:email_validator/email_validator.dart';
 
 class RegistrationScreen extends StatefulWidget {
   static String id = '/registration';
@@ -17,10 +17,13 @@ class RegistrationScreen extends StatefulWidget {
 }
 
 class _RegistrationScreenState extends State<RegistrationScreen> {
+  final _formKey = GlobalKey<FormState>();
+
+
   final _auth = FirebaseAuth.instance;
   bool showSpinner = false;
-  late String  email;
-  late String   password;
+  late String email;
+  late String password;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,7 +37,8 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
               Flexible(
-                child: Hero(tag: 'logo',
+                child: Hero(
+                  tag: 'logo',
                   child: Container(
                     height: 250.0,
                     // child: Image.asset('images/logo.png'),
@@ -44,52 +48,87 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               SizedBox(
                 height: 48.0,
               ),
-              TextField(
-                keyboardType: TextInputType.emailAddress,
-                textAlign: TextAlign.center,
-                onChanged: (value) {
-                  email = value;
-                },
-                decoration:kTextFieldDecoration,
-              ),
-              SizedBox(
-                height: 8.0,
-              ),
-              TextField(
-                obscureText: true,
-                textAlign: TextAlign.center,
-                onChanged: (value) {
-                  password = value;
-                },
-                decoration: kTextFieldDecoration.copyWith(hintText: 'Enter your password'),
+              Form(
+                key: _formKey,
+                child: Column(children: <Widget>[
+                  TextFormField(
+                    validator: (value) {
+                      if (value == 'a' || value!.isEmpty) {
+                        return 'Please enter some text';
+                      }
+                      return null;
+                    },
+                    keyboardType: TextInputType.emailAddress,
+                    textAlign: TextAlign.center,
+                    onChanged: (value) {
+                      email = value;
+                    },
+                    decoration: kTextFieldDecoration,
+                  ),
+                  SizedBox(
+                    height: 8.0,
+                  ),
+                  TextFormField(
+                    validator: (value) {
+                      if (value == null || value!.isEmpty) {
+                        return 'Please enter some password';
+                      }
+                      return null;
+                    },
+                    obscureText: true,
+                    textAlign: TextAlign.center,
+                    onChanged: (value) {
+                      password = value;
+                    },
+                    decoration: kTextFieldDecoration.copyWith(
+                        hintText: 'Enter your password'),
+                  ),
+                ]),
               ),
               SizedBox(
                 height: 10.0,
               ),
-              RoundedButton(colour: Colors.blueAccent, bTitle: 'Register', NextScreen:() async {
-                setState(() {
-                  showSpinner = true;
-                });
-
-                // Navigator.pushNamed(context, LoginScreen.id);
-                // print(email);
-                // print(password);
-                try{
-                  final newUser= await _auth.createUserWithEmailAndPassword(
-                    email: email, password: password,);
-                  if (newUser != null) {
-                    Navigator.pushNamed(context, LoginScreen.id);
+              RoundedButton(
+                colour: Colors.blueAccent,
+                bTitle: 'Register',
+                NextScreen: () async {
+                  final bool isValid = EmailValidator.validate(email);
+                  if (_formKey.currentState!.validate() && isValid == false) {
+                    // If the form is valid, display a snackbar. In the real world,
+                    // you'd often call a server or save the information in a database.
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(content: Text('Processing Data')),
+                    );
                   }
+
+
+
+                  print('Email is valid? ' + (isValid ? 'yes' : 'no'));
+
                   setState(() {
                     showSpinner = false;
                   });
 
-                }
-                catch (e){
-                  // Navigator.pushNamed(context, MovieScreen.id);
-                  print(e);
-                }
-              },),
+                  // Navigator.pushNamed(context, LoginScreen.id);
+                  // print(email);
+                  // print(password);
+                  try {
+                    final newUser = await _auth.createUserWithEmailAndPassword(
+                      email: email,
+                      password: password,
+                    );
+                    if (newUser != null) {
+                      Navigator.pushNamed(context, LoginScreen.id);
+                    }
+                    setState(() {
+                      showSpinner = false;
+                    });
+                  } catch (e) {
+                    // Navigator.pushNamed(context, MovieScreen.id);
+                    print(e);
+                  }
+                },
+              ),
             ],
           ),
         ),

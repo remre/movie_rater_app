@@ -49,7 +49,15 @@ class _AddMovieState extends State<AddMovie> {
 
   TextEditingController titlecontroller = TextEditingController();
   TextEditingController descriptioncontroller = TextEditingController();
-  late  double rating = 0.0;
+  // late  double rating = 0.0;
+  late  double mSound = 0.0;
+  late  double editing = 0.0;
+  late  double productDesign = 0.0;
+  late  double music = 0.0;
+  late  double color = 0.0;
+  late  double directing = 0.0;
+  late  double story = 0.0;
+
   TextEditingController yearcontroller = TextEditingController();
   void dispose() {
     // Clean up the controller when the widget is disposed.
@@ -141,24 +149,131 @@ class _AddMovieState extends State<AddMovie> {
             child: Column(
               children:<Widget>[
                 Text('Rate The movie!'),
+                // MovieStars(),
                 RatingBar(
-                initialRating: 0,
-                minRating: 0,
-                maxRating: 5,
-                allowHalfRating: true,
-                itemSize: 30.0,
-                ratingWidget: RatingWidget(
-                  full: const Icon(Icons.star, color: Colors.blueAccent),
-                  half: const Icon(Icons.star_half, color: Colors.blueAccent),
-                  empty: const Icon(Icons.star_border, color: Colors.blueAccent),
-                ),
-                onRatingUpdate: (value) {
-                  // Rating is updated
-                  print('rating update to: $value');
-                  rating = value;
+                  initialRating: 0,
+                  minRating: 0,
+                  maxRating: 5,
+                  allowHalfRating: true,
+                  itemSize: 30.0,
+                  ratingWidget: RatingWidget(
+                    full: const Icon(Icons.star, color: Colors.blueAccent),
+                    half: const Icon(Icons.star_half, color: Colors.blueAccent),
+                    empty: const Icon(Icons.star_border, color: Colors.blueAccent),
+                  ),
+                  onRatingUpdate: (value) {
+                    // Rating is updated
+                    print('rating update to: $value');
+                    editing = value;
 
-                },
-              ),]
+                  },
+                ),
+                RatingBar(
+                  initialRating: 0,
+                  minRating: 0,
+                  maxRating: 5,
+                  allowHalfRating: true,
+                  itemSize: 30.0,
+                  ratingWidget: RatingWidget(
+                    full: const Icon(Icons.star, color: Colors.blueAccent),
+                    half: const Icon(Icons.star_half, color: Colors.blueAccent),
+                    empty: const Icon(Icons.star_border, color: Colors.blueAccent),
+                  ),
+                  onRatingUpdate: (value) {
+                    // Rating is updated
+                    print('rating update to: $value');
+                    directing = value;
+
+                  },
+                ), RatingBar(
+                  initialRating: 0,
+                  minRating: 0,
+                  maxRating: 5,
+                  allowHalfRating: true,
+                  itemSize: 30.0,
+                  ratingWidget: RatingWidget(
+                    full: const Icon(Icons.star, color: Colors.blueAccent),
+                    half: const Icon(Icons.star_half, color: Colors.blueAccent),
+                    empty: const Icon(Icons.star_border, color: Colors.blueAccent),
+                  ),
+                  onRatingUpdate: (value) {
+                    // Rating is updated
+                    print('rating update to: $value');
+                    productDesign = value;
+
+                  },
+                ), RatingBar(
+                  initialRating: 0,
+                  minRating: 0,
+                  maxRating: 5,
+                  allowHalfRating: true,
+                  itemSize: 30.0,
+                  ratingWidget: RatingWidget(
+                    full: const Icon(Icons.star, color: Colors.blueAccent),
+                    half: const Icon(Icons.star_half, color: Colors.blueAccent),
+                    empty: const Icon(Icons.star_border, color: Colors.blueAccent),
+                  ),
+                  onRatingUpdate: (value) {
+                    // Rating is updated
+                    print('rating update to: $value');
+                    story = value;
+
+                  },
+                ), RatingBar(
+                  initialRating: 0,
+                  minRating: 0,
+                  maxRating: 5,
+                  allowHalfRating: true,
+                  itemSize: 30.0,
+                  ratingWidget: RatingWidget(
+                    full: const Icon(Icons.star, color: Colors.blueAccent),
+                    half: const Icon(Icons.star_half, color: Colors.blueAccent),
+                    empty: const Icon(Icons.star_border, color: Colors.blueAccent),
+                  ),
+                  onRatingUpdate: (value) {
+                    // Rating is updated
+                    print('rating update to: $value');
+                    music = value;
+
+                  },
+                ), RatingBar(
+                  initialRating: 0,
+                  minRating: 0,
+                  maxRating: 5,
+                  allowHalfRating: true,
+                  itemSize: 30.0,
+                  ratingWidget: RatingWidget(
+                    full: const Icon(Icons.star, color: Colors.blueAccent),
+                    half: const Icon(Icons.star_half, color: Colors.blueAccent),
+                    empty: const Icon(Icons.star_border, color: Colors.blueAccent),
+                  ),
+                  onRatingUpdate: (value) {
+                    // Rating is updated
+                    print('rating update to: $value');
+                    color = value;
+
+                  },
+                ), RatingBar(
+                  initialRating: 0,
+                  minRating: 0,
+                  maxRating: 5,
+                  allowHalfRating: true,
+                  itemSize: 30.0,
+                  ratingWidget: RatingWidget(
+                    full: const Icon(Icons.star, color: Colors.blueAccent),
+                    half: const Icon(Icons.star_half, color: Colors.blueAccent),
+                    empty: const Icon(Icons.star_border, color: Colors.blueAccent),
+                  ),
+                  onRatingUpdate: (value) {
+                    // Rating is updated
+                    print('rating update to: $value');
+                    mSound = value;
+
+                  },
+                ),
+
+              ]
+
             ),
           ),
           TextButton(
@@ -177,14 +292,14 @@ class _AddMovieState extends State<AddMovie> {
               _firestore.collection('movies').add({
                 'description' : descriptioncontroller.text,
                 'title' : titlecontroller.text,
-                'rating' : rating,
+                'rating' : Movie.rating,
                 'user' : loggedInUser.email,
                 'year' : int.parse(yearcontroller.text),
               });
 
               // final task = Task(name: newTasksTitle);
                Provider.of<MovieData>(context, listen: false)
-                  .addMovie(titlecontroller.text,descriptioncontroller.text,rating,int.parse(yearcontroller.text));
+                  .addMovie(titlecontroller.text,descriptioncontroller.text,int.parse(yearcontroller.text),rating,);
 
               // refreshText;
               Navigator.pop(context);
@@ -194,6 +309,35 @@ class _AddMovieState extends State<AddMovie> {
 
         ],
       ),
+    );
+  }
+}
+
+class MovieStars extends StatelessWidget {
+  late double rating;
+  MovieStars(this.rating);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: RatingBar(
+      initialRating: 0,
+      minRating: 0,
+      maxRating: 5,
+      allowHalfRating: true,
+      itemSize: 30.0,
+      ratingWidget: RatingWidget(
+        full: const Icon(Icons.star, color: Colors.blueAccent),
+        half: const Icon(Icons.star_half, color: Colors.blueAccent),
+        empty: const Icon(Icons.star_border, color: Colors.blueAccent),
+      ),
+      onRatingUpdate: (value) {
+        // Rating is updated
+        print('rating update to: $value');
+        rating = value;
+
+      },
+              ),
     );
   }
 }
