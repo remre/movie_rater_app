@@ -115,13 +115,20 @@ class MovieScreenList extends StatelessWidget {
 
         children: <Widget>[
           Container(
-            padding: EdgeInsets.only(top: 20),
-            child: Text('Movie List'),
+            padding: EdgeInsets.only(top: 40),
+            child: Text('Movie List',
+            style: TextStyle(fontSize: 40,color: Colors.red),),
+            decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(15),
+                    topRight: Radius.circular(15))),
+
           ),
           // Expanded(
           //   child:
             Container(
-              height: 640,
+              // height: 540,
               // width: 200,
               // padding: EdgeInsets.symmetric(horizontal: 10),
               decoration: BoxDecoration(
@@ -160,10 +167,12 @@ class _MoviesListDataState extends State<MoviesListData> {
 
         return Card(
           child: ListView(
+            scrollDirection: Axis.vertical,
             shrinkWrap: true,
             children: snapshot.data!.docs.map((DocumentSnapshot document) {
               Map<String, dynamic> data = document.data()! as Map<String, dynamic>;
               return ListTile(
+
                 leading: Text('anan'),
                 title: FloatingActionButton.extended(heroTag: null,
                   label: Text(data['title'] + ' ' + data['rating'].toString()), onPressed: (){

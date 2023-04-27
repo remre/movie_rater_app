@@ -49,6 +49,7 @@ class _AddMovieState extends State<AddMovie> {
 
   TextEditingController titlecontroller = TextEditingController();
   TextEditingController descriptioncontroller = TextEditingController();
+  final PageController pController = PageController();
   // late  double rating = 0.0;
   late  double mSound = 0.0;
   late  double editing = 0.0;
@@ -79,18 +80,20 @@ class _AddMovieState extends State<AddMovie> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
+      body: ListView(
+        scrollDirection: Axis.vertical,
+        // crossAxisAlignment: CrossAxisAlignment.stretch,
+        // controller: pController,
         children: <Widget>[
-          Flexible(
-            child: Container(
+          // Flexible(   child:
+            Container(
               padding: EdgeInsets.only(top: 30),
               child: Text(
                 'Add Movie',
                 textAlign: TextAlign.center,
                 style: TextStyle(color: Colors.lightBlueAccent, fontSize: 30),
               ),
-            ),
+            // ),
           ),
           SizedBox(
             height: 20,
@@ -152,30 +155,28 @@ class _AddMovieState extends State<AddMovie> {
           //     // print("rating value dd -> ${value.truncate()}");
           //   },
           // ),
-          SingleChildScrollView(
-            child: Center(
-              child: Column(
-                children:<Widget>[
-                  Text('Rate The movie!'),
-                  // MovieStars(),
-                  Text('editing'),
-                  MovieStars(editing),
-                  Text('directing'),
-                  MovieStars(directing),
-                  Text('productDesign'),
-                  MovieStars(productDesign),
-                  Text('story'),
-                  MovieStars(story),
-                  Text('music'),
-                  MovieStars(music),
-                  Text('color'),
-                  MovieStars(color),
-                  Text('mSound'),
-                  MovieStars(mSound),
+          Center(
+            child: Column(
+              children:<Widget>[
+                Text('Rate The movie!'),
+                // MovieStars(),
+                Text('editing'),
+                MovieStars(editing),
+                Text('directing'),
+                MovieStars(directing),
+                Text('productDesign'),
+                MovieStars(productDesign),
+                Text('story'),
+                MovieStars(story),
+                Text('music'),
+                MovieStars(music),
+                Text('color'),
+                MovieStars(color),
+                Text('mSound'),
+                MovieStars(mSound),
 
-                ]
+              ]
 
-              ),
             ),
           ),
           TextButton(

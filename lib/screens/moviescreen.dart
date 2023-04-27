@@ -138,7 +138,7 @@ class _MovieScreenState extends State<MovieScreen> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => MoviesListData()));
+                            builder: (context) => MovieScreenList()));
                   },
                 ),
               ),
