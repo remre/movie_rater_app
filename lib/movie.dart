@@ -5,6 +5,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 
 class Movie {
+
   final String title;
   final String description;
   var year;
@@ -18,12 +19,13 @@ class Movie {
   late double editing;
   late double story;
 
-  double ratingCalculator (directing, productDesign, mSound, music, color, editing, story) {
-    double _rrating = (directing+ productDesign + mSound+ music + color  + editing +story)/ 7;
-    return _rrating;
-
-  }
-  late double rating = ratingCalculator(directing, productDesign, mSound, music, color, editing, story);
+  // double ratingCalculator (directing, productDesign, mSound, music, color, editing, story) {
+  //   double _rrating = (directing+ productDesign + mSound+ music + color  + editing +story)/ 7;
+  //   return _rrating;
+  //
+  // }
+  // = ratingCalculator(directing, productDesign, mSound, music, color, editing, story)
+  late double rating;
 
 
 
@@ -38,6 +40,8 @@ class Movie {
     required this.color,
     required this.editing,
     required this.story,
+
+    required this.rating,
 
 
   });
@@ -70,6 +74,7 @@ class MovieData extends ChangeNotifier {
       double color,
       double directing,
       double story,
+      double rating,
       ) {
     final movie = Movie(title: newMovieTitle, description: description, year: year,
     mSound: mSound,
@@ -79,7 +84,8 @@ class MovieData extends ChangeNotifier {
     color: color,
     directing: directing,
     story: story,
-    // rating: rating
+
+    rating: rating
     );
     // _firestore.collection('movies').add({
     //   'description' : descriptioncontroller.text,

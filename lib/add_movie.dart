@@ -57,6 +57,13 @@ class _AddMovieState extends State<AddMovie> {
   late  double color = 0.0;
   late  double directing = 0.0;
   late  double story = 0.0;
+  double ratingCalculator (directing, productDesign, mSound, music, color, editing, story) {
+    double _rrating = (directing+ productDesign + mSound+ music + color  + editing +story)/ 7;
+    String inString = _rrating.toStringAsFixed(2);
+    return double.parse(inString);
+
+  }
+  late double rating = ratingCalculator(directing, productDesign, mSound, music, color, editing, story);
 
   TextEditingController yearcontroller = TextEditingController();
   void dispose() {
@@ -292,14 +299,21 @@ class _AddMovieState extends State<AddMovie> {
               _firestore.collection('movies').add({
                 'description' : descriptioncontroller.text,
                 'title' : titlecontroller.text,
-                'rating' : Movie.rating,
+                'rating' : rating,
+                'mSound' : mSound,
+                'productDesing' : productDesign,
+                'editing' : editing,
+                'directing' : directing,
+                'music' : music,
+                'color' : color,
+                'story' : story,
                 'user' : loggedInUser.email,
                 'year' : int.parse(yearcontroller.text),
               });
 
               // final task = Task(name: newTasksTitle);
                Provider.of<MovieData>(context, listen: false)
-                  .addMovie(titlecontroller.text,descriptioncontroller.text,int.parse(yearcontroller.text),rating,);
+                  .addMovie(titlecontroller.text,descriptioncontroller.text,int.parse(yearcontroller.text),mSound,editing,productDesign,  music, color, directing, story,rating);
 
               // refreshText;
               Navigator.pop(context);
