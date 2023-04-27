@@ -86,7 +86,7 @@ class _AddMovieState extends State<AddMovie> {
             child: Container(
               padding: EdgeInsets.only(top: 30),
               child: Text(
-                'Add Task',
+                'Add Movie',
                 textAlign: TextAlign.center,
                 style: TextStyle(color: Colors.lightBlueAccent, fontSize: 30),
               ),
@@ -109,7 +109,7 @@ class _AddMovieState extends State<AddMovie> {
           ),
           Card(
             child: TextField(
-              maxLines: 3,
+              maxLines: 2,
               maxLength: 250,
               decoration: InputDecoration(hintText: 'Enter the movie description',
                 counterText: '',
@@ -152,142 +152,37 @@ class _AddMovieState extends State<AddMovie> {
           //     // print("rating value dd -> ${value.truncate()}");
           //   },
           // ),
-          Center(
-            child: Column(
-              children:<Widget>[
-                Text('Rate The movie!'),
-                // MovieStars(),
-                RatingBar(
-                  initialRating: 0,
-                  minRating: 0,
-                  maxRating: 5,
-                  allowHalfRating: true,
-                  itemSize: 30.0,
-                  ratingWidget: RatingWidget(
-                    full: const Icon(Icons.star, color: Colors.blueAccent),
-                    half: const Icon(Icons.star_half, color: Colors.blueAccent),
-                    empty: const Icon(Icons.star_border, color: Colors.blueAccent),
-                  ),
-                  onRatingUpdate: (value) {
-                    // Rating is updated
-                    print('rating update to: $value');
-                    editing = value;
+          SingleChildScrollView(
+            child: Center(
+              child: Column(
+                children:<Widget>[
+                  Text('Rate The movie!'),
+                  // MovieStars(),
+                  Text('editing'),
+                  MovieStars(editing),
+                  Text('directing'),
+                  MovieStars(directing),
+                  Text('productDesign'),
+                  MovieStars(productDesign),
+                  Text('story'),
+                  MovieStars(story),
+                  Text('music'),
+                  MovieStars(music),
+                  Text('color'),
+                  MovieStars(color),
+                  Text('mSound'),
+                  MovieStars(mSound),
 
-                  },
-                ),
-                RatingBar(
-                  initialRating: 0,
-                  minRating: 0,
-                  maxRating: 5,
-                  allowHalfRating: true,
-                  itemSize: 30.0,
-                  ratingWidget: RatingWidget(
-                    full: const Icon(Icons.star, color: Colors.blueAccent),
-                    half: const Icon(Icons.star_half, color: Colors.blueAccent),
-                    empty: const Icon(Icons.star_border, color: Colors.blueAccent),
-                  ),
-                  onRatingUpdate: (value) {
-                    // Rating is updated
-                    print('rating update to: $value');
-                    directing = value;
+                ]
 
-                  },
-                ), RatingBar(
-                  initialRating: 0,
-                  minRating: 0,
-                  maxRating: 5,
-                  allowHalfRating: true,
-                  itemSize: 30.0,
-                  ratingWidget: RatingWidget(
-                    full: const Icon(Icons.star, color: Colors.blueAccent),
-                    half: const Icon(Icons.star_half, color: Colors.blueAccent),
-                    empty: const Icon(Icons.star_border, color: Colors.blueAccent),
-                  ),
-                  onRatingUpdate: (value) {
-                    // Rating is updated
-                    print('rating update to: $value');
-                    productDesign = value;
-
-                  },
-                ), RatingBar(
-                  initialRating: 0,
-                  minRating: 0,
-                  maxRating: 5,
-                  allowHalfRating: true,
-                  itemSize: 30.0,
-                  ratingWidget: RatingWidget(
-                    full: const Icon(Icons.star, color: Colors.blueAccent),
-                    half: const Icon(Icons.star_half, color: Colors.blueAccent),
-                    empty: const Icon(Icons.star_border, color: Colors.blueAccent),
-                  ),
-                  onRatingUpdate: (value) {
-                    // Rating is updated
-                    print('rating update to: $value');
-                    story = value;
-
-                  },
-                ), RatingBar(
-                  initialRating: 0,
-                  minRating: 0,
-                  maxRating: 5,
-                  allowHalfRating: true,
-                  itemSize: 30.0,
-                  ratingWidget: RatingWidget(
-                    full: const Icon(Icons.star, color: Colors.blueAccent),
-                    half: const Icon(Icons.star_half, color: Colors.blueAccent),
-                    empty: const Icon(Icons.star_border, color: Colors.blueAccent),
-                  ),
-                  onRatingUpdate: (value) {
-                    // Rating is updated
-                    print('rating update to: $value');
-                    music = value;
-
-                  },
-                ), RatingBar(
-                  initialRating: 0,
-                  minRating: 0,
-                  maxRating: 5,
-                  allowHalfRating: true,
-                  itemSize: 30.0,
-                  ratingWidget: RatingWidget(
-                    full: const Icon(Icons.star, color: Colors.blueAccent),
-                    half: const Icon(Icons.star_half, color: Colors.blueAccent),
-                    empty: const Icon(Icons.star_border, color: Colors.blueAccent),
-                  ),
-                  onRatingUpdate: (value) {
-                    // Rating is updated
-                    print('rating update to: $value');
-                    color = value;
-
-                  },
-                ), RatingBar(
-                  initialRating: 0,
-                  minRating: 0,
-                  maxRating: 5,
-                  allowHalfRating: true,
-                  itemSize: 30.0,
-                  ratingWidget: RatingWidget(
-                    full: const Icon(Icons.star, color: Colors.blueAccent),
-                    half: const Icon(Icons.star_half, color: Colors.blueAccent),
-                    empty: const Icon(Icons.star_border, color: Colors.blueAccent),
-                  ),
-                  onRatingUpdate: (value) {
-                    // Rating is updated
-                    print('rating update to: $value');
-                    mSound = value;
-
-                  },
-                ),
-
-              ]
-
+              ),
             ),
           ),
           TextButton(
             child: Text(
               'Add',
               style: TextStyle(
-                color: Colors.white,
+                color: Colors.black,
               ),
             ),
             style: TextButton.styleFrom(
@@ -328,8 +223,8 @@ class _AddMovieState extends State<AddMovie> {
 }
 
 class MovieStars extends StatelessWidget {
-  late double rating;
-  MovieStars(this.rating);
+  late double star;
+  MovieStars(this.star);
 
   @override
   Widget build(BuildContext context) {
@@ -339,7 +234,7 @@ class MovieStars extends StatelessWidget {
       minRating: 0,
       maxRating: 5,
       allowHalfRating: true,
-      itemSize: 30.0,
+      itemSize: 35.0,
       ratingWidget: RatingWidget(
         full: const Icon(Icons.star, color: Colors.blueAccent),
         half: const Icon(Icons.star_half, color: Colors.blueAccent),
@@ -348,7 +243,7 @@ class MovieStars extends StatelessWidget {
       onRatingUpdate: (value) {
         // Rating is updated
         print('rating update to: $value');
-        rating = value;
+        star = value;
 
       },
               ),
