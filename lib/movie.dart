@@ -21,13 +21,13 @@ class Movie {
   late Timestamp cTime;
 
 
-  // double ratingCalculator (directing, productDesign, mSound, music, color, editing, story) {
-  //   double _rrating = (directing+ productDesign + mSound+ music + color  + editing +story)/ 7;
-  //   return _rrating;
-  //
-  // }
-  // = ratingCalculator(directing, productDesign, mSound, music, color, editing, story)
-  late double rating;
+  double ratingCalculator (directing, productDesign, mSound, music, color, editing, story) {
+    double _rrating = (directing+ productDesign + mSound+ music + color  + editing +story)/ 7;
+    return _rrating;
+
+  }
+
+  late double rating = ratingCalculator(directing, productDesign, mSound, music, color, editing, story);
 
 
 

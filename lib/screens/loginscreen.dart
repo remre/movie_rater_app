@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:chatgpt_movierater_app/constants.dart';
-import 'package:chatgpt_movierater_app/roundedbutton.dart';
+import 'package:chatgpt_movierater_app/models/roundedbutton.dart';
 
 class LoginScreen extends StatefulWidget {
 

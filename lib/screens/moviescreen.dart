@@ -84,7 +84,7 @@ class _MovieScreenState extends State<MovieScreen> {
                   borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(15),
                       topRight: Radius.circular(15))),
-              child: MoviesListData(),
+              child: MovieScreenList(),
             ),
           ),
           Row(

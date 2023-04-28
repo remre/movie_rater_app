@@ -115,9 +115,9 @@ class MovieScreenList extends StatelessWidget {
 
         children: <Widget>[
           Container(
-            padding: EdgeInsets.only(top: 40),
+            padding: EdgeInsets.only(top: 30),
             child: Text('Movie List',
-            style: TextStyle(fontSize: 40,color: Colors.red),),
+            style: TextStyle(fontSize: 30,color: Colors.red),),
             decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.only(
@@ -127,16 +127,18 @@ class MovieScreenList extends StatelessWidget {
           ),
           // Expanded(
           //   child:
-            Container(
-              // height: 540,
-              // width: 200,
-              // padding: EdgeInsets.symmetric(horizontal: 10),
-              decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(15),
-                      topRight: Radius.circular(15))),
-              child: MoviesListData(),
+            Expanded(
+              child: Container(
+                // height: 540,
+                // width: 200,
+                // padding: EdgeInsets.symmetric(horizontal: 10),
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(15),
+                        topRight: Radius.circular(15))),
+                child: MoviesListData(),
+              ),
             ),
           // ),
         ],
@@ -173,7 +175,7 @@ class _MoviesListDataState extends State<MoviesListData> {
               Map<String, dynamic> data = document.data()! as Map<String, dynamic>;
               return ListTile(
 
-                leading: Text('anan'),
+                // leading: Text(data['title']),
                 title: FloatingActionButton.extended(heroTag: null,
                   label: Text(data['title'] + ' ' + data['rating'].toString()), onPressed: (){
 
@@ -182,9 +184,11 @@ class _MoviesListDataState extends State<MoviesListData> {
                     FontAwesomeIcons.star,
                     color: Colors.white,
                   ),),
-                  subtitle: Row(children:<Widget>[Text(data['rating'].toString()
-                      // + DateTime.fromMicrosecondsSinceEpoch(data['cTime'])
-                  ), FaIcon(FontAwesomeIcons.minus,)] ),
+                  subtitle: Row(children:<Widget>[
+                    // Text(data['rating'].toString()) ,
+                    Text('created ' + data['cTime'].toDate().toString()),
+
+                  ] ),
 
                 // subtitle: Text(data['rating'].toString()),
                 // trailing: Text(data['year'].toString()),

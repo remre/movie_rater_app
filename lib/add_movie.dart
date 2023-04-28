@@ -6,6 +6,8 @@ import 'package:provider/provider.dart';
 import 'movie.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'models/textformwidget.dart';
+import 'models/moviestartwidget.dart';
 
 
 // User?  loggedInUser;
@@ -24,6 +26,7 @@ class AddMovie extends StatefulWidget {
 }
 
 class _AddMovieState extends State<AddMovie> {
+  final _formKey = GlobalKey<FormState>();
   final _firestore  = FirebaseFirestore.instance;
   final _auth = FirebaseAuth.instance;
   @override
@@ -52,13 +55,14 @@ class _AddMovieState extends State<AddMovie> {
   final PageController pController = PageController();
   // late  double rating = 0.0;
   late  double mSound = 0.0;
+  final now = DateTime.now();
   late  double editing = 0.0;
   late  double productDesign = 0.0;
   late  double music = 0.0;
   late  double color = 0.0;
   late  double directing = 0.0;
   late  double story = 0.0;
-  Timestamp cTime = Timestamp.now();
+    Timestamp cTime = (Timestamp.now());
   double ratingCalculator (directing, productDesign, mSound, music, color, editing, story) {
     double _rrating = (directing+ productDesign + mSound+ music + color  + editing +story)/ 7;
     String inString = _rrating.toStringAsFixed(2);
@@ -99,47 +103,52 @@ class _AddMovieState extends State<AddMovie> {
           SizedBox(
             height: 20,
           ),
-          Card(
-            child: TextField(
-              maxLength: 100,
-              decoration: InputDecoration(hintText: 'Enter the movie name', counterText: ''),
-              controller: titlecontroller,
-              // autofocus: true,
-              // onChanged: (newText) {
-              //   newTasksTitle = newText;
-              // },
-              textAlign: TextAlign.center,
-            ),
-          ),
-          Card(
-            child: TextField(
-              maxLines: 2,
-              maxLength: 250,
-              decoration: InputDecoration(hintText: 'Enter the movie description',
-                counterText: '',
-                border: OutlineInputBorder(),
-                contentPadding: EdgeInsets.symmetric(vertical: 40),),
-              controller: descriptioncontroller,
+          Form(
+            key: _formKey,
+            child: Column(
+            children: <Widget>[
+              TextFormWiddgy(descriptioncontroller: descriptioncontroller,maxlength: 100,formPlaceHolder: 'Enter the movie name',countext: ''),
+              // Card(
+              //   child: TextFormField(
+              //     validator: (value) {
+              //       if ( value!.isEmpty) {
+              //         return 'Please enter some text';
+              //       }
+              //       return null;
+              //     },
+              //     maxLength: 100,
+              //     decoration: InputDecoration(hintText: 'Enter the movie name', counterText: ''),
+              //     controller: titlecontroller,
+              //     // autofocus: true,
+              //     // onChanged: (newText) {
+              //     //   newTasksTitle = newText;
+              //     // },
+              //     textAlign: TextAlign.center,
+              //   ),
+              // ),
+              TextFormWiddgy(descriptioncontroller: descriptioncontroller,maxLines: 2,maxlength: 250,formPlaceHolder: 'Enter the movie description',),
+              TextFormWiddgy(descriptioncontroller: yearcontroller,maxlength: 4,formPlaceHolder: 'Enter the year',),
+              // Card(
+              //   child: TextFormField(
+              //     validator: (value) {
+              //       if ( value!.isEmpty) {
+              //         return 'Please enter some text';
+              //       }
+              //       return null;
+              //     },
+              //     maxLength: 4,
+              //     controller: yearcontroller ,
+              //     decoration: InputDecoration(labelText: "Enter the year",
+              //         counterText: ''),
+              //     keyboardType: TextInputType.number,
+              //     inputFormatters: <TextInputFormatter>[
+              //       FilteringTextInputFormatter.digitsOnly
+              //     ], // Only numbers can be entered
+              //   ),
+              // ),
+            ],
+          ),),
 
-              // autofocus: true,
-              // onChanged: (newText) {
-              //   newTasksTitle = newText;
-              // },
-              textAlign: TextAlign.center,
-            ),
-          ),
-          Card(
-            child: TextField(
-              maxLength: 4,
-              controller: yearcontroller ,
-              decoration: InputDecoration(labelText: "Enter the year",
-                  counterText: ''),
-              keyboardType: TextInputType.number,
-              inputFormatters: <TextInputFormatter>[
-                FilteringTextInputFormatter.digitsOnly
-              ], // Only numbers can be entered
-            ),
-          ),
           // SmoothStarRating(
           //   rating: rating,
           //   isReadOnly: false,
@@ -162,20 +171,146 @@ class _AddMovieState extends State<AddMovie> {
                 Text('Rate The movie!'),
                 // MovieStars(),
                 Text('editing'),
-                MovieStars(editing),
-                Text('directing'),
-                MovieStars(directing),
-                Text('productDesign'),
-                MovieStars(productDesign),
-                Text('story'),
-                MovieStars(story),
-                Text('music'),
-                MovieStars(music),
-                Text('color'),
-                MovieStars(color),
-                Text('mSound'),
-                MovieStars(mSound),
+                // MovieStars(editing),
+                RatingBar(
+                  initialRating: 0,
+                  minRating: 0,
+                  maxRating: 5,
+                  allowHalfRating: true,
+                  itemSize: 35.0,
+                  ratingWidget: RatingWidget(
+                    full: const Icon(Icons.star, color: Colors.blueAccent),
+                    half: const Icon(Icons.star_half, color: Colors.blueAccent),
+                    empty: const Icon(Icons.star_border, color: Colors.blueAccent),
+                  ),
+                  onRatingUpdate: (value) {
+                    // Rating is updated
+                    print('rating update to: $value');
+                    editing = value;
 
+                  },
+                ),
+                Text('directing'),
+                RatingBar(
+                  initialRating: 0,
+                  minRating: 0,
+                  maxRating: 5,
+                  allowHalfRating: true,
+                  itemSize: 35.0,
+                  ratingWidget: RatingWidget(
+                    full: const Icon(Icons.star, color: Colors.blueAccent),
+                    half: const Icon(Icons.star_half, color: Colors.blueAccent),
+                    empty: const Icon(Icons.star_border, color: Colors.blueAccent),
+                  ),
+                  onRatingUpdate: (value) {
+                    // Rating is updated
+                    print('rating update to: $value');
+                    directing = value;
+
+                  },
+                ),
+                // MovieStars(directing),
+                Text('productDesign'),
+                // MovieStars(productDesign),
+                RatingBar(
+                  initialRating: 0,
+                  minRating: 0,
+                  maxRating: 5,
+                  allowHalfRating: true,
+                  itemSize: 35.0,
+                  ratingWidget: RatingWidget(
+                    full: const Icon(Icons.star, color: Colors.blueAccent),
+                    half: const Icon(Icons.star_half, color: Colors.blueAccent),
+                    empty: const Icon(Icons.star_border, color: Colors.blueAccent),
+                  ),
+                  onRatingUpdate: (value) {
+                    // Rating is updated
+                    print('rating update to: $value');
+                    productDesign = value;
+
+                  },
+                ),
+                Text('story'),
+                // MovieStars(story),
+                RatingBar(
+                  initialRating: 0,
+                  minRating: 0,
+                  maxRating: 5,
+                  allowHalfRating: true,
+                  itemSize: 35.0,
+                  ratingWidget: RatingWidget(
+                    full: const Icon(Icons.star, color: Colors.blueAccent),
+                    half: const Icon(Icons.star_half, color: Colors.blueAccent),
+                    empty: const Icon(Icons.star_border, color: Colors.blueAccent),
+                  ),
+                  onRatingUpdate: (value) {
+                    // Rating is updated
+                    print('rating update to: $value');
+                    story = value;
+
+                  },
+                ),
+                Text('music'),
+                // MovieStars(music),
+                RatingBar(
+                  initialRating: 0,
+                  minRating: 0,
+                  maxRating: 5,
+                  allowHalfRating: true,
+                  itemSize: 35.0,
+                  ratingWidget: RatingWidget(
+                    full: const Icon(Icons.star, color: Colors.blueAccent),
+                    half: const Icon(Icons.star_half, color: Colors.blueAccent),
+                    empty: const Icon(Icons.star_border, color: Colors.blueAccent),
+                  ),
+                  onRatingUpdate: (value) {
+                    // Rating is updated
+                    print('rating update to: $value');
+                    music = value;
+
+                  },
+                ),
+
+                Text('color'),
+                // MovieStars(color),
+                RatingBar(
+                  initialRating: 0,
+                  minRating: 0,
+                  maxRating: 5,
+                  allowHalfRating: true,
+                  itemSize: 35.0,
+                  ratingWidget: RatingWidget(
+                    full: const Icon(Icons.star, color: Colors.blueAccent),
+                    half: const Icon(Icons.star_half, color: Colors.blueAccent),
+                    empty: const Icon(Icons.star_border, color: Colors.blueAccent),
+                  ),
+                  onRatingUpdate: (value) {
+                    // Rating is updated
+                    print('rating update to: $value');
+                    color = value;
+
+                  },
+                ),
+                Text('mSound'),
+                // MovieStars(mSound),
+                RatingBar(
+                  initialRating: 0,
+                  minRating: 0,
+                  maxRating: 5,
+                  allowHalfRating: true,
+                  itemSize: 35.0,
+                  ratingWidget: RatingWidget(
+                    full: const Icon(Icons.star, color: Colors.blueAccent),
+                    half: const Icon(Icons.star_half, color: Colors.blueAccent),
+                    empty: const Icon(Icons.star_border, color: Colors.blueAccent),
+                  ),
+                  onRatingUpdate: (value) {
+                    // Rating is updated
+                    print('rating update to: $value');
+                    mSound = value;
+
+                  },
+                ),
               ]
 
             ),
@@ -191,6 +326,13 @@ class _AddMovieState extends State<AddMovie> {
                 foregroundColor: Colors.green,
                 textStyle: const TextStyle(fontSize: 20)),
             onPressed: ()   {
+              if (_formKey.currentState!.validate() == false) {
+                // If the form is valid, display a snackbar. In the real world,
+                // you'd often call a server or save the information in a database.
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(content: Text('Processing Data')),
+                );
+              }
               print(titlecontroller.text + descriptioncontroller.text + yearcontroller.text);
               // print(textController.text);
               _firestore.collection('movies').add({
@@ -198,7 +340,7 @@ class _AddMovieState extends State<AddMovie> {
                 'title' : titlecontroller.text,
                 'rating' : rating,
                 'mSound' : mSound,
-                'productDesing' : productDesign,
+                'productDesign' : productDesign,
                 'editing' : editing,
                 'directing' : directing,
                 'music' : music,
@@ -232,32 +374,7 @@ class _AddMovieState extends State<AddMovie> {
   }
 }
 
-class MovieStars extends StatelessWidget {
-  late double star;
-  MovieStars(this.star);
 
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      child: RatingBar(
-      initialRating: 0,
-      minRating: 0,
-      maxRating: 5,
-      allowHalfRating: true,
-      itemSize: 35.0,
-      ratingWidget: RatingWidget(
-        full: const Icon(Icons.star, color: Colors.blueAccent),
-        half: const Icon(Icons.star_half, color: Colors.blueAccent),
-        empty: const Icon(Icons.star_border, color: Colors.blueAccent),
-      ),
-      onRatingUpdate: (value) {
-        // Rating is updated
-        print('rating update to: $value');
-        star = value;
 
-      },
-              ),
-    );
-  }
-}
+
 

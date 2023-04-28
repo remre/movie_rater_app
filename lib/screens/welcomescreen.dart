@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'registerscreen.dart';
 import 'loginscreen.dart';
-import 'package:chatgpt_movierater_app/roundedbutton.dart';
+import 'package:chatgpt_movierater_app/models/roundedbutton.dart';
 
 class WelcomeScreen extends StatefulWidget {
   static String id = 'welcome_screen';

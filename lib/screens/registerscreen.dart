@@ -6,7 +6,7 @@ import 'moviescreen.dart';
 // import 'package:flutter_progress_hud/flutter_progress_hud.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:chatgpt_movierater_app/constants.dart';
-import 'package:chatgpt_movierater_app/roundedbutton.dart';
+import 'package:chatgpt_movierater_app/models/roundedbutton.dart';
 import 'package:email_validator/email_validator.dart';
 
 class RegistrationScreen extends StatefulWidget {
@@ -53,7 +53,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                 child: Column(children: <Widget>[
                   TextFormField(
                     validator: (value) {
-                      if (value == 'a' || value!.isEmpty) {
+                      if (value!.isEmpty) {
                         return 'Please enter some text';
                       }
                       return null;
@@ -70,7 +70,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                   ),
                   TextFormField(
                     validator: (value) {
-                      if (value == null || value!.isEmpty) {
+                      if (value!.isEmpty) {
                         return 'Please enter some password';
                       }
                       return null;
