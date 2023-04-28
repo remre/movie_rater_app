@@ -28,7 +28,7 @@ class _MovieScreenState extends State<MovieScreen> {
 
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.orange,
+      // backgroundColor: Colors.orange,
       body: Column(
         children: <Widget>[
           Container(
@@ -77,15 +77,7 @@ class _MovieScreenState extends State<MovieScreen> {
             ]),
           ),
           Expanded(
-            child: Container(
-              padding: EdgeInsets.symmetric(horizontal: 20),
-              decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(15),
-                      topRight: Radius.circular(15))),
-              child: MovieScreenList(),
-            ),
+            child: MovieScreenList(),
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
