@@ -28,9 +28,9 @@ class TextFormWiddgy extends StatelessWidget {
         maxLines: maxLines,
         maxLength: maxlength,
         decoration: InputDecoration(hintText: formPlaceHolder,
-          counterText: '',
-          border: OutlineInputBorder(),
-          contentPadding: EdgeInsets.symmetric(vertical: 40),),
+        counterText: '',
+        border: OutlineInputBorder(),
+        contentPadding: EdgeInsets.symmetric(vertical: 40),),
         controller: descriptioncontroller,
 
         // autofocus: true,

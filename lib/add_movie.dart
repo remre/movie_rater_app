@@ -107,7 +107,7 @@ class _AddMovieState extends State<AddMovie> {
             key: _formKey,
             child: Column(
             children: <Widget>[
-              TextFormWiddgy(descriptioncontroller: descriptioncontroller,maxlength: 100,formPlaceHolder: 'Enter the movie name',countext: ''),
+              TextFormWiddgy(descriptioncontroller: titlecontroller,maxlength: 100,formPlaceHolder: 'Enter the movie name',countext: ''),
               // Card(
               //   child: TextFormField(
               //     validator: (value) {

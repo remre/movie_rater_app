@@ -1,3 +1,6 @@
+import 'package:chatgpt_movierater_app/models/deletemovie.dart';
+import 'package:chatgpt_movierater_app/screens/MovieItemScreen.dart';
+import 'package:chatgpt_movierater_app/updatescreen.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
@@ -166,8 +169,10 @@ class _MoviesListDataState extends State<MoviesListData> {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return Text("Loading");
         }
-
+        // QuerySnapshot<Object?>? querySnapshot = snapshot.data;
+        // List<QueryDocumentSnapshot> documents = querySnapshot!.docs;
         return Card(
+
           child: ListView(
             scrollDirection: Axis.vertical,
             shrinkWrap: true,
@@ -180,37 +185,32 @@ class _MoviesListDataState extends State<MoviesListData> {
                 title: Container(
 
                   color: Colors.white,
-                  child: Text(data['title'] + ' ' + data['rating'].toString() + ' rating',style: TextStyle(color: Colors.lightBlueAccent,fontSize: 24),),
+                  child:
+                  // Text(data['title'] + ' ' + data['rating'].toString() + ' rating',style: TextStyle(color: Colors.lightBlueAccent,fontSize: 24),),
+
+                FloatingActionButton.extended(
+
+                  backgroundColor: Colors.white,
+                  heroTag: null,
+                  label: Text(data['title'] + ' s ' + data['rating'].toString()  ,style: TextStyle(color: Colors.lightBlueAccent),),
+                  onPressed: (){
+                    Navigator.push(context,MaterialPageRoute(builder: (context) => UpdateMovie(movieItem: data,)));
+
+                  },
+                  icon: FaIcon(
+                    FontAwesomeIcons.star,
+                    color: Colors.lightBlueAccent,
+                  ),),
                 ),
-                // FloatingActionButton.extended(
-                //
-                //   backgroundColor: Colors.white,
-                //   heroTag: null,
-                //   label: Text(data['title'] + ' ' + data['rating'].toString(),style: TextStyle(color: Colors.lightBlueAccent),),
-                //   onPressed: (){
-                //
-                //   },
-                //   icon: FaIcon(
-                //     FontAwesomeIcons.star,
-                //     color: Colors.lightBlueAccent,
-                //   ),),
 
-                  subtitle: Row(children:<Widget>[
-                    // Text(data['rating'].toString()) ,
-                    Text(style: TextStyle(color: Colors.lightBlueAccent, fontSize: 14), 'created ' + data['cTime'].toDate().toString()),
+                  // subtitle:
 
-                  ] ),
+
+
 
                 // subtitle: Text(data['rating'].toString()),
-                trailing: IconButton(
-                  // alignment: Alignment.topLeft,
-                  icon: FaIcon(
-                      Icons.edit
-                  ) , onPressed: () {
-                //    TODO add the update the movie screen
-
-                },
-                ),
+                trailing: DeleteMovie()
+              
               );
             }).toList(),
           ),

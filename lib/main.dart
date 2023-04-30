@@ -1,4 +1,5 @@
 import 'package:chatgpt_movierater_app/screens/moviescreen.dart';
+import 'package:chatgpt_movierater_app/updatescreen.dart';
 import 'screens/registerscreen.dart';
 import 'screens/loginscreen.dart';
 import 'screens/welcomescreen.dart';
@@ -27,6 +28,7 @@ class MyApp extends StatelessWidget {
             initialRoute: '/',
             routes: {
               '/add_movie': (context) => AddMovie(),
+              '/update_movie' : (context) => UpdateMovie(),
               '/movie': (context) => MovieScreen(),
               '/login': (context) =>  LoginScreen(),
               '/registration' : (context) =>  RegistrationScreen(),
