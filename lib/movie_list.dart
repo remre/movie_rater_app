@@ -1,13 +1,14 @@
 import 'package:chatgpt_movierater_app/models/deletemovie.dart';
 import 'package:chatgpt_movierater_app/screens/MovieItemScreen.dart';
 import 'package:chatgpt_movierater_app/updatescreen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import 'movie.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-
+late String  loggedInUser;
 
 // class MoviesList extends StatelessWidget {
 //
@@ -106,13 +107,38 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 //   }
 // }
 
-class MovieScreenList extends StatelessWidget {
+class MovieScreenList extends StatefulWidget {
+
   static String id = '/movielist';
 
-  const MovieScreenList({Key? key}) : super(key: key);
+  MovieScreenList({Key? key}) : super(key: key);
+
+  @override
+  State<MovieScreenList> createState() => _MovieScreenListState();
+}
+
+class _MovieScreenListState extends State<MovieScreenList> {
+  final _auth = FirebaseFirestore.instance;
+
+  @override
+  void initState() {
+    getCurrentUser();
+    super.initState();
+  }
+
+  void getCurrentUser()  async {
+    try {
+      final userr = _auth.collection('movies').id;
+      loggedInUser = userr as String;
+    }
+    catch(e) {
+      print(e);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       body: Column(
 
@@ -155,7 +181,9 @@ class MoviesListData extends StatefulWidget {
 }
 
 class _MoviesListDataState extends State<MoviesListData> {
-  final Stream<QuerySnapshot> _moviesStream = FirebaseFirestore.instance.collection('movies').snapshots();
+  final Stream<QuerySnapshot> _moviesStream = FirebaseFirestore.instance.collection('movies').where('user', isEqualTo:loggedInUser ).snapshots();
+  // var uid = ( FirebaseAuth.instance.currentUser!).uid;
+  // Firestore.instance.collection('movies').where('uid', isEqualTo: uid).snapshots()
   var collections = FirebaseFirestore.instance.collection('movies').where('title', isEqualTo: '');
 
 
@@ -190,25 +218,39 @@ class _MoviesListDataState extends State<MoviesListData> {
                 selectedTileColor: Colors.blueAccent,
 
                 // leading: Text(data['title']),
-                title: Container(
+                title: Padding(
+                  
 
-                  color: Colors.white,
+                  // alignment: AlignmentDirectional.centerStart,
+
+
+                  padding: EdgeInsets.symmetric(vertical: 16.0),
                   child:
                   // Text(data['title'] + ' ' + data['rating'].toString() + ' rating',style: TextStyle(color: Colors.lightBlueAccent,fontSize: 24),),
 
-                FloatingActionButton.extended(
+                Material(
+                  color: Colors.lightBlueAccent,
+                  borderRadius: BorderRadius.circular(30.0),
 
-                  backgroundColor: Colors.white,
-                  heroTag: null,
-                  label: Text(data['title'] + ' s ' + data['rating'].toString()  ,style: TextStyle(color: Colors.lightBlueAccent),),
-                  onPressed: (){
-                    Navigator.push(context,MaterialPageRoute(builder: (context) => UpdateMovie(movieItem: data,)));
+                  child: TextButton(
 
-                  },
-                  icon: FaIcon(
-                    FontAwesomeIcons.star,
-                    color: Colors.lightBlueAccent,
-                  ),),
+
+
+
+                    // backgroundColor: Colors.white,
+                    // heroTag: null,
+                    // label:
+                    child : Text(data['title'] + ' s ' + data['rating'].toString()  ,style: TextStyle(color: Colors.white,fontSize: 20),),
+                    onPressed: (){
+                      Navigator.push(context,MaterialPageRoute(builder: (context) => UpdateMovie(movieItem: data,)));
+
+                    },
+                    // icon: FaIcon(
+                    //   FontAwesomeIcons.star,
+                    //   color: Colors.lightBlueAccent,
+                    // ),
+                  ),
+                ),
                 ),
 
                   // subtitle:

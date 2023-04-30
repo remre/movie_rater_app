@@ -21,6 +21,9 @@ class DeleteMovie extends StatelessWidget {
   Widget build(BuildContext context) {
     return
       IconButton(
+        splashColor : Colors.lightBlueAccent,
+
+        color: Colors.red,
         onPressed: () => showDialog<String>(
           context: context,
           builder: (BuildContext context) => AlertDialog(
