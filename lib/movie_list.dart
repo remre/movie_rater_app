@@ -156,6 +156,13 @@ class MoviesListData extends StatefulWidget {
 
 class _MoviesListDataState extends State<MoviesListData> {
   final Stream<QuerySnapshot> _moviesStream = FirebaseFirestore.instance.collection('movies').snapshots();
+  var collections = FirebaseFirestore.instance.collection('movies').where('title', isEqualTo: '');
+
+
+  // counterr () async{
+  //   var allDocs = await collections.get();
+  //   var DocId = allDocs.docs.first.id;
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -177,6 +184,7 @@ class _MoviesListDataState extends State<MoviesListData> {
             scrollDirection: Axis.vertical,
             shrinkWrap: true,
             children: snapshot.data!.docs.map((DocumentSnapshot document) {
+
               Map<String, dynamic> data = document.data()! as Map<String, dynamic>;
               return ListTile(
                 selectedTileColor: Colors.blueAccent,

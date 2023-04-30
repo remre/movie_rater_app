@@ -11,7 +11,7 @@ class DeleteMovie extends StatelessWidget {
   late DocumentReference _reference;
   DeleteMovie({this.movieItem}){
     _reference = FirebaseFirestore.instance
-        .collection('movies').doc('V6JTY0VNcefErcqaZg6T');
+        .collection('movies').doc('user.uid');
 
 
   }

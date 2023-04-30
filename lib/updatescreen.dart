@@ -17,8 +17,15 @@ class UpdateMovie extends StatelessWidget {
   UpdateMovie({this.movieItem}) {
     titlecontroller = TextEditingController(text: movieItem!['title']);
     descriptioncontroller = TextEditingController(text: movieItem!['description']);
+    mSound = movieItem!['mSound'];
+    editing = movieItem!['editing'];
+    productDesign = movieItem!['productDesign'];
+    music = movieItem!['music'];
+    color = movieItem!['color'];
+    directing = movieItem!['directing'];
+    story = movieItem!['story'];
     _reference = FirebaseFirestore.instance
-        .collection('movies').doc();
+        .collection('movies').doc('useruid');
 
 
 
@@ -42,6 +49,14 @@ class UpdateMovie extends StatelessWidget {
 
   late TextEditingController titlecontroller;
   late TextEditingController descriptioncontroller;
+
+  late double mSound;
+  late  double editing;
+  late  double productDesign;
+  late  double music;
+  late  double color;
+  late  double directing;
+  late  double story;
 
   // late  double rating = 0.0;
   double ratingCalculator (directing, productDesign, mSound, music, color, editing, story) {
@@ -123,172 +138,156 @@ class UpdateMovie extends StatelessWidget {
             ),),
           Text(style: TextStyle(color: Colors.lightBlueAccent, fontSize: 14), 'created ' + movieItem!['cTime'].toDate().toString()),
 
-          // SmoothStarRating(
-          //   rating: rating,
-          //   isReadOnly: false,
-          //   size: 30,
-          //   filledIconData: Icons.star,
-          //   halfFilledIconData: Icons.star_half,
-          //   defaultIconData: Icons.star_border,
-          //   starCount: 5,
-          //   allowHalfRating: true,
-          //   spacing: 2.0,
-          //   onRated: (value) {
-          //     print("rating value -> $value");
-          //     rating = value;
-          //     // print("rating value dd -> ${value.truncate()}");
-          //   },
-          // ),
-          // Center(
-          //   child: Column(
-          //       children:<Widget>[
-          //         Text('Rate The movie!'),
-          //         // MovieStars(),
-          //         Text('editing'),
-          //         // MovieStars(editing),
-          //         RatingBar(
-          //           initialRating: 0,
-          //           minRating: 0,
-          //           maxRating: 5,
-          //           allowHalfRating: true,
-          //           itemSize: 35.0,
-          //           ratingWidget: RatingWidget(
-          //             full: const Icon(Icons.star, color: Colors.blueAccent),
-          //             half: const Icon(Icons.star_half, color: Colors.blueAccent),
-          //             empty: const Icon(Icons.star_border, color: Colors.blueAccent),
-          //           ),
-          //           onRatingUpdate: (value) {
-          //             // Rating is updated
-          //             print('rating update to: $value');
-          //             editing = value;
-          //
-          //           },
-          //         ),
-          //         Text('directing'),
-          //         RatingBar(
-          //           initialRating: 0,
-          //           minRating: 0,
-          //           maxRating: 5,
-          //           allowHalfRating: true,
-          //           itemSize: 35.0,
-          //           ratingWidget: RatingWidget(
-          //             full: const Icon(Icons.star, color: Colors.blueAccent),
-          //             half: const Icon(Icons.star_half, color: Colors.blueAccent),
-          //             empty: const Icon(Icons.star_border, color: Colors.blueAccent),
-          //           ),
-          //           onRatingUpdate: (value) {
-          //             // Rating is updated
-          //             print('rating update to: $value');
-          //             directing = value;
-          //
-          //           },
-          //         ),
-          //         // MovieStars(directing),
-          //         Text('productDesign'),
-          //         // MovieStars(productDesign),
-          //         RatingBar(
-          //           initialRating: 0,
-          //           minRating: 0,
-          //           maxRating: 5,
-          //           allowHalfRating: true,
-          //           itemSize: 35.0,
-          //           ratingWidget: RatingWidget(
-          //             full: const Icon(Icons.star, color: Colors.blueAccent),
-          //             half: const Icon(Icons.star_half, color: Colors.blueAccent),
-          //             empty: const Icon(Icons.star_border, color: Colors.blueAccent),
-          //           ),
-          //           onRatingUpdate: (value) {
-          //             // Rating is updated
-          //             print('rating update to: $value');
-          //             productDesign = value;
-          //
-          //           },
-          //         ),
-          //         Text('story'),
-          //         // MovieStars(story),
-          //         RatingBar(
-          //           initialRating: 0,
-          //           minRating: 0,
-          //           maxRating: 5,
-          //           allowHalfRating: true,
-          //           itemSize: 35.0,
-          //           ratingWidget: RatingWidget(
-          //             full: const Icon(Icons.star, color: Colors.blueAccent),
-          //             half: const Icon(Icons.star_half, color: Colors.blueAccent),
-          //             empty: const Icon(Icons.star_border, color: Colors.blueAccent),
-          //           ),
-          //           onRatingUpdate: (value) {
-          //             // Rating is updated
-          //             print('rating update to: $value');
-          //             story = value;
-          //
-          //           },
-          //         ),
-          //         Text('music'),
-          //         // MovieStars(music),
-          //         RatingBar(
-          //           initialRating: 0,
-          //           minRating: 0,
-          //           maxRating: 5,
-          //           allowHalfRating: true,
-          //           itemSize: 35.0,
-          //           ratingWidget: RatingWidget(
-          //             full: const Icon(Icons.star, color: Colors.blueAccent),
-          //             half: const Icon(Icons.star_half, color: Colors.blueAccent),
-          //             empty: const Icon(Icons.star_border, color: Colors.blueAccent),
-          //           ),
-          //           onRatingUpdate: (value) {
-          //             // Rating is updated
-          //             print('rating update to: $value');
-          //             music = value;
-          //
-          //           },
-          //         ),
-          //
-          //         Text('color'),
-          //         // MovieStars(color),
-          //         RatingBar(
-          //           initialRating: 0,
-          //           minRating: 0,
-          //           maxRating: 5,
-          //           allowHalfRating: true,
-          //           itemSize: 35.0,
-          //           ratingWidget: RatingWidget(
-          //             full: const Icon(Icons.star, color: Colors.blueAccent),
-          //             half: const Icon(Icons.star_half, color: Colors.blueAccent),
-          //             empty: const Icon(Icons.star_border, color: Colors.blueAccent),
-          //           ),
-          //           onRatingUpdate: (value) {
-          //             // Rating is updated
-          //             print('rating update to: $value');
-          //             color = value;
-          //
-          //           },
-          //         ),
-          //         Text('mSound'),
-          //         // MovieStars(mSound),
-          //         RatingBar(
-          //           initialRating: 0,
-          //           minRating: 0,
-          //           maxRating: 5,
-          //           allowHalfRating: true,
-          //           itemSize: 35.0,
-          //           ratingWidget: RatingWidget(
-          //             full: const Icon(Icons.star, color: Colors.blueAccent),
-          //             half: const Icon(Icons.star_half, color: Colors.blueAccent),
-          //             empty: const Icon(Icons.star_border, color: Colors.blueAccent),
-          //           ),
-          //           onRatingUpdate: (value) {
-          //             // Rating is updated
-          //             print('rating update to: $value');
-          //             mSound = value;
-          //
-          //           },
-          //         ),
-          //       ]
-          //
-          //   ),
-          // ),
+          Center(
+            child: Column(
+                children:<Widget>[
+                  Text('Rate The movie!'),
+                  // MovieStars(),
+                  Text('editing'),
+                  // MovieStars(editing),
+                  RatingBar(
+                    initialRating: 0,
+                    minRating: 0,
+                    maxRating: 5,
+                    allowHalfRating: true,
+                    itemSize: 35.0,
+                    ratingWidget: RatingWidget(
+                      full: const Icon(Icons.star, color: Colors.blueAccent),
+                      half: const Icon(Icons.star_half, color: Colors.blueAccent),
+                      empty: const Icon(Icons.star_border, color: Colors.blueAccent),
+                    ),
+                    onRatingUpdate: (value) {
+                      // Rating is updated
+                      print('rating update to: $value');
+                      editing = value;
+
+                    },
+                  ),
+                  Text('directing'),
+                  RatingBar(
+                    initialRating: 0,
+                    minRating: 0,
+                    maxRating: 5,
+                    allowHalfRating: true,
+                    itemSize: 35.0,
+                    ratingWidget: RatingWidget(
+                      full: const Icon(Icons.star, color: Colors.blueAccent),
+                      half: const Icon(Icons.star_half, color: Colors.blueAccent),
+                      empty: const Icon(Icons.star_border, color: Colors.blueAccent),
+                    ),
+                    onRatingUpdate: (value) {
+                      // Rating is updated
+                      print('rating update to: $value');
+                      directing = value;
+
+                    },
+                  ),
+                  // MovieStars(directing),
+                  Text('productDesign'),
+                  // MovieStars(productDesign),
+                  RatingBar(
+                    initialRating: 0,
+                    minRating: 0,
+                    maxRating: 5,
+                    allowHalfRating: true,
+                    itemSize: 35.0,
+                    ratingWidget: RatingWidget(
+                      full: const Icon(Icons.star, color: Colors.blueAccent),
+                      half: const Icon(Icons.star_half, color: Colors.blueAccent),
+                      empty: const Icon(Icons.star_border, color: Colors.blueAccent),
+                    ),
+                    onRatingUpdate: (value) {
+                      // Rating is updated
+                      print('rating update to: $value');
+                      productDesign = value;
+
+                    },
+                  ),
+                  Text('story'),
+                  // MovieStars(story),
+                  RatingBar(
+                    initialRating: 0,
+                    minRating: 0,
+                    maxRating: 5,
+                    allowHalfRating: true,
+                    itemSize: 35.0,
+                    ratingWidget: RatingWidget(
+                      full: const Icon(Icons.star, color: Colors.blueAccent),
+                      half: const Icon(Icons.star_half, color: Colors.blueAccent),
+                      empty: const Icon(Icons.star_border, color: Colors.blueAccent),
+                    ),
+                    onRatingUpdate: (value) {
+                      // Rating is updated
+                      print('rating update to: $value');
+                      story = value;
+
+                    },
+                  ),
+                  Text('music'),
+                  // MovieStars(music),
+                  RatingBar(
+                    initialRating: 0,
+                    minRating: 0,
+                    maxRating: 5,
+                    allowHalfRating: true,
+                    itemSize: 35.0,
+                    ratingWidget: RatingWidget(
+                      full: const Icon(Icons.star, color: Colors.blueAccent),
+                      half: const Icon(Icons.star_half, color: Colors.blueAccent),
+                      empty: const Icon(Icons.star_border, color: Colors.blueAccent),
+                    ),
+                    onRatingUpdate: (value) {
+                      // Rating is updated
+                      print('rating update to: $value');
+                      music = value;
+
+                    },
+                  ),
+
+                  Text('color'),
+                  // MovieStars(color),
+                  RatingBar(
+                    initialRating: 0,
+                    minRating: 0,
+                    maxRating: 5,
+                    allowHalfRating: true,
+                    itemSize: 35.0,
+                    ratingWidget: RatingWidget(
+                      full: const Icon(Icons.star, color: Colors.blueAccent),
+                      half: const Icon(Icons.star_half, color: Colors.blueAccent),
+                      empty: const Icon(Icons.star_border, color: Colors.blueAccent),
+                    ),
+                    onRatingUpdate: (value) {
+                      // Rating is updated
+                      print('rating update to: $value');
+                      color = value;
+
+                    },
+                  ),
+                  Text('mSound'),
+                  // MovieStars(mSound),
+                  RatingBar(
+                    initialRating: 0,
+                    minRating: 0,
+                    maxRating: 5,
+                    allowHalfRating: true,
+                    itemSize: 35.0,
+                    ratingWidget: RatingWidget(
+                      full: const Icon(Icons.star, color: Colors.blueAccent),
+                      half: const Icon(Icons.star_half, color: Colors.blueAccent),
+                      empty: const Icon(Icons.star_border, color: Colors.blueAccent),
+                    ),
+                    onRatingUpdate: (value) {
+                      // Rating is updated
+                      print('rating update to: $value');
+                      mSound = value;
+
+                    },
+                  ),
+                ]
+
+            ),
+          ),
           TextButton(
             child: Text(
               'Update',
@@ -310,9 +309,17 @@ class UpdateMovie extends StatelessWidget {
               String title = titlecontroller.text;
               String description = descriptioncontroller.text;
               print(titlecontroller.text + descriptioncontroller.text );
-              Map<String,String> dataToUpdate = {
+              Map<String,dynamic> dataToUpdate = {
                 'title' : title,
-                'description' : description
+                'description' : description,
+                'mSound' : mSound,
+                'directing' : directing,
+                'editing': editing,
+                'productDesign' : productDesign,
+                'story' : story,
+                'music':music,
+                'color':color,
+
               };
 
               _reference.update(dataToUpdate);
