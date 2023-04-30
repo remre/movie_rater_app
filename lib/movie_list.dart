@@ -210,7 +210,7 @@ class _MoviesListDataState extends State<MoviesListData> {
 
                 // subtitle: Text(data['rating'].toString()),
                 trailing: DeleteMovie()
-              
+
               );
             }).toList(),
           ),
