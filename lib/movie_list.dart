@@ -174,24 +174,43 @@ class _MoviesListDataState extends State<MoviesListData> {
             children: snapshot.data!.docs.map((DocumentSnapshot document) {
               Map<String, dynamic> data = document.data()! as Map<String, dynamic>;
               return ListTile(
+                selectedTileColor: Colors.blueAccent,
 
                 // leading: Text(data['title']),
-                title: FloatingActionButton.extended(heroTag: null,
-                  label: Text(data['title'] + ' ' + data['rating'].toString()), onPressed: (){
+                title: Container(
 
-                  },
-                  icon: FaIcon(
-                    FontAwesomeIcons.star,
-                    color: Colors.white,
-                  ),),
+                  color: Colors.white,
+                  child: Text(data['title'] + ' ' + data['rating'].toString() + ' rating',style: TextStyle(color: Colors.lightBlueAccent,fontSize: 24),),
+                ),
+                // FloatingActionButton.extended(
+                //
+                //   backgroundColor: Colors.white,
+                //   heroTag: null,
+                //   label: Text(data['title'] + ' ' + data['rating'].toString(),style: TextStyle(color: Colors.lightBlueAccent),),
+                //   onPressed: (){
+                //
+                //   },
+                //   icon: FaIcon(
+                //     FontAwesomeIcons.star,
+                //     color: Colors.lightBlueAccent,
+                //   ),),
+
                   subtitle: Row(children:<Widget>[
                     // Text(data['rating'].toString()) ,
-                    Text('created ' + data['cTime'].toDate().toString()),
+                    Text(style: TextStyle(color: Colors.lightBlueAccent, fontSize: 14), 'created ' + data['cTime'].toDate().toString()),
 
                   ] ),
 
                 // subtitle: Text(data['rating'].toString()),
-                // trailing: Text(data['year'].toString()),
+                trailing: IconButton(
+                  // alignment: Alignment.topLeft,
+                  icon: FaIcon(
+                      Icons.edit
+                  ) , onPressed: () {
+                //    TODO add the update the movie screen
+
+                },
+                ),
               );
             }).toList(),
           ),

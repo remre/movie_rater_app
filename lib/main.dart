@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
         create: (context) => MovieData(),
 
         child: MaterialApp(
-          theme: ThemeData.dark().copyWith(textTheme:  TextTheme(bodyLarge:TextStyle(color: Colors.black))),
+          // theme: ThemeData.dark().copyWith(textTheme:  TextTheme(bodyLarge:TextStyle(color: Colors.black))),
             initialRoute: '/',
             routes: {
               '/add_movie': (context) => AddMovie(),

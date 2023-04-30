@@ -29,114 +29,130 @@ class _MovieScreenState extends State<MovieScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       // backgroundColor: Colors.orange,
-      body: Column(
-        children: <Widget>[
-          Container(
-            child: Column(children: <Widget>[
+      body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('images/movies.png'),
+            fit: BoxFit.cover,
+          ),
+        ),
+        child: Column(
+          children: <Widget>[
               Container(
-                padding: EdgeInsets.only(
-                  top: 60,
-                  left: 30,
-                  right: 30,
-                  bottom: 30,
+
+              child: Column(children: <Widget>[
+                Container(
+                  // decoration: BoxDecoration(
+                  //   image: DecorationImage(
+                  //       scale: 0.5,
+                  //       image: AssetImage('images/moi.png')
+                  //   ),
+                  // ),
+                  padding: EdgeInsets.only(
+                    top: 60,
+                    left: 30,
+                    right: 30,
+                    bottom: 30,
+                  ),
+                  child: Column(
+                    // crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      CircleAvatar(
+                        child: FaIcon(
+                          Icons.movie,
+                          color: Colors.lightBlueAccent,
+                          size: 40,
+                        ),
+                        backgroundColor: Colors.white,
+                        radius: 45,
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+
+                      Text(
+                        'Movie APp',
+                        style: TextStyle(
+                          color: Colors.lightBlueAccent,
+                          fontSize: 25,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+
+                    ],
+                  ),
                 ),
-                child: Column(
-                  // crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    CircleAvatar(
-                      child: FaIcon(
-                        Icons.movie,
-                        color: Colors.lightBlueAccent,
-                        size: 40,
-                      ),
-                      backgroundColor: Colors.white,
-                      radius: 45,
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Text(
-                      'Movie APp',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 25,
-                        fontWeight: FontWeight.w700,
-                      ),
-                    ),
-                    Text(
-                      '${Provider.of<MovieData>(context).movieCount} number of Movie',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 18,
-                      ),
-                    ),
-                  ],
-                ),
+              ]),
+            ),
+            Expanded(
+              child: Container(
+                width: double.infinity,
+                color: Colors.white54.withOpacity(0.85),
+                child: Text('asdaddasd\nasdadasdas\n asdadad\nasdad\n last one?\n no bithc ', style: TextStyle(
+                    color: Colors.blueAccent,fontSize: 50,), textAlign: TextAlign.center,
+                maxLines: 7,),
               ),
-            ]),
-          ),
-          Expanded(
-            child: MovieScreenList(),
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Container(
-                padding: EdgeInsets.only(bottom: 30, right: 20),
-                child:
-                    // TextButton(
-                    //
-                    //   child: FaIcon(FontAwesomeIcons.plusMinus,color: Colors.white,),
-                    //   onPressed: () {
-                    //   Navigator.push(context, MaterialPageRoute(builder: (context) => AddMovie()));
-                    // },
-                    //
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Container(
+                  padding: EdgeInsets.only(bottom: 30, right: 20),
+                  child:
+                      // TextButton(
+                      //
+                      //   child: FaIcon(FontAwesomeIcons.plusMinus,color: Colors.white,),
+                      //   onPressed: () {
+                      //   Navigator.push(context, MaterialPageRoute(builder: (context) => AddMovie()));
+                      // },
+                      //
+                      // ),
+                      FloatingActionButton.extended(
+                    heroTag: "btn1",
+                    label: Text('Add Movie!'),
+                    backgroundColor: Colors.blueAccent,
+                    icon: FaIcon(
+                      FontAwesomeIcons.plusMinus,
+                      color: Colors.white,
+                    ),
+                    // Icon(Icons.add,
+                    // color: Colors.lightBlueAccent,
+                    // size: 50,
                     // ),
-                    FloatingActionButton.extended(
-                  heroTag: "btn1",
-                  label: Text('Add Movie!'),
-                  backgroundColor: Colors.blueAccent,
-                  icon: FaIcon(
-                    FontAwesomeIcons.plusMinus,
-                    color: Colors.white,
+                    onPressed: () {
+                      // Navigator.pushNamed(context, '/add_movie');
+                      Navigator.pushNamed(context,
+                          AddMovie.id);
+                    },
                   ),
-                  // Icon(Icons.add,
-                  // color: Colors.lightBlueAccent,
-                  // size: 50,
-                  // ),
-                  onPressed: () {
-                    // Navigator.pushNamed(context, '/add_movie');
-                    Navigator.pushNamed(context,
-                        AddMovie.id);
-                  },
                 ),
-              ),
-              Container(
-                padding: EdgeInsets.only(bottom: 30, left: 20),
-                child: FloatingActionButton.extended(
-                  heroTag: "btn2",
-                  label: Text('Movie List!'),
-                  backgroundColor: Colors.blueAccent,
-                  icon: FaIcon(
-                    FontAwesomeIcons.list,
-                    color: Colors.white,
+                Container(
+                  padding: EdgeInsets.only(bottom: 30, left: 20),
+                  child: FloatingActionButton.extended(
+                    heroTag: "btn2",
+                    label: Text('Go to List!'),
+                    backgroundColor: Colors.blueAccent,
+                    icon: FaIcon(
+                      FontAwesomeIcons.list,
+                      color: Colors.white,
+                    ),
+                    // Icon(Icons.add,
+                    // color: Colors.lightBlueAccent,
+                    // size: 50,
+                    // ),
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => MovieScreenList()));
+                    },
                   ),
-                  // Icon(Icons.add,
-                  // color: Colors.lightBlueAccent,
-                  // size: 50,
-                  // ),
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => MovieScreenList()));
-                  },
                 ),
-              ),
-            ],
-          )
-        ],
+              ],
+            )
+          ],
+        ),
       ),
     );
   }

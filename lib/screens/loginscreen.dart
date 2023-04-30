@@ -1,5 +1,6 @@
 import 'package:chatgpt_movierater_app/screens/moviescreen.dart';
 import 'package:chatgpt_movierater_app/screens/welcomescreen.dart';
+import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
@@ -11,9 +12,11 @@ class LoginScreen extends StatefulWidget {
   static String id = '/login';
   @override
   _LoginScreenState createState() => _LoginScreenState();
+
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  final _formKey = GlobalKey<FormState>();
   late String email;
   late String password;
   bool showSpinner = false;
@@ -42,25 +45,47 @@ class _LoginScreenState extends State<LoginScreen> {
               SizedBox(
                 height: 48.0,
               ),
-              TextField(
-                keyboardType: TextInputType.emailAddress,
-                textAlign: TextAlign.center,
-                onChanged: (value) {
-                  email = value;
-                },
-                decoration: kTextFieldDecoration.copyWith(fillColor: Colors.lightBlueAccent),
-              ),
-              SizedBox(
-                height: 8.0,
-              ),
-              TextField(
-                obscureText: true,
-                textAlign: TextAlign.center,
-                onChanged: (value) {
-                  password = value;
-                },
-                decoration: kTextFieldDecoration.copyWith(hintText: 'Enter your password',),
-              ),
+              Form(
+                key: _formKey,
+                child: Column(
+                children: <Widget>[
+                  TextFormField(
+                    validator: (value) {
+                      final bool isValid = EmailValidator.validate(email);
+                      if (value!.isEmpty) {
+                        return 'Please enter some text';
+                      }
+                      else if ( isValid == false) {
+                        return 'please enter valid email';
+                      }
+                      return null;
+                    },
+                    keyboardType: TextInputType.emailAddress,
+                    textAlign: TextAlign.center,
+                    onChanged: (value) {
+                      email = value;
+                    },
+                    decoration: kTextFieldDecoration.copyWith(fillColor: Colors.lightBlueAccent),
+                  ),
+                  SizedBox(
+                    height: 8.0,
+                  ),
+                  TextFormField(
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return 'Please enter some password';
+                      }
+                      return null;
+                    },
+                    obscureText: true,
+                    textAlign: TextAlign.center,
+                    onChanged: (value) {
+                      password = value;
+                    },
+                    decoration: kTextFieldDecoration.copyWith(hintText: 'Enter your password',),
+                  ),
+                ],
+              ),),
               SizedBox(
                 height: 15.0,
               ),
@@ -81,7 +106,6 @@ class _LoginScreenState extends State<LoginScreen> {
                   print(e);
                   Navigator.pushNamed(context, WelcomeScreen.id);
                 }
-
               },
               ),
             ],

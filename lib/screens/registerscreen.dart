@@ -53,8 +53,16 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                 child: Column(children: <Widget>[
                   TextFormField(
                     validator: (value) {
+                      final bool isValid = EmailValidator.validate(email);
+
+
                       if (value!.isEmpty) {
                         return 'Please enter some text';
+                      }
+
+                      else if ( isValid == false) {
+                        return 'please enter valid email';
+
                       }
                       return null;
                     },
