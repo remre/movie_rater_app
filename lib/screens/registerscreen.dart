@@ -101,7 +101,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                 bTitle: 'Register',
                 NextScreen: () async {
                   final bool isValid = EmailValidator.validate(email);
-                  if (_formKey.currentState!.validate() && isValid == false) {
+                  if (_formKey.currentState!.validate() || isValid == false) {
                     // If the form is valid, display a snackbar. In the real world,
                     // you'd often call a server or save the information in a database.
                     ScaffoldMessenger.of(context).showSnackBar(
@@ -132,6 +132,9 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                       showSpinner = false;
                     });
                   } catch (e) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(content: Text('Processing Data')),
+                    );
                     // Navigator.pushNamed(context, MovieScreen.id);
                     print(e);
                   }

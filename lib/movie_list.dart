@@ -181,10 +181,10 @@ class MoviesListData extends StatefulWidget {
 }
 
 class _MoviesListDataState extends State<MoviesListData> {
-  final Stream<QuerySnapshot> _moviesStream = FirebaseFirestore.instance.collection('movies').where('user', isEqualTo:loggedInUser ).snapshots();
+  final Stream<QuerySnapshot> _moviesStream = FirebaseFirestore.instance.collection('movies').snapshots();
   // var uid = ( FirebaseAuth.instance.currentUser!).uid;
   // Firestore.instance.collection('movies').where('uid', isEqualTo: uid).snapshots()
-  var collections = FirebaseFirestore.instance.collection('movies').where('title', isEqualTo: '');
+  // var collections = FirebaseFirestore.instance.collection('movies').where('title', isEqualTo: '');.where('user', isEqualTo:loggedInUser )
 
 
   // counterr () async{

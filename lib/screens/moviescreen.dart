@@ -10,11 +10,9 @@ import '../movie.dart';
 import 'package:chatgpt_movierater_app/updatescreen.dart';
 // import 'package:smooth_star_rating/smooth_star_rating.dart';
 
-User?  loggedInUser;
+User? loggedInUser;
 
 class MovieScreen extends StatefulWidget {
-
-
   static String id = '/movie';
 
   @override
@@ -22,11 +20,8 @@ class MovieScreen extends StatefulWidget {
 }
 
 class _MovieScreenState extends State<MovieScreen> {
-
-
   // MovieScreen(this.rating,);
   @override
-
   Widget build(BuildContext context) {
     return Scaffold(
       // backgroundColor: Colors.orange,
@@ -39,8 +34,7 @@ class _MovieScreenState extends State<MovieScreen> {
         ),
         child: Column(
           children: <Widget>[
-              Container(
-
+            Container(
               child: Column(children: <Widget>[
                 Container(
                   // decoration: BoxDecoration(
@@ -71,16 +65,14 @@ class _MovieScreenState extends State<MovieScreen> {
                       SizedBox(
                         height: 10,
                       ),
-
                       Text(
-                        'Movie APp',
+                        'Movie Rater APp ',
                         style: TextStyle(
-                          color: Colors.lightBlueAccent,
+                          color: Colors.deepOrangeAccent,
                           fontSize: 25,
                           fontWeight: FontWeight.w700,
                         ),
                       ),
-
                     ],
                   ),
                 ),
@@ -88,18 +80,37 @@ class _MovieScreenState extends State<MovieScreen> {
             ),
             Expanded(
               child: Container(
+                height: double.infinity,
                 width: double.infinity,
-                color: Colors.white54.withOpacity(0.85),
-                child: Text('asdaddasd\nasdadasdas\n asdadad\nasdad\n last one?\n no bithc ', style: TextStyle(
-                    color: Colors.blueAccent,fontSize: 50,), textAlign: TextAlign.center,
-                maxLines: 7,),
+                decoration: BoxDecoration(
+                    color: Colors.white54.withOpacity(0.85),
+                    borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(15),
+                        topRight: Radius.circular(15))),
+                child: Text(
+                  'Log your movie data with enhanced rating system \n Depending on the critics also add notes about the movie'
+                  '\n Then remember the movie in details ! \n easy to Use just add your movie rate it and show in the list \n'
+                  ' Anytime you can delete or edit your list!    ',
+                  style: TextStyle(
+                    // height: 1,
+                    color: Colors.deepOrangeAccent,
+                    fontSize: 35,
+                    // add shiny font family
+                    fontFamily: 'Acme'
+                  ),
+                  textAlign: TextAlign.center,
+                  maxLines: 9,
+                ),
               ),
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
+              // crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
                 Container(
-                  padding: EdgeInsets.only(bottom: 30, right: 20),
+                  width: 211,
+                  height: 75,
+                  // padding: EdgeInsets.only(bottom: 30, right: 20),
                   child:
                       // TextButton(
                       //
@@ -111,11 +122,20 @@ class _MovieScreenState extends State<MovieScreen> {
                       // ),
                       FloatingActionButton.extended(
                     heroTag: "btn1",
-                    label: Text('Add Movie!'),
+                    shape: RoundedRectangleBorder(
+                        borderRadius:
+                            BorderRadius.all(Radius.circular(9))), // extendedIc
+                    label: Text(
+                      'Add Movie!',
+                      style: TextStyle(fontSize: 30,
+                      fontFamily: 'Rowdies'),
+                    ),
+
                     backgroundColor: Colors.blueAccent,
                     icon: FaIcon(
                       FontAwesomeIcons.plusMinus,
                       color: Colors.white,
+                      size: 30,
                     ),
                     // Icon(Icons.add,
                     // color: Colors.lightBlueAccent,
@@ -125,20 +145,31 @@ class _MovieScreenState extends State<MovieScreen> {
                       // Navigator.pushNamed(context,
                       //     UpdateMovie.id);
                       // Navigator.pushNamed(context, '/add_movie');
-                      Navigator.pushNamed(context,
-                          AddMovie.id);
+                      Navigator.pushNamed(context, AddMovie.id);
                     },
                   ),
                 ),
                 Container(
-                  padding: EdgeInsets.only(bottom: 30, left: 20),
+                  width: 200,
+                  height: 75,
+
+                  // padding: EdgeInsets.only(bottom: 30, left: 20),
                   child: FloatingActionButton.extended(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(
+                            4))), // extendedIconLabelSpacing: 50.0,
+                    elevation: 2.0,
+
                     heroTag: "btn2",
-                    label: Text('Go to List!'),
+                    label: Text(
+                      'Go to List!',
+                      style: TextStyle(fontSize: 30),
+                    ),
                     backgroundColor: Colors.blueAccent,
                     icon: FaIcon(
                       FontAwesomeIcons.list,
                       color: Colors.white,
+                      size: 30,
                     ),
                     // Icon(Icons.add,
                     // color: Colors.lightBlueAccent,

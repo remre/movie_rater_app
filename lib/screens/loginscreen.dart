@@ -90,6 +90,13 @@ class _LoginScreenState extends State<LoginScreen> {
                 height: 15.0,
               ),
               RoundedButton(colour: Colors.blueAccent, bTitle: 'login', NextScreen:()  async {
+                if (_formKey.currentState!.validate() == false) {
+                  // If the form is valid, display a snackbar. In the real world,
+                  // you'd often call a server or save the information in a database.
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(content: Text('Processing Data')),
+                  );
+                }
                 setState(() {
                   showSpinner = true;
                 });
