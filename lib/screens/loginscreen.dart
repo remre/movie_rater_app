@@ -90,21 +90,19 @@ class _LoginScreenState extends State<LoginScreen> {
                 height: 15.0,
               ),
               RoundedButton(colour: Colors.blueAccent, bTitle: 'login', NextScreen:()  async {
-                if (_formKey.currentState!.validate() == false) {
+                if (_formKey.currentState!.validate() == true) {
                   // If the form is valid, display a snackbar. In the real world,
                   // you'd often call a server or save the information in a database.
                   ScaffoldMessenger.of(context).showSnackBar(
                     const SnackBar(content: Text('Processing Data')),
                   );
                 }
-                setState(() {
-                  showSpinner = true;
-                });
+                // setState(() {
+                //   showSpinner = true;
+                // });
                 try {
                   final user = await _auth.signInWithEmailAndPassword(email: email, password: password);
-                  if(user != null){
-                    Navigator.pushNamed(context, MovieScreen.id);
-                  }
+                  Navigator.pushNamed(context, MovieScreen.id);
                   setState(() {
                     showSpinner = false;
                   });

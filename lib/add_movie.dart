@@ -1,8 +1,6 @@
-import 'package:chatgpt_movierater_app/updatescreen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-// import 'package:smooth_star_rating/smooth_star_rating.dart';
 import 'package:provider/provider.dart';
 import 'models/startextwidget.dart';
 import 'movie.dart';
@@ -185,9 +183,9 @@ class _AddMovieState extends State<AddMovie> {
                   allowHalfRating: true,
                   itemSize: 35.0,
                   ratingWidget: RatingWidget(
-                    full: const Icon(Icons.star, color: Colors.blueAccent),
-                    half: const Icon(Icons.star_half, color: Colors.blueAccent),
-                    empty: const Icon(Icons.star_border, color: Colors.blueAccent),
+                    full: const Icon(Icons.star, color: Colors.lightBlueAccent),
+                    half: const Icon(Icons.star_half, color: Colors.lightBlueAccent),
+                    empty: const Icon(Icons.star_border, color: Colors.lightBlueAccent),
                   ),
                   onRatingUpdate: (value) {
                     // Rating is updated
@@ -205,9 +203,9 @@ class _AddMovieState extends State<AddMovie> {
                   allowHalfRating: true,
                   itemSize: 35.0,
                   ratingWidget: RatingWidget(
-                    full: const Icon(Icons.star, color: Colors.blueAccent),
-                    half: const Icon(Icons.star_half, color: Colors.blueAccent),
-                    empty: const Icon(Icons.star_border, color: Colors.blueAccent),
+                    full: const Icon(Icons.star, color: Colors.lightBlueAccent),
+                    half: const Icon(Icons.star_half, color: Colors.lightBlueAccent),
+                    empty: const Icon(Icons.star_border, color: Colors.lightBlueAccent),
                   ),
                   onRatingUpdate: (value) {
                     // Rating is updated
@@ -226,9 +224,9 @@ class _AddMovieState extends State<AddMovie> {
                   allowHalfRating: true,
                   itemSize: 35.0,
                   ratingWidget: RatingWidget(
-                    full: const Icon(Icons.star, color: Colors.blueAccent),
-                    half: const Icon(Icons.star_half, color: Colors.blueAccent),
-                    empty: const Icon(Icons.star_border, color: Colors.blueAccent),
+                    full: const Icon(Icons.star, color: Colors.lightBlueAccent),
+                    half: const Icon(Icons.star_half, color: Colors.lightBlueAccent),
+                    empty: const Icon(Icons.star_border, color: Colors.lightBlueAccent),
                   ),
                   onRatingUpdate: (value) {
                     // Rating is updated
@@ -247,9 +245,9 @@ class _AddMovieState extends State<AddMovie> {
                   allowHalfRating: true,
                   itemSize: 35.0,
                   ratingWidget: RatingWidget(
-                    full: const Icon(Icons.star, color: Colors.blueAccent),
-                    half: const Icon(Icons.star_half, color: Colors.blueAccent),
-                    empty: const Icon(Icons.star_border, color: Colors.blueAccent),
+                    full: const Icon(Icons.star, color: Colors.lightBlueAccent),
+                    half: const Icon(Icons.star_half, color: Colors.lightBlueAccent),
+                    empty: const Icon(Icons.star_border, color: Colors.lightBlueAccent),
                   ),
                   onRatingUpdate: (value) {
                     // Rating is updated
@@ -268,9 +266,9 @@ class _AddMovieState extends State<AddMovie> {
                   allowHalfRating: true,
                   itemSize: 35.0,
                   ratingWidget: RatingWidget(
-                    full: const Icon(Icons.star, color: Colors.blueAccent),
-                    half: const Icon(Icons.star_half, color: Colors.blueAccent),
-                    empty: const Icon(Icons.star_border, color: Colors.blueAccent),
+                    full: const Icon(Icons.star, color: Colors.lightBlueAccent),
+                    half: const Icon(Icons.star_half, color: Colors.lightBlueAccent),
+                    empty: const Icon(Icons.star_border, color: Colors.lightBlueAccent),
                   ),
                   onRatingUpdate: (value) {
                     // Rating is updated
@@ -290,9 +288,9 @@ class _AddMovieState extends State<AddMovie> {
                   allowHalfRating: true,
                   itemSize: 35.0,
                   ratingWidget: RatingWidget(
-                    full: const Icon(Icons.star, color: Colors.blueAccent),
-                    half: const Icon(Icons.star_half, color: Colors.blueAccent),
-                    empty: const Icon(Icons.star_border, color: Colors.blueAccent),
+                    full: const Icon(Icons.star, color: Colors.lightBlueAccent),
+                    half: const Icon(Icons.star_half, color: Colors.lightBlueAccent),
+                    empty: const Icon(Icons.star_border, color: Colors.lightBlueAccent),
                   ),
                   onRatingUpdate: (value) {
                     // Rating is updated
@@ -311,9 +309,9 @@ class _AddMovieState extends State<AddMovie> {
                   allowHalfRating: true,
                   itemSize: 35.0,
                   ratingWidget: RatingWidget(
-                    full: const Icon(Icons.star, color: Colors.blueAccent),
-                    half: const Icon(Icons.star_half, color: Colors.blueAccent),
-                    empty: const Icon(Icons.star_border, color: Colors.blueAccent),
+                    full: const Icon(Icons.star, color: Colors.lightBlueAccent),
+                    half: const Icon(Icons.star_half, color: Colors.lightBlueAccent),
+                    empty: const Icon(Icons.star_border, color: Colors.lightBlueAccent),
                   ),
                   onRatingUpdate: (value) {
                     // Rating is updated

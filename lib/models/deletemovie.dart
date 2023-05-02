@@ -21,35 +21,38 @@ class DeleteMovie extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return
-      IconButton(
+      Container(
+        color: Colors.black,
+        child: IconButton(
 
-        splashColor : Colors.lightBlueAccent,
-        alignment : Alignment.topCenter,
+          splashColor : Colors.lightBlueAccent,
+          alignment : Alignment.topCenter,
 
-        color: Colors.red,
-        onPressed: () => showDialog<String>(
-          context: context,
-          builder: (BuildContext context) => AlertDialog(
-            // title:  Text(movieItem!['title']),
-            content: const Text('are you sure to delete the movie'),
-            actions: <Widget>[
-              TextButton(
-                child: const Text('Approve'),
-                onPressed: () {
-                  _reference.delete();
-                  Navigator.pop(context);
-                },
-              ),
-              TextButton(
-                child: const Text('Cancel'),
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-              ),
-            ],
+          color: Colors.red,
+          onPressed: () => showDialog<String>(
+            context: context,
+            builder: (BuildContext context) => AlertDialog(
+              // title:  Text(movieItem!['title']),
+              content: const Text('are you sure to delete the movie'),
+              actions: <Widget>[
+                TextButton(
+                  child: const Text('Approve'),
+                  onPressed: () {
+                    _reference.delete();
+                    Navigator.pop(context);
+                  },
+                ),
+                TextButton(
+                  child: const Text('Cancel'),
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                ),
+              ],
+            ),
           ),
+          icon:FaIcon(Icons.delete,size: 30,),
         ),
-        icon:FaIcon(Icons.delete,size: 30,),
       );
   }
 }

@@ -7,7 +7,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import '../add_movie.dart';
 import '../movie.dart';
-import 'package:chatgpt_movierater_app/updatescreen.dart';
+import 'package:chatgpt_movierater_app/screens/updatescreen.dart';
 // import 'package:smooth_star_rating/smooth_star_rating.dart';
 
 User? loggedInUser;

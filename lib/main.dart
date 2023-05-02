@@ -1,5 +1,5 @@
 import 'package:chatgpt_movierater_app/screens/moviescreen.dart';
-import 'package:chatgpt_movierater_app/updatescreen.dart';
+import 'package:chatgpt_movierater_app/screens/updatescreen.dart';
 import 'screens/registerscreen.dart';
 import 'screens/loginscreen.dart';
 import 'screens/welcomescreen.dart';
@@ -7,7 +7,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'add_movie.dart';
 import 'movie.dart';
-import 'movie_provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 void main() async {

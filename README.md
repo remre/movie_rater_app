@@ -1,16 +1,20 @@
-# chatgpt_movierater_app
+# movierater_app
 
-A new Flutter project.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+This application offers an opportunity to further deepen your experience of watching movies and interacting.
+Rate movies according to contemporary criteria:
+    Sound
+    Music
+    Colour
+    Product design
+    Directing
+    Editing
+    Story
+Rate movies according to these criteria and see their average score.
+These criteria will give you an idea about what you should pay attention to while watching the movies.
+Whenever you want, you can check the list and see in more detail which element of the movie you liked and what you did not like.
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.

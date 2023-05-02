@@ -4,8 +4,8 @@ import 'package:flutter/services.dart';
 
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'models/textformwidget.dart';
-import 'models/startextwidget.dart';
+import '../models/textformwidget.dart';
+import '../models/startextwidget.dart';
 
 
 // User?  loggedInUser;
@@ -159,9 +159,9 @@ class UpdateMovie extends StatelessWidget {
                     allowHalfRating: true,
                     itemSize: 35.0,
                     ratingWidget: RatingWidget(
-                      full: const Icon(Icons.star, color: Colors.blueAccent),
-                      half: const Icon(Icons.star_half, color: Colors.blueAccent),
-                      empty: const Icon(Icons.star_border, color: Colors.blueAccent),
+                      full: const Icon(Icons.star, color: Colors.lightBlueAccent),
+                      half: const Icon(Icons.star_half, color: Colors.lightBlueAccent),
+                      empty: const Icon(Icons.star_border, color: Colors.lightBlueAccent),
                     ),
                     onRatingUpdate: (value) {
                       // Rating is updated
@@ -178,9 +178,9 @@ class UpdateMovie extends StatelessWidget {
                     allowHalfRating: true,
                     itemSize: 35.0,
                     ratingWidget: RatingWidget(
-                      full: const Icon(Icons.star, color: Colors.blueAccent),
-                      half: const Icon(Icons.star_half, color: Colors.blueAccent),
-                      empty: const Icon(Icons.star_border, color: Colors.blueAccent),
+                      full: const Icon(Icons.star, color: Colors.lightBlueAccent),
+                      half: const Icon(Icons.star_half, color: Colors.lightBlueAccent),
+                      empty: const Icon(Icons.star_border, color: Colors.lightBlueAccent),
                     ),
                     onRatingUpdate: (value) {
                       // Rating is updated
@@ -199,9 +199,9 @@ class UpdateMovie extends StatelessWidget {
                     allowHalfRating: true,
                     itemSize: 35.0,
                     ratingWidget: RatingWidget(
-                      full: const Icon(Icons.star, color: Colors.blueAccent),
-                      half: const Icon(Icons.star_half, color: Colors.blueAccent),
-                      empty: const Icon(Icons.star_border, color: Colors.blueAccent),
+                      full: const Icon(Icons.star, color: Colors.lightBlueAccent),
+                      half: const Icon(Icons.star_half, color: Colors.lightBlueAccent),
+                      empty: const Icon(Icons.star_border, color: Colors.lightBlueAccent),
                     ),
                     onRatingUpdate: (value) {
                       // Rating is updated
@@ -219,9 +219,9 @@ class UpdateMovie extends StatelessWidget {
                     allowHalfRating: true,
                     itemSize: 35.0,
                     ratingWidget: RatingWidget(
-                      full: const Icon(Icons.star, color: Colors.blueAccent),
-                      half: const Icon(Icons.star_half, color: Colors.blueAccent),
-                      empty: const Icon(Icons.star_border, color: Colors.blueAccent),
+                      full: const Icon(Icons.star, color: Colors.lightBlueAccent),
+                      half: const Icon(Icons.star_half, color: Colors.lightBlueAccent),
+                      empty: const Icon(Icons.star_border, color: Colors.lightBlueAccent),
                     ),
                     onRatingUpdate: (value) {
                       // Rating is updated
@@ -239,9 +239,9 @@ class UpdateMovie extends StatelessWidget {
                     allowHalfRating: true,
                     itemSize: 35.0,
                     ratingWidget: RatingWidget(
-                      full: const Icon(Icons.star, color: Colors.blueAccent),
-                      half: const Icon(Icons.star_half, color: Colors.blueAccent),
-                      empty: const Icon(Icons.star_border, color: Colors.blueAccent),
+                      full: const Icon(Icons.star, color: Colors.lightBlueAccent),
+                      half: const Icon(Icons.star_half, color: Colors.lightBlueAccent),
+                      empty: const Icon(Icons.star_border, color: Colors.lightBlueAccent),
                     ),
                     onRatingUpdate: (value) {
                       // Rating is updated
@@ -260,9 +260,9 @@ class UpdateMovie extends StatelessWidget {
                     allowHalfRating: true,
                     itemSize: 35.0,
                     ratingWidget: RatingWidget(
-                      full: const Icon(Icons.star, color: Colors.blueAccent),
-                      half: const Icon(Icons.star_half, color: Colors.blueAccent),
-                      empty: const Icon(Icons.star_border, color: Colors.blueAccent),
+                      full: const Icon(Icons.star, color: Colors.lightBlueAccent),
+                      half: const Icon(Icons.star_half, color: Colors.lightBlueAccent),
+                      empty: const Icon(Icons.star_border, color: Colors.lightBlueAccent),
                     ),
                     onRatingUpdate: (value) {
                       // Rating is updated
@@ -280,9 +280,9 @@ class UpdateMovie extends StatelessWidget {
                     allowHalfRating: true,
                     itemSize: 35.0,
                     ratingWidget: RatingWidget(
-                      full: const Icon(Icons.star, color: Colors.blueAccent),
-                      half: const Icon(Icons.star_half, color: Colors.blueAccent),
-                      empty: const Icon(Icons.star_border, color: Colors.blueAccent),
+                      full: const Icon(Icons.star, color: Colors.lightBlueAccent),
+                      half: const Icon(Icons.star_half, color: Colors.lightBlueAccent),
+                      empty: const Icon(Icons.star_border, color: Colors.lightBlueAccent),
                     ),
                     onRatingUpdate: (value) {
                       // Rating is updated
