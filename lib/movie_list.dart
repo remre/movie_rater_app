@@ -8,7 +8,7 @@ import 'package:provider/provider.dart';
 import 'movie.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-late String  loggedInUser;
+late String loggedInUser;
 
 // class MoviesList extends StatelessWidget {
 //
@@ -20,10 +20,10 @@ late String  loggedInUser;
 //       builder: (context, movieData, child) {
 //         return ListView.builder(
 //           itemBuilder: (context, index) {
-//             final movie = movieData.movies[index];
+//             final movie = _firestore.collection('movies')[index];
 //             return MovieTile(
 //                 movietitle: movie.title,
-//                 moviedescription: movie.description,
+//                 // moviedescription: movie.description,
 //                 movierating: movie.rating,
 //                 movieyear: movie.year,
 //                 // checkboxCallback: (bool checkboxState) {
@@ -40,17 +40,18 @@ late String  loggedInUser;
 //     );
 //   }
 // }
-
+//
 // class MovieTile extends StatelessWidget {
 //   final String movietitle;
-//   final String moviedescription;
+//   // final String moviedescription;
 //   final double movierating;
-//   var movieyear;
+//   final int  movieyear;
 //   // final Function checkboxCallback;
 //   // final VoidCallback longCallBack;
 //
 //   MovieTile(
-//       {required this.moviedescription,
+//       {
+//         // required this.moviedescription,
 //         required this.movierating,
 //         required this.movietitle,
 //         required this.movieyear,
@@ -58,17 +59,12 @@ late String  loggedInUser;
 //         // required this.longCallBack
 //       });
 //
-//   // void checkboxCallback(checkBoxState) {
-//   //   setState(() {
-//   //     isChecked = checkBoxState;
-//   //   },);
-//
-//   // ValueChanged<bool?>? checkboxCallback;
 //   @override
 //   Widget build(BuildContext context) {
-//     return SingleChildScrollView(
+//     return ListView(
 //       // padding: EdgeInsets.only(top:20),
-//       child: Column(
+//       children:<Widget>[
+//         Column(
 //
 //         // crossAxisAlignment: CrossAxisAlignment.stretch,
 //         children: <Widget>[
@@ -79,36 +75,29 @@ late String  loggedInUser;
 //               child: MoviesListData()
 //           ),
 //
-//           // Text(movietitle,
-//           // style: TextStyle(
-//           //   fontSize: 20,
-//           // ),
-//           // ),
-//           // Flexible(
-//           //   child: Text(moviedescription,
-//           //     style: TextStyle(
-//           //     fontSize: 20,
-//           //   ),
-//           //   ),
-//           // ),
-//           // Text('$movierating',
-//           //   style: TextStyle(
-//           //     fontSize: 20,
-//           //   ),),
-//           // Text('$movieyear',
-//           //   style: TextStyle(
-//           //     fontSize: 20,
-//           //     color: Colors.orange,
-//           //
-//           //   ),),
+//           Text(movietitle,
+//           style: TextStyle(
+//             fontSize: 20,
+//           ),
+//           ),
+//           Text('$movierating',
+//             style: TextStyle(
+//               fontSize: 20,
+//             ),),
+//           Text('$movieyear',
+//             style: TextStyle(
+//               fontSize: 20,
+//               color: Colors.orange,
+//
+//             ),),
 //         ],
 //       ),
+//     ]
 //     );
 //   }
 // }
 
 class MovieScreenList extends StatefulWidget {
-
   static String id = '/movielist';
 
   MovieScreenList({Key? key}) : super(key: key);
@@ -126,66 +115,65 @@ class _MovieScreenListState extends State<MovieScreenList> {
     super.initState();
   }
 
-  void getCurrentUser()  async {
+  void getCurrentUser() async {
     try {
       final userr = _auth.collection('movies').id;
       loggedInUser = userr as String;
-    }
-    catch(e) {
+    } catch (e) {
       print(e);
     }
   }
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       body: Column(
-
         children: <Widget>[
           Container(
             padding: EdgeInsets.only(top: 30),
-            child: Text('Movie List',
-            style: TextStyle(fontSize: 30,color: Colors.red),),
+            child: Text(
+              'Movie List',
+              style: TextStyle(fontSize: 30, color: Colors.red),
+            ),
             decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(15),
                     topRight: Radius.circular(15))),
-
           ),
           // Expanded(
           //   child:
-            Expanded(
-              child: Container(
-                // height: 540,
-                // width: 200,
-                // padding: EdgeInsets.symmetric(horizontal: 10),
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(15),
-                        topRight: Radius.circular(15))),
-                child: MoviesListData(),
-              ),
+          Expanded(
+            child: Container(
+              // height: 540,
+              // width: 200,
+              // padding: EdgeInsets.symmetric(horizontal: 10),
+              decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(15),
+                      topRight: Radius.circular(15))),
+              child: MoviesListData(),
             ),
+          ),
           // ),
         ],
       ),
     );
   }
 }
+
 class MoviesListData extends StatefulWidget {
   @override
   _MoviesListDataState createState() => _MoviesListDataState();
 }
 
 class _MoviesListDataState extends State<MoviesListData> {
-  final Stream<QuerySnapshot> _moviesStream = FirebaseFirestore.instance.collection('movies').snapshots();
+  final Stream<QuerySnapshot> _moviesStream =
+      FirebaseFirestore.instance.collection('movies').snapshots();
   // var uid = ( FirebaseAuth.instance.currentUser!).uid;
   // Firestore.instance.collection('movies').where('uid', isEqualTo: uid).snapshots()
   // var collections = FirebaseFirestore.instance.collection('movies').where('title', isEqualTo: '');.where('user', isEqualTo:loggedInUser )
-
 
   // counterr () async{
   //   var allDocs = await collections.get();
@@ -206,6 +194,64 @@ class _MoviesListDataState extends State<MoviesListData> {
         }
         // QuerySnapshot<Object?>? querySnapshot = snapshot.data;
         // List<QueryDocumentSnapshot> documents = querySnapshot!.docs;
+        // if (snapshot.hasData){
+        final snap = snapshot.data!.docs;
+
+        return ListView.builder(
+            scrollDirection: Axis.vertical,
+            shrinkWrap: true,
+            primary: false,
+            itemCount: snap.length,
+
+            itemBuilder: (context, index) {
+              final snapss = snap[index];
+              var docId = snapss.id;
+
+              return Container(
+                child: ListTile(
+
+
+                  // leading: Text(data['title']),
+                    subtitle: Text('rating  '  + snap[index]['rating'].toString(),style: TextStyle(color: Colors.lightBlueAccent,fontSize: 18), ),
+                    title: Container(
+                      height: 50,
+
+                      // alignment: AlignmentDirectional.centerStart,
+                      padding: EdgeInsets.symmetric(vertical: 5.0),
+                      child:
+                      // Text(data['title'] + ' ' + data['rating'].toString() + ' rating',style: TextStyle(color: Colors.lightBlueAccent,fontSize: 24),),
+
+                      Material(
+                        color: Colors.lightBlueAccent,
+                        borderRadius: BorderRadius.circular(30.0),
+                        child: TextButton(
+                          // backgroundColor: Colors.white,
+                          // heroTag: null,
+                          // label:
+                          child : Text(snap[index]['title'] ,style: TextStyle(color: Colors.white,fontSize: 20),),
+                          onPressed: (){
+                            Navigator.push(context,MaterialPageRoute(builder: (context) => UpdateMovie(movieItem: snapss,docId:docId),
+                            ));
+
+                          },
+                          // icon: FaIcon(
+                          //   FontAwesomeIcons.star,
+                          //   color: Colors.lightBlueAccent,
+                          // ),
+                        ),
+                      ),
+                    ),
+
+                    // subtitle:
+                    // subtitle: Text(data['rating'].toString()),
+                    trailing: DeleteMovie(movieItem: snapss,docId:docId)
+
+                )
+              );
+
+
+            });
+        // }
         return Card(
 
           child: ListView(

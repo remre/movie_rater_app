@@ -14,8 +14,10 @@ late User  loggedInUser;
 class UpdateMovie extends StatelessWidget {
 
   // static String id = '/update_movie';
-  Map ? movieItem;
-  UpdateMovie({this.movieItem}) {
+  var movieItem;
+
+  String ?  docId;
+  UpdateMovie({this.movieItem, this.docId}) {
     titlecontroller = TextEditingController(text: movieItem!['title']);
     descriptioncontroller = TextEditingController(text: movieItem!['description']);
     mSound = movieItem!['mSound'];
@@ -26,7 +28,8 @@ class UpdateMovie extends StatelessWidget {
     directing = movieItem!['directing'];
     story = movieItem!['story'];
     _reference = FirebaseFirestore.instance
-        .collection('movies').doc('useruid');
+        .collection('movies').doc(docId);
+    // final snap = snapshot.data!.docs;
 
 
 

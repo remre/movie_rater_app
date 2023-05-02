@@ -44,7 +44,7 @@ class _MovieScreenState extends State<MovieScreen> {
                   //   ),
                   // ),
                   padding: EdgeInsets.only(
-                    top: 60,
+                    top: 40,
                     left: 30,
                     right: 30,
                     bottom: 30,
@@ -68,9 +68,9 @@ class _MovieScreenState extends State<MovieScreen> {
                       Text(
                         'Movie Rater APp ',
                         style: TextStyle(
-                          color: Colors.lightBlueAccent,
+                          color: Colors.blue,
                           fontSize: 35,
-                          fontWeight: FontWeight.w700,
+                          fontWeight: FontWeight.w900,
                         ),
                       ),
                     ],
@@ -88,19 +88,19 @@ class _MovieScreenState extends State<MovieScreen> {
                         topLeft: Radius.circular(15),
                         topRight: Radius.circular(15))),
                 child: Text(
-                  'Log your movie data with enhanced rating system \n Depending on the critics also add notes about the movie'
-                  '\n Then remember the movie in details ! \n easy to Use just add your movie rate it and show in the list \n'
-                  ' Anytime you can delete or edit your list!    ',
+                  'Save the movie data with enhanced rating system regarding on the temporary critics with notes. \n'
+                  'Then check your log about the movie anytime! Easy to Use just add your movie rate it and show in the list \n'
+                  'Anytime you can delete or edit your list!    ',
                   style: TextStyle(
                     // height: 1,
                     color: Colors.deepOrangeAccent,
-                    fontSize: 35,
+                    fontSize: 29,
                     // add shiny font family
                     // fontFamily: 'Aachen',
 
                   ),
                   textAlign: TextAlign.center,
-                  maxLines: 9,
+                  // maxLines: 9,
                 ),
               ),
             ),
