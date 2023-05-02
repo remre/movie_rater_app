@@ -133,7 +133,7 @@ class _MovieScreenListState extends State<MovieScreenList> {
             padding: EdgeInsets.only(top: 30),
             child: Text(
               'Movie List',
-              style: TextStyle(fontSize: 30, color: Colors.red),
+              style: TextStyle(fontSize: 30, color: Colors.orange),
             ),
             decoration: BoxDecoration(
                 color: Colors.white,
@@ -212,7 +212,7 @@ class _MoviesListDataState extends State<MoviesListData> {
 
 
                   // leading: Text(data['title']),
-                    subtitle: Text('rating  '  + snap[index]['rating'].toString(),style: TextStyle(color: Colors.lightBlueAccent,fontSize: 18), ),
+                    subtitle: Text('average rating is '  + snap[index]['rating'].toString(),style: TextStyle(color: Colors.lightBlueAccent,fontSize: 18), ),
                     title: Container(
                       height: 50,
 
@@ -252,55 +252,55 @@ class _MoviesListDataState extends State<MoviesListData> {
 
             });
         // }
-        return Card(
-
-          child: ListView(
-            scrollDirection: Axis.vertical,
-            shrinkWrap: true,
-            children: snapshot.data!.docs.map((DocumentSnapshot document) {
-
-              Map<String, dynamic> data = document.data()! as Map<String, dynamic>;
-              return ListTile(
-
-
-                // leading: Text(data['title']),
-                subtitle: Text('rating  '  + data['rating'].toString(),style: TextStyle(color: Colors.lightBlueAccent,fontSize: 18), ),
-                title: Container(
-                  height: 50,
-
-                  // alignment: AlignmentDirectional.centerStart,
-                  padding: EdgeInsets.symmetric(vertical: 5.0),
-                  child:
-                  // Text(data['title'] + ' ' + data['rating'].toString() + ' rating',style: TextStyle(color: Colors.lightBlueAccent,fontSize: 24),),
-
-                Material(
-                  color: Colors.lightBlueAccent,
-                  borderRadius: BorderRadius.circular(30.0),
-                  child: TextButton(
-                    // backgroundColor: Colors.white,
-                    // heroTag: null,
-                    // label:
-                    child : Text(data['title'] ,style: TextStyle(color: Colors.white,fontSize: 20),),
-                    onPressed: (){
-                      Navigator.push(context,MaterialPageRoute(builder: (context) => UpdateMovie(movieItem: data,)));
-
-                    },
-                    // icon: FaIcon(
-                    //   FontAwesomeIcons.star,
-                    //   color: Colors.lightBlueAccent,
-                    // ),
-                  ),
-                ),
-                ),
-
-                  // subtitle:
-                // subtitle: Text(data['rating'].toString()),
-                trailing: DeleteMovie()
-
-              );
-            }).toList(),
-          ),
-        );
+        // return Card(
+        //
+        //   child: ListView(
+        //     scrollDirection: Axis.vertical,
+        //     shrinkWrap: true,
+        //     children: snapshot.data!.docs.map((DocumentSnapshot document) {
+        //
+        //       Map<String, dynamic> data = document.data()! as Map<String, dynamic>;
+        //       return ListTile(
+        //
+        //
+        //         // leading: Text(data['title']),
+        //         subtitle: Text('rating  '  + data['rating'].toString(),style: TextStyle(color: Colors.lightBlueAccent,fontSize: 18), ),
+        //         title: Container(
+        //           height: 50,
+        //
+        //           // alignment: AlignmentDirectional.centerStart,
+        //           padding: EdgeInsets.symmetric(vertical: 5.0),
+        //           child:
+        //           // Text(data['title'] + ' ' + data['rating'].toString() + ' rating',style: TextStyle(color: Colors.lightBlueAccent,fontSize: 24),),
+        //
+        //         Material(
+        //           color: Colors.lightBlueAccent,
+        //           borderRadius: BorderRadius.circular(30.0),
+        //           child: TextButton(
+        //             // backgroundColor: Colors.white,
+        //             // heroTag: null,
+        //             // label:
+        //             child : Text(data['title'] ,style: TextStyle(color: Colors.white,fontSize: 20),),
+        //             onPressed: (){
+        //               Navigator.push(context,MaterialPageRoute(builder: (context) => UpdateMovie(movieItem: data,)));
+        //
+        //             },
+        //             // icon: FaIcon(
+        //             //   FontAwesomeIcons.star,
+        //             //   color: Colors.lightBlueAccent,
+        //             // ),
+        //           ),
+        //         ),
+        //         ),
+        //
+        //           // subtitle:
+        //         // subtitle: Text(data['rating'].toString()),
+        //         trailing: DeleteMovie()
+        //
+        //       );
+        //     }).toList(),
+        //   ),
+        // );
       },
     );
   }
