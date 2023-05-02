@@ -107,7 +107,7 @@ class _AddMovieState extends State<AddMovie> {
             key: _formKey,
             child: Column(
             children: <Widget>[
-              TextFormWiddgy(descriptioncontroller: titlecontroller,maxlength: 100,formPlaceHolder: 'Enter the movie name',countext: ''),
+              TextFormWiddgy(texteditingcontroller: titlecontroller,maxlength: 100,formPlaceHolder: 'Enter the movie name',countext: ''),
               // Card(
               //   child: TextFormField(
               //     validator: (value) {
@@ -126,8 +126,9 @@ class _AddMovieState extends State<AddMovie> {
               //     textAlign: TextAlign.center,
               //   ),
               // ),
-              TextFormWiddgy(descriptioncontroller: descriptioncontroller,maxLines: 2,maxlength: 250,formPlaceHolder: 'Enter the movie description',),
-              TextFormWiddgy(descriptioncontroller: yearcontroller,maxlength: 4,formPlaceHolder: 'Enter the year',),
+              TextFormWiddgy(texteditingcontroller: descriptioncontroller,maxLines: 2,maxlength: 250,formPlaceHolder: 'Enter the movie description',),
+              // TextFormWiddgy(texteditingcontroller: yearcontroller,maxlength: 4,formPlaceHolder: 'Enter the year',),
+              TextFormYear(yeareditingcontroller: yearcontroller,maxlength: 4,formPlaceHolder: 'Enter the year',)
               // Card(
               //   child: TextFormField(
               //     validator: (value) {
@@ -168,9 +169,13 @@ class _AddMovieState extends State<AddMovie> {
           Center(
             child: Column(
               children:<Widget>[
-                Text('Rate The movie!'),
+                Text('Rate The movie!',
+                style: TextStyle(fontSize: 25),
+                ),
                 // MovieStars(),
-                Text('editing'),
+                Text('Editing',
+                  style: TextStyle(fontSize: 20),
+                ),
                 // MovieStars(editing),
                 RatingBar(
                   initialRating: 0,
@@ -190,7 +195,8 @@ class _AddMovieState extends State<AddMovie> {
 
                   },
                 ),
-                Text('directing'),
+                Text('Directing',
+                  style: TextStyle(fontSize: 20),),
                 RatingBar(
                   initialRating: 0,
                   minRating: 0,
@@ -210,7 +216,8 @@ class _AddMovieState extends State<AddMovie> {
                   },
                 ),
                 // MovieStars(directing),
-                Text('productDesign'),
+                Text('ProductDesign',
+                  style: TextStyle(fontSize: 20),),
                 // MovieStars(productDesign),
                 RatingBar(
                   initialRating: 0,
@@ -230,7 +237,8 @@ class _AddMovieState extends State<AddMovie> {
 
                   },
                 ),
-                Text('story'),
+                Text('Story',
+                  style: TextStyle(fontSize: 20),),
                 // MovieStars(story),
                 RatingBar(
                   initialRating: 0,
@@ -250,7 +258,8 @@ class _AddMovieState extends State<AddMovie> {
 
                   },
                 ),
-                Text('music'),
+                Text('Music',
+                  style: TextStyle(fontSize: 20),),
                 // MovieStars(music),
                 RatingBar(
                   initialRating: 0,
@@ -271,7 +280,8 @@ class _AddMovieState extends State<AddMovie> {
                   },
                 ),
 
-                Text('color'),
+                Text('Color',
+                  style: TextStyle(fontSize: 20),),
                 // MovieStars(color),
                 RatingBar(
                   initialRating: 0,
@@ -291,7 +301,8 @@ class _AddMovieState extends State<AddMovie> {
 
                   },
                 ),
-                Text('mSound'),
+                Text('Sound',
+                  style: TextStyle(fontSize: 20),),
                 // MovieStars(mSound),
                 RatingBar(
                   initialRating: 0,
@@ -307,6 +318,9 @@ class _AddMovieState extends State<AddMovie> {
                   onRatingUpdate: (value) {
                     // Rating is updated
                     print('rating update to: $value');
+                    if (value == 0) {
+                      value = 1 ;
+                    }
                     mSound = value;
 
                   },
@@ -319,14 +333,15 @@ class _AddMovieState extends State<AddMovie> {
             child: Text(
               'Add',
               style: TextStyle(
+                fontFamily: 'Aachen',
                 color: Colors.black,
               ),
             ),
             style: TextButton.styleFrom(
-                foregroundColor: Colors.green,
+                  foregroundColor: Colors.green,
                 textStyle: const TextStyle(fontSize: 20)),
             onPressed: ()   {
-              if (_formKey.currentState!.validate() == false) {
+              if (_formKey.currentState!.validate() == true) {
                 // If the form is valid, display a snackbar. In the real world,
                 // you'd often call a server or save the information in a database.
                 ScaffoldMessenger.of(context).showSnackBar(

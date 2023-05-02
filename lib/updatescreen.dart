@@ -95,7 +95,7 @@ class UpdateMovie extends StatelessWidget {
             key: _formKey,
             child: Column(
               children: <Widget>[
-                TextFormWiddgy(descriptioncontroller: titlecontroller,maxlength: 100,formPlaceHolder: 'Enter the movie name',countext: ''),
+                TextFormWiddgy(texteditingcontroller: titlecontroller,maxlength: 100,formPlaceHolder: 'Enter the movie name',countext: ''),
                 // Card(
                 //   child: TextFormField(
                 //     validator: (value) {
@@ -114,7 +114,7 @@ class UpdateMovie extends StatelessWidget {
                 //     textAlign: TextAlign.center,
                 //   ),
                 // ),
-                TextFormWiddgy(descriptioncontroller: descriptioncontroller,maxLines: 2,maxlength: 250,formPlaceHolder: 'Enter the movie description',),
+                TextFormWiddgy(texteditingcontroller: descriptioncontroller,maxLines: 2,maxlength: 250,formPlaceHolder: 'Enter the movie description',),
                 // TextFormWiddgy(descriptioncontroller: yearcontroller,maxlength: 4,formPlaceHolder: 'Enter the year',),
                 // Card(
                 //   child: TextFormField(
