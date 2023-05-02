@@ -218,13 +218,14 @@ class _MoviesListDataState extends State<MoviesListData> {
                 selectedTileColor: Colors.blueAccent,
 
                 // leading: Text(data['title']),
-                title: Padding(
-                  
+                subtitle: Text('rating  '  + data['rating'].toString(),style: TextStyle(color: Colors.lightBlueAccent,fontSize: 18), ),
+                title: Container(
+                  height: 50,
 
                   // alignment: AlignmentDirectional.centerStart,
 
 
-                  padding: EdgeInsets.symmetric(vertical: 16.0),
+                  padding: EdgeInsets.symmetric(vertical: 5.0),
                   child:
                   // Text(data['title'] + ' ' + data['rating'].toString() + ' rating',style: TextStyle(color: Colors.lightBlueAccent,fontSize: 24),),
 
@@ -240,7 +241,7 @@ class _MoviesListDataState extends State<MoviesListData> {
                     // backgroundColor: Colors.white,
                     // heroTag: null,
                     // label:
-                    child : Text(data['title'] + ' s ' + data['rating'].toString()  ,style: TextStyle(color: Colors.white,fontSize: 20),),
+                    child : Text(data['title'] ,style: TextStyle(color: Colors.white,fontSize: 20),),
                     onPressed: (){
                       Navigator.push(context,MaterialPageRoute(builder: (context) => UpdateMovie(movieItem: data,)));
 

@@ -42,3 +42,6 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+/fonts/AE01014D.ttf
+/fonts/sharefonts.net.txt
+/fonts/unicode.aachenb.ttf
