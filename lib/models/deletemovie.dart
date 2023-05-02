@@ -21,7 +21,9 @@ class DeleteMovie extends StatelessWidget {
   Widget build(BuildContext context) {
     return
       IconButton(
+
         splashColor : Colors.lightBlueAccent,
+        alignment : Alignment.topCenter,
 
         color: Colors.red,
         onPressed: () => showDialog<String>(
@@ -46,7 +48,7 @@ class DeleteMovie extends StatelessWidget {
             ],
           ),
         ),
-        icon:FaIcon(Icons.delete),
+        icon:FaIcon(Icons.delete,size: 30,),
       );
   }
 }

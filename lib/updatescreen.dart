@@ -345,7 +345,6 @@ class Updatebutton extends StatelessWidget {
           ),
         ),
         style: TextButton.styleFrom(
-            foregroundColor: Colors.green,
             textStyle: const TextStyle(fontSize: 20)),
         onPressed: ()   {
           if (_formKey.currentState!.validate() == false) {

@@ -215,7 +215,7 @@ class _MoviesListDataState extends State<MoviesListData> {
 
               Map<String, dynamic> data = document.data()! as Map<String, dynamic>;
               return ListTile(
-                selectedTileColor: Colors.blueAccent,
+
 
                 // leading: Text(data['title']),
                 subtitle: Text('rating  '  + data['rating'].toString(),style: TextStyle(color: Colors.lightBlueAccent,fontSize: 18), ),
@@ -230,12 +230,7 @@ class _MoviesListDataState extends State<MoviesListData> {
                 Material(
                   color: Colors.lightBlueAccent,
                   borderRadius: BorderRadius.circular(30.0),
-
                   child: TextButton(
-
-
-
-
                     // backgroundColor: Colors.white,
                     // heroTag: null,
                     // label:
@@ -253,10 +248,6 @@ class _MoviesListDataState extends State<MoviesListData> {
                 ),
 
                   // subtitle:
-
-
-
-
                 // subtitle: Text(data['rating'].toString()),
                 trailing: DeleteMovie()
 

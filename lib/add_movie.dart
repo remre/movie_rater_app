@@ -329,57 +329,59 @@ class _AddMovieState extends State<AddMovie> {
 
             ),
           ),
-          TextButton(
-            child: Text(
-              'Add',
-              style: TextStyle(
-                fontFamily: 'Aachen',
-                color: Colors.black,
+          SizedBox(height: 20,),
+          Container(
+            color: Colors.lightBlueAccent,
+            child: TextButton(
+              child: Text(
+                'Add',
+                style: TextStyle(
+                  color: Colors.white,
+                ),
               ),
+              style: TextButton.styleFrom(
+                  textStyle: const TextStyle(fontSize: 20)),
+              onPressed: ()   {
+                if (_formKey.currentState!.validate() == true) {
+                  // If the form is valid, display a snackbar. In the real world,
+                  // you'd often call a server or save the information in a database.
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(content: Text('Processing Data')),
+                  );
+                }
+                print(titlecontroller.text + descriptioncontroller.text + yearcontroller.text);
+                // print(textController.text);
+                _firestore.collection('movies').add({
+                  'description' : descriptioncontroller.text,
+                  'title' : titlecontroller.text,
+                  'rating' : rating,
+                  'mSound' : mSound,
+                  'productDesign' : productDesign,
+                  'editing' : editing,
+                  'directing' : directing,
+                  'music' : music,
+                  'color' : color,
+                  'story' : story,
+                  'user' : loggedInUser.email,
+                  'year' : int.parse(yearcontroller.text),
+                  'cTime' : cTime,
+                });
+
+                // final task = Task(name: newTasksTitle);
+                 Provider.of<MovieData>(context, listen: false)
+                    .addMovie(titlecontroller.text,descriptioncontroller.text,int.parse(yearcontroller.text),
+                   mSound,
+                   editing,
+                   productDesign,
+                   music,
+                   color, directing, story,rating,
+                   cTime,
+                 );
+
+                // refreshText;
+                Navigator.pop(context);
+              },
             ),
-            style: TextButton.styleFrom(
-                  foregroundColor: Colors.green,
-                textStyle: const TextStyle(fontSize: 20)),
-            onPressed: ()   {
-              if (_formKey.currentState!.validate() == true) {
-                // If the form is valid, display a snackbar. In the real world,
-                // you'd often call a server or save the information in a database.
-                ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text('Processing Data')),
-                );
-              }
-              print(titlecontroller.text + descriptioncontroller.text + yearcontroller.text);
-              // print(textController.text);
-              _firestore.collection('movies').add({
-                'description' : descriptioncontroller.text,
-                'title' : titlecontroller.text,
-                'rating' : rating,
-                'mSound' : mSound,
-                'productDesign' : productDesign,
-                'editing' : editing,
-                'directing' : directing,
-                'music' : music,
-                'color' : color,
-                'story' : story,
-                'user' : loggedInUser.email,
-                'year' : int.parse(yearcontroller.text),
-                'cTime' : cTime,
-              });
-
-              // final task = Task(name: newTasksTitle);
-               Provider.of<MovieData>(context, listen: false)
-                  .addMovie(titlecontroller.text,descriptioncontroller.text,int.parse(yearcontroller.text),
-                 mSound,
-                 editing,
-                 productDesign,
-                 music,
-                 color, directing, story,rating,
-                 cTime,
-               );
-
-              // refreshText;
-              Navigator.pop(context);
-            },
           )
           // Updatebutton(buttontext: 'Add the movie', formKey: _formKey, titlecontroller: titlecontroller, descriptioncontroller: descriptioncontroller, mSound: mSound, directing: directing, editing: editing, productDesign: productDesign, story: story, music: music, color: color, reference: _reference)
 
