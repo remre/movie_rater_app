@@ -103,6 +103,12 @@ flutter:
     - family: Rowdies
       fonts:
         - asset: fonts/Rowdies-Bold.ttf
+
+    - family: Aachen
+      fonts:
+#        - asset: fonts/Aachen-Regular.ttf
+        - asset: fonts/aachenn.ttf
+#        - asset: fonts/Aachen-Roman.ttf
   #       - asset: fonts/TrajanPro_Bold.ttf
   #         weight: 700
   #

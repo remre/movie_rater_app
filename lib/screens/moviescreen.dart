@@ -68,8 +68,8 @@ class _MovieScreenState extends State<MovieScreen> {
                       Text(
                         'Movie Rater APp ',
                         style: TextStyle(
-                          color: Colors.deepOrangeAccent,
-                          fontSize: 25,
+                          color: Colors.lightBlueAccent,
+                          fontSize: 35,
                           fontWeight: FontWeight.w700,
                         ),
                       ),
@@ -96,7 +96,8 @@ class _MovieScreenState extends State<MovieScreen> {
                     color: Colors.deepOrangeAccent,
                     fontSize: 35,
                     // add shiny font family
-                    fontFamily: 'Acme'
+                    fontFamily: 'Aachen',
+
                   ),
                   textAlign: TextAlign.center,
                   maxLines: 9,
@@ -127,7 +128,7 @@ class _MovieScreenState extends State<MovieScreen> {
                             BorderRadius.all(Radius.circular(9))), // extendedIc
                     label: Text(
                       'Add Movie!',
-                      style: TextStyle(fontSize: 30,
+                      style: TextStyle(fontSize: 25,
                       fontFamily: 'Rowdies'),
                     ),
 
@@ -163,7 +164,7 @@ class _MovieScreenState extends State<MovieScreen> {
                     heroTag: "btn2",
                     label: Text(
                       'Go to List!',
-                      style: TextStyle(fontSize: 30),
+                      style: TextStyle(fontSize: 25),
                     ),
                     backgroundColor: Colors.blueAccent,
                     icon: FaIcon(
