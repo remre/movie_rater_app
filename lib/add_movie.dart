@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import 'models/startextwidget.dart';
 import 'movie.dart';
@@ -194,8 +195,20 @@ class _AddMovieState extends State<AddMovie> {
 
                   },
                 ),
-                StarTexts('Directing',
-                  ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+
+                    StarTexts('Directing',),
+                    IconButton(
+                      color: Colors.blue,
+                      alignment: Alignment.topLeft,
+                      onPressed: (){}, icon: FaIcon(
+
+
+                      FontAwesomeIcons.question,size: 25,), tooltip: 'Edinting adada',),
+                  ],
+                ),
                 RatingBar(
                   initialRating: 0,
                   minRating: 0,

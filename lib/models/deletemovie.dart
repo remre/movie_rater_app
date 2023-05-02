@@ -22,8 +22,13 @@ class DeleteMovie extends StatelessWidget {
   Widget build(BuildContext context) {
     return
       Container(
-        color: Colors.black,
+        // color: Colors.black,
+
+
         child: IconButton(
+
+          padding: EdgeInsets.only(bottom:10),
+
 
           splashColor : Colors.lightBlueAccent,
           alignment : Alignment.topCenter,
@@ -51,7 +56,7 @@ class DeleteMovie extends StatelessWidget {
               ],
             ),
           ),
-          icon:FaIcon(Icons.delete,size: 30,),
+          icon:FaIcon(Icons.delete,size: 28,),
         ),
       );
   }

@@ -116,31 +116,29 @@ class _MoviesListDataState extends State<MoviesListData> {
               final snapss = snap[index];
               var docId = snapss.id;
 
-              return Container(
-                child: ListTile(
-                  // leading: Text(data['title']),
-                    subtitle: Text('average rating is '  + snap[index]['rating'].toString(),style: TextStyle(color: Colors.lightBlueAccent,fontSize: 18), ),
-                    title: Container(
-                      height: 45,
-                      // alignment: AlignmentDirectional.centerStart,
-                      // padding: EdgeInsets.symmetric(vertical: 5.0),
-                      child:
-                      // Text(data['title'] + ' ' + data['rating'].toString() + ' rating',style: TextStyle(color: Colors.lightBlueAccent,fontSize: 24),),
+              return ListTile(
+                // leading: Text(data['title']),
+                  subtitle: Text('average rating is '  + snap[index]['rating'].toString(),style: TextStyle(color: Colors.lightBlueAccent,fontSize: 18), ),
+                  title: Container(
+                    height:50,
+                    // alignment: AlignmentDirectional.centerStart,
+                    padding: EdgeInsets.only(top: 10),
+                    child:
+                    // Text(data['title'] + ' ' + data['rating'].toString() + ' rating',style: TextStyle(color: Colors.lightBlueAccent,fontSize: 24),),
 
-                      Material(
-                        color: Colors.lightBlueAccent,
-                        borderRadius: BorderRadius.circular(10.0),
-                        child: TextButton(
-                          child : Text(snap[index]['title'] ,style: TextStyle(color: Colors.white,fontSize: 20),),
-                          onPressed: (){
-                            Navigator.push(context,MaterialPageRoute(builder: (context) => UpdateMovie(movieItem: snapss,docId:docId),
-                            ));
-                          },
-                        ),
+                    Material(
+                      color: Colors.lightBlueAccent,
+                      borderRadius: BorderRadius.circular(10.0),
+                      child: TextButton(
+                        child : Text(snap[index]['title'] ,style: TextStyle(color: Colors.white,fontSize: 20),),
+                        onPressed: (){
+                          Navigator.push(context,MaterialPageRoute(builder: (context) => UpdateMovie(movieItem: snapss,docId:docId),
+                          ));
+                        },
                       ),
                     ),
-                    trailing: DeleteMovie(movieItem: snapss,docId:docId)
-                )
+                  ),
+                  trailing: DeleteMovie(movieItem: snapss,docId:docId)
               );
             });
       },
