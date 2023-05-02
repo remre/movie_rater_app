@@ -1,8 +1,10 @@
+import 'package:chatgpt_movierater_app/updatescreen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 // import 'package:smooth_star_rating/smooth_star_rating.dart';
 import 'package:provider/provider.dart';
+import 'models/startextwidget.dart';
 import 'movie.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -173,8 +175,7 @@ class _AddMovieState extends State<AddMovie> {
                 style: TextStyle(fontSize: 25),
                 ),
                 // MovieStars(),
-                Text('Editing',
-                  style: TextStyle(fontSize: 20),
+                StarTexts('Editing',
                 ),
                 // MovieStars(editing),
                 RatingBar(
@@ -195,8 +196,8 @@ class _AddMovieState extends State<AddMovie> {
 
                   },
                 ),
-                Text('Directing',
-                  style: TextStyle(fontSize: 20),),
+                StarTexts('Directing',
+                  ),
                 RatingBar(
                   initialRating: 0,
                   minRating: 0,
@@ -216,8 +217,7 @@ class _AddMovieState extends State<AddMovie> {
                   },
                 ),
                 // MovieStars(directing),
-                Text('ProductDesign',
-                  style: TextStyle(fontSize: 20),),
+                StarTexts('Product Design',),
                 // MovieStars(productDesign),
                 RatingBar(
                   initialRating: 0,
@@ -237,8 +237,8 @@ class _AddMovieState extends State<AddMovie> {
 
                   },
                 ),
-                Text('Story',
-                  style: TextStyle(fontSize: 20),),
+                StarTexts('Story',
+                ),
                 // MovieStars(story),
                 RatingBar(
                   initialRating: 0,
@@ -258,8 +258,8 @@ class _AddMovieState extends State<AddMovie> {
 
                   },
                 ),
-                Text('Music',
-                  style: TextStyle(fontSize: 20),),
+                StarTexts('Music',
+                  ),
                 // MovieStars(music),
                 RatingBar(
                   initialRating: 0,
@@ -280,8 +280,8 @@ class _AddMovieState extends State<AddMovie> {
                   },
                 ),
 
-                Text('Color',
-                  style: TextStyle(fontSize: 20),),
+                StarTexts('Color',
+                  ),
                 // MovieStars(color),
                 RatingBar(
                   initialRating: 0,
@@ -301,8 +301,8 @@ class _AddMovieState extends State<AddMovie> {
 
                   },
                 ),
-                Text('Sound',
-                  style: TextStyle(fontSize: 20),),
+                StarTexts('Sound',
+                  ),
                 // MovieStars(mSound),
                 RatingBar(
                   initialRating: 0,
@@ -381,6 +381,8 @@ class _AddMovieState extends State<AddMovie> {
               Navigator.pop(context);
             },
           )
+          // Updatebutton(buttontext: 'Add the movie', formKey: _formKey, titlecontroller: titlecontroller, descriptioncontroller: descriptioncontroller, mSound: mSound, directing: directing, editing: editing, productDesign: productDesign, story: story, music: music, color: color, reference: _reference)
+
 
 
         ],

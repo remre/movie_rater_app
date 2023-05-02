@@ -223,8 +223,6 @@ class _MoviesListDataState extends State<MoviesListData> {
                   height: 50,
 
                   // alignment: AlignmentDirectional.centerStart,
-
-
                   padding: EdgeInsets.symmetric(vertical: 5.0),
                   child:
                   // Text(data['title'] + ' ' + data['rating'].toString() + ' rating',style: TextStyle(color: Colors.lightBlueAccent,fontSize: 24),),

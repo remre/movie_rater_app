@@ -96,7 +96,7 @@ class _MovieScreenState extends State<MovieScreen> {
                     color: Colors.deepOrangeAccent,
                     fontSize: 35,
                     // add shiny font family
-                    fontFamily: 'Aachen',
+                    // fontFamily: 'Aachen',
 
                   ),
                   textAlign: TextAlign.center,

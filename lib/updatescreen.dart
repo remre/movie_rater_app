@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'models/textformwidget.dart';
+import 'models/startextwidget.dart';
 
 
 // User?  loggedInUser;
@@ -137,13 +138,16 @@ class UpdateMovie extends StatelessWidget {
               ],
             ),),
           Text(style: TextStyle(color: Colors.lightBlueAccent, fontSize: 14), 'created ' + movieItem!['cTime'].toDate().toString()),
+          SizedBox(
+              height:  20),
 
           Center(
             child: Column(
                 children:<Widget>[
-                  Text('Rate The movie!'),
+                  Text('Rate The movie!',
+                  style: TextStyle(fontSize: 25),),
                   // MovieStars(),
-                  Text('editing'),
+                  StarTexts('Editing'),
                   // MovieStars(editing),
                   RatingBar(
                     initialRating: 0,
@@ -163,7 +167,7 @@ class UpdateMovie extends StatelessWidget {
 
                     },
                   ),
-                  Text('directing'),
+                  StarTexts('Directing'),
                   RatingBar(
                     initialRating: 0,
                     minRating: 0,
@@ -183,7 +187,7 @@ class UpdateMovie extends StatelessWidget {
                     },
                   ),
                   // MovieStars(directing),
-                  Text('productDesign'),
+                  StarTexts('Product Design'),
                   // MovieStars(productDesign),
                   RatingBar(
                     initialRating: 0,
@@ -203,7 +207,7 @@ class UpdateMovie extends StatelessWidget {
 
                     },
                   ),
-                  Text('story'),
+                  StarTexts('Story'),
                   // MovieStars(story),
                   RatingBar(
                     initialRating: 0,
@@ -223,7 +227,7 @@ class UpdateMovie extends StatelessWidget {
 
                     },
                   ),
-                  Text('music'),
+                  StarTexts('Music'),
                   // MovieStars(music),
                   RatingBar(
                     initialRating: 0,
@@ -244,7 +248,7 @@ class UpdateMovie extends StatelessWidget {
                     },
                   ),
 
-                  Text('color'),
+                  StarTexts('Color'),
                   // MovieStars(color),
                   RatingBar(
                     initialRating: 0,
@@ -264,7 +268,7 @@ class UpdateMovie extends StatelessWidget {
 
                     },
                   ),
-                  Text('mSound'),
+                  StarTexts('Sound'),
                   // MovieStars(mSound),
                   RatingBar(
                     initialRating: 0,
@@ -288,78 +292,122 @@ class UpdateMovie extends StatelessWidget {
 
             ),
           ),
-          TextButton(
-            child: Text(
-              'Update',
-              style: TextStyle(
-                color: Colors.black,
-              ),
-            ),
-            style: TextButton.styleFrom(
-                foregroundColor: Colors.green,
-                textStyle: const TextStyle(fontSize: 20)),
-            onPressed: ()   {
-              if (_formKey.currentState!.validate() == false) {
-                // If the form is valid, display a snackbar. In the real world,
-                // you'd often call a server or save the information in a database.
-                ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text('Processing Data')),
-                );
-              }
-              String title = titlecontroller.text;
-              String description = descriptioncontroller.text;
-              print(titlecontroller.text + descriptioncontroller.text );
-              Map<String,dynamic> dataToUpdate = {
-                'title' : title,
-                'description' : description,
-                'mSound' : mSound,
-                'directing' : directing,
-                'editing': editing,
-                'productDesign' : productDesign,
-                'story' : story,
-                'music':music,
-                'color':color,
-
-              };
-
-              _reference.update(dataToUpdate);
-              // print(textController.text);
-              // _firestore.collection('movies').add({
-              //   'description' : descriptioncontroller.text,
-              //   'title' : titlecontroller.text,
-                // 'rating' : rating,
-                // 'mSound' : mSound,
-                // 'productDesign' : productDesign,
-                // 'editing' : editing,
-                // 'directing' : directing,
-                // 'music' : music,
-                // 'color' : color,
-                // 'story' : story,
-                // 'user' : loggedInUser.email,
-                // 'year' : int.parse(yearcontroller.text),
-                // 'cTime' : cTime,
-              // });
-
-              // final task = Task(name: newTasksTitle);
-              // Provider.of<MovieData>(context, listen: false)
-              //     .addMovie(titlecontroller.text,descriptioncontroller.text,int.parse(yearcontroller.text),
-              //   mSound,
-              //   editing,
-              //   productDesign,
-              //   music,
-              //   color, directing, story,rating,
-              //   cTime,
-              // );
-
-              // refreshText;
-              Navigator.pop(context);
-            },
-          )
+          SizedBox(
+              height:  20),
+          Updatebutton(buttontext: 'Update', formKey: _formKey, titlecontroller: titlecontroller, descriptioncontroller: descriptioncontroller, mSound: mSound, directing: directing, editing: editing, productDesign: productDesign, story: story, music: music, color: color, reference: _reference)
         ],
       ),
     );
   }
 }
+
+class Updatebutton extends StatelessWidget {
+  const Updatebutton({
+    super.key,
+    required GlobalKey<FormState> formKey,
+    required this.buttontext,
+    required this.titlecontroller,
+    required this.descriptioncontroller,
+    required this.mSound,
+    required this.directing,
+    required this.editing,
+    required this.productDesign,
+    required this.story,
+    required this.music,
+    required this.color,
+    required DocumentReference<Object?> reference,
+  }) : _formKey = formKey, _reference = reference;
+
+  final GlobalKey<FormState> _formKey;
+
+  final String buttontext;
+
+  final TextEditingController titlecontroller;
+  final TextEditingController descriptioncontroller;
+  final double mSound;
+  final double directing;
+  final double editing;
+  final double productDesign;
+  final double story;
+  final double music;
+  final double color;
+  final DocumentReference<Object?> _reference;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: Colors.lightBlueAccent,
+      child: TextButton(
+        child: Text(
+          buttontext,
+          style: TextStyle(
+            color: Colors.white,
+          ),
+        ),
+        style: TextButton.styleFrom(
+            foregroundColor: Colors.green,
+            textStyle: const TextStyle(fontSize: 20)),
+        onPressed: ()   {
+          if (_formKey.currentState!.validate() == false) {
+            // If the form is valid, display a snackbar. In the real world,
+            // you'd often call a server or save the information in a database.
+            ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(content: Text('Processing Data')),
+            );
+          }
+          String title = titlecontroller.text;
+          String description = descriptioncontroller.text;
+          print(titlecontroller.text + descriptioncontroller.text );
+          Map<String,dynamic> dataToUpdate = {
+            'title' : title,
+            'description' : description,
+            'mSound' : mSound,
+            'directing' : directing,
+            'editing': editing,
+            'productDesign' : productDesign,
+            'story' : story,
+            'music':music,
+            'color':color,
+
+          };
+
+          _reference.update(dataToUpdate);
+          // print(textController.text);
+          // _firestore.collection('movies').add({
+          //   'description' : descriptioncontroller.text,
+          //   'title' : titlecontroller.text,
+            // 'rating' : rating,
+            // 'mSound' : mSound,
+            // 'productDesign' : productDesign,
+            // 'editing' : editing,
+            // 'directing' : directing,
+            // 'music' : music,
+            // 'color' : color,
+            // 'story' : story,
+            // 'user' : loggedInUser.email,
+            // 'year' : int.parse(yearcontroller.text),
+            // 'cTime' : cTime,
+          // });
+
+          // final task = Task(name: newTasksTitle);
+          // Provider.of<MovieData>(context, listen: false)
+          //     .addMovie(titlecontroller.text,descriptioncontroller.text,int.parse(yearcontroller.text),
+          //   mSound,
+          //   editing,
+          //   productDesign,
+          //   music,
+          //   color, directing, story,rating,
+          //   cTime,
+          // );
+
+          // refreshText;
+          Navigator.pop(context);
+        },
+      ),
+    );
+  }
+}
+
 
 
 
