@@ -68,7 +68,8 @@ class _MovieScreenState extends State<MovieScreen> {
                       Text(
                         'Movie Rater APp ',
                         style: TextStyle(
-                          color: Colors.blue,
+                          backgroundColor: Colors.deepOrange,
+                          color: Colors.lightBlueAccent,
                           fontSize: 35,
                           fontWeight: FontWeight.w900,
                         ),
@@ -93,7 +94,7 @@ class _MovieScreenState extends State<MovieScreen> {
                   'Anytime you can delete or edit your list!    ',
                   style: TextStyle(
                     // height: 1,
-                    color: Colors.deepOrangeAccent,
+                    color: Colors.deepOrange,
                     fontSize: 29,
                     // add shiny font family
                     // fontFamily: 'Aachen',
