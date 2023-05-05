@@ -13,7 +13,7 @@ Whenever you want, you can check the list and see in more detail which element o
 Welcome page you an register with email and password
 ![Image](https://github.com/remre/movie_rater_app/blob/main/readmephotos/welcomescreen.jpg)
 
-On the main page you can see the guideline for the app easy to use\
+On the main page you can see the guideline for the app easy to use
 
 ![Image](https://github.com/remre/movie_rater_app/blob/main/readmephotos/main_page.png)
 
