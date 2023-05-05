@@ -13,11 +13,11 @@ Whenever you want, you can check the list and see in more detail which element o
 Welcome page you an register with email and password
 ![Image](https://github.com/remre/movie_rater_app/blob/main/readmephotos/welcomescreen.jpg)
 
-On the main page you can see the guideline for the app easy to use
+On the main page you can see the guideline for the app easy to use\
 
 ![Image](https://github.com/remre/movie_rater_app/blob/main/readmephotos/main_page.png)
 
-Rate movies according to contemporary criteria:
+Rate movies according to contemporary criteria:\
 
 Sound\
 Music\
@@ -29,13 +29,14 @@ Story\
 
 ![Image](https://github.com/remre/movie_rater_app/blob/main/readmephotos/addmovie_2.png)
 
+
 ![Image](https://github.com/remre/movie_rater_app/blob/main/readmephotos/addmovie_1.png)
 
-Here is you can see your movie list, can update it and delete it whenever you want
+Here is you can see your movie list, can update it and delete it whenever you want\
 
 ![Image](https://github.com/remre/movie_rater_app/blob/main/readmephotos/movielist.png)
 
-Update the current movie
+Update the current movie\
 
 ![Image](https://github.com/remre/movie_rater_app/blob/main/readmephotos/update_movie.png)
 
