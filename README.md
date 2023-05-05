@@ -25,18 +25,18 @@ Colour\
 Product design\
 Directing\
 Editing\
-Story\
+Story
 
 ![Image](https://github.com/remre/movie_rater_app/blob/main/readmephotos/addmovie_2.png)
 
 
 ![Image](https://github.com/remre/movie_rater_app/blob/main/readmephotos/addmovie_1.png)
 
-Here is you can see your movie list, can update it and delete it whenever you want\
+Here is you can see your movie list, can update it and delete it whenever you want
 
 ![Image](https://github.com/remre/movie_rater_app/blob/main/readmephotos/movielist.png)
 
-Update the current movie\
+Update the current movie
 
 ![Image](https://github.com/remre/movie_rater_app/blob/main/readmephotos/update_movie.png)
 
