@@ -18,7 +18,8 @@ On the main page you can see the guideline for the app easy to use
 ![Image](https://github.com/remre/movie_rater_app/blob/main/readmephotos/main_page.png)
 
 Rate movies according to contemporary criteria:
-Sound
+
+Sound__
 Music
 Colour
 Product design
