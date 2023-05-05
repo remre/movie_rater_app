@@ -21,13 +21,13 @@ Whenever you want, you can check the list and see in more detail which element o
 
 ![Image](https://github.com/remre/movie_rater_app/blob/main/readmephotos/movielist.png)
 
-![Image](https://github.com/remre/movie_rater_app/blob/main/readmephotos/addmovie_1.jpg)
+![Image](https://github.com/remre/movie_rater_app/blob/main/readmephotos/addmovie_1.png)
 
-![Image](https://github.com/remre/movie_rater_app/blob/main/readmephotos/addmovie_2.jpg)
+![Image](https://github.com/remre/movie_rater_app/blob/main/readmephotos/addmovie_2.png)
 
-![Image](https://github.com/remre/movie_rater_app/blob/main/readmephotos/main_page.jpg)
+![Image](https://github.com/remre/movie_rater_app/blob/main/readmephotos/main_page.png)
 
-![Image](https://github.com/remre/movie_rater_app/blob/main/readmephotos/update_movie.jpg)
+![Image](https://github.com/remre/movie_rater_app/blob/main/readmephotos/update_movie.png)
 
 
 
