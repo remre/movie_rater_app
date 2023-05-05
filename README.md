@@ -19,7 +19,7 @@ On the main page you can see the guideline for the app easy to use
 
 Rate movies according to contemporary criteria:
 
-Sound__
+Sound\
 Music
 Colour
 Product design
