@@ -76,7 +76,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                 Flexible(
                   child: Text(
                     // '${ controller.value.toInt()} %',
-                    'Movie Rater App Bitchez',
+                    'Movie Rater App',
                     style: TextStyle(
                       color: Colors.black38,
                       fontSize: 45.0,
