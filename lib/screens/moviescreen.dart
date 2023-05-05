@@ -133,7 +133,7 @@ class _MovieScreenState extends State<MovieScreen> {
                       fontFamily: 'Rowdies'),
                     ),
 
-                    backgroundColor: Colors.blueAccent,
+                    backgroundColor: Colors.lightBlueAccent,
                     icon: FaIcon(
                       FontAwesomeIcons.plusMinus,
                       color: Colors.white,
@@ -167,7 +167,7 @@ class _MovieScreenState extends State<MovieScreen> {
                       'Go to List!',
                       style: TextStyle(fontSize: 25),
                     ),
-                    backgroundColor: Colors.blueAccent,
+                    backgroundColor: Colors.lightBlueAccent,
                     icon: FaIcon(
                       FontAwesomeIcons.list,
                       color: Colors.white,
