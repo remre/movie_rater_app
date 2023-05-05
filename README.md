@@ -18,7 +18,7 @@ Whenever you want, you can check the list and see in more detail which element o
 
 
 ![Image]('D:\fllutterprojects\chatgpt_movierater_app\readmephotos\wlecomepage.png')
-![Image]('D:/fllutterprojects/chatgpt_movierater_app/readmephotos/welcomescreen.jpg')
+![Image]('D:\fllutterprojects\chatgpt_movierater_app\readmephotos\welcomescreen.jpg')
 
 
 
