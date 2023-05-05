@@ -18,7 +18,8 @@ Whenever you want, you can check the list and see in more detail which element o
 
 
 ![Image](https://github.com/remre/movie_rater_app/blob/main/readmephotos/welcomescreen.jpg)
-![Image](D:\fllutterprojects\chatgpt_movierater_app\readmephotos\welcomescreen.jpg)
+
+
 
 
 

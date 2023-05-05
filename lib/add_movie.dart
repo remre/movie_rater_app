@@ -200,13 +200,14 @@ class _AddMovieState extends State<AddMovie> {
                   children: [
 
                     StarTexts('Directing',),
-                    IconButton(
-                      color: Colors.blue,
-                      alignment: Alignment.topLeft,
-                      onPressed: (){}, icon: FaIcon(
-
-
-                      FontAwesomeIcons.question,size: 25,), tooltip: 'Edinting adada',),
+                    // IconButton(
+                    //   color: Colors.blue,
+                    //   alignment: Alignment.topLeft,
+                    //   onPressed: (){},
+                    //   icon: FaIcon(
+                    //   FontAwesomeIcons.question,size: 25,)
+                    //   , tooltip: 'Edinting adada',
+                    // ),
                   ],
                 ),
                 RatingBar(
