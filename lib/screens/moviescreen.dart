@@ -130,7 +130,8 @@ class _MovieScreenState extends State<MovieScreen> {
                     label: Text(
                       'Add Movie!',
                       style: TextStyle(fontSize: 25,
-                      fontFamily: 'Rowdies'),
+
+                      ),
                     ),
 
                     backgroundColor: Colors.lightBlueAccent,
