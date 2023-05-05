@@ -20,12 +20,12 @@ On the main page you can see the guideline for the app easy to use
 Rate movies according to contemporary criteria:
 
 Sound\
-Music
-Colour
-Product design
-Directing
-Editing
-Story
+Music\
+Colour\
+Product design\
+Directing\
+Editing\
+Story\
 
 ![Image](https://github.com/remre/movie_rater_app/blob/main/readmephotos/addmovie_2.png)
 
