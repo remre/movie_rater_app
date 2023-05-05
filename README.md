@@ -1,4 +1,4 @@
-# movierater_app
+# Movierater App
 
 
 This application offers an opportunity to further deepen your experience of watching movies and interacting.
