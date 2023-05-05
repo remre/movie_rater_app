@@ -2,8 +2,9 @@ import 'package:chatgpt_movierater_app/models/deletemovie.dart';
 import 'package:chatgpt_movierater_app/screens/updatescreen.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
-late String loggedInUser;
+late User loggedInUser;
 
 
 class MovieScreenList extends StatefulWidget {
@@ -16,7 +17,9 @@ class MovieScreenList extends StatefulWidget {
 }
 
 class _MovieScreenListState extends State<MovieScreenList> {
-  final _auth = FirebaseFirestore.instance;
+  final _auth = FirebaseAuth.instance;
+
+  get databaseReference => null;
 
   @override
   void initState() {
@@ -26,11 +29,18 @@ class _MovieScreenListState extends State<MovieScreenList> {
 
   void getCurrentUser() async {
     try {
-      final userr = _auth.collection('movies').id;
-      loggedInUser = userr as String;
+      final userr = await _auth.currentUser!;
+      loggedInUser = userr;
     } catch (e) {
       print(e);
     }
+  }
+  Future<User> getData() async {
+    final user =  await databaseReference
+        .collection("users")
+        .doc(loggedInUser.uid);
+
+    return user;
   }
 
   @override
@@ -106,6 +116,7 @@ class _MoviesListDataState extends State<MoviesListData> {
         // if (snapshot.hasData){
         final snap = snapshot.data!.docs;
 
+
         return ListView.builder(
             scrollDirection: Axis.vertical,
             shrinkWrap: true,
@@ -114,11 +125,27 @@ class _MoviesListDataState extends State<MoviesListData> {
 
             itemBuilder: (context, index) {
               final snapss = snap[index];
+
+
+              // Future<List<DocumentSnapshot>> getPostsToday() async {
+              // final usersnap = FirebaseFirestore.instance.collection('movies');
+              // final QuerySnapshot = await Future.wait([
+              //   usersnap.where('user' , isEqualTo : loggedInUser.email.toString()).get(),
+              //
+              // ]);
+              // return  <DocumentSnapshot>[
+              //   QuerySnapshot[0].documents,
+              //   ]
+              // }
+
               var docId = snapss.id;
+
+
 
               return ListTile(
                 // leading: Text(data['title']),
-                  subtitle: Text('average rating is '  + snap[index]['rating'].toString(),style: TextStyle(color: Colors.lightBlueAccent,fontSize: 18), ),
+
+                  subtitle: Text('average rating is ' + snap[index]['rating'].toString(),style: TextStyle(color: Colors.lightBlueAccent,fontSize: 18), ),
                   title: Container(
                     height:50,
                     // alignment: AlignmentDirectional.centerStart,
