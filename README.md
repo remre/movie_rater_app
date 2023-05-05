@@ -1,8 +1,6 @@
 # movierater_app
 
 
-## Getting Started
-
 This application offers an opportunity to further deepen your experience of watching movies and interacting.
 
 Rate movies according to these criteria and see their average score.
