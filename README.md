@@ -17,7 +17,7 @@ These criteria will give you an idea about what you should pay attention to whil
 Whenever you want, you can check the list and see in more detail which element of the movie you liked and what you did not like.
 
 
-![image]('D:/fllutterprojects/chatgpt_movierater_app/readmephotos/wlecomepage.png')
+![Alt text]('D:/fllutterprojects/chatgpt_movierater_app/readmephotos/wlecomepage.png')
 
 
 
