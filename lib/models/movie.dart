@@ -3,9 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'package:collection/collection.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-
 class Movie {
-
   final String title;
   final String description;
   var year;
@@ -20,16 +18,16 @@ class Movie {
   late double story;
   late Timestamp cTime;
 
-
-  double ratingCalculator (directing, productDesign, mSound, music, color, editing, story) {
-    double _rrating = (directing+ productDesign + mSound+ music + color  + editing +story)/ 7;
+  double ratingCalculator(
+      directing, productDesign, mSound, music, color, editing, story) {
+    double _rrating =
+        (directing + productDesign + mSound + music + color + editing + story) /
+            7;
     return _rrating;
-
   }
 
-  late double rating = ratingCalculator(directing, productDesign, mSound, music, color, editing, story);
-
-
+  late double rating = ratingCalculator(
+      directing, productDesign, mSound, music, color, editing, story);
 
   Movie({
     required this.title,
@@ -42,18 +40,12 @@ class Movie {
     required this.color,
     required this.editing,
     required this.story,
-
     required this.rating,
     required this.cTime,
-
-
   });
-
-
 }
+
 class MovieData extends ChangeNotifier {
-
-
   // var usersCollectionRef = db.collection('users');
 
   List<Movie> _movies = [
@@ -69,29 +61,33 @@ class MovieData extends ChangeNotifier {
     return _movies.length;
   }
 
-  void addMovie(String newMovieTitle, String description, int year,
-      double mSound,
-      double editing,
-      double productDesign,
-      double music,
-      double color,
-      double directing,
-      double story,
-      double rating,
-      Timestamp cTime,
-      ) {
-    final movie = Movie(title: newMovieTitle, description: description, year: year,
-    mSound: mSound,
-    editing: editing,
-    productDesign: productDesign,
-    music: music,
-    color: color,
-    directing: directing,
-    story: story,
-    cTime: cTime,
-
-    rating: rating,
-
+  void addMovie(
+    String newMovieTitle,
+    String description,
+    int year,
+    double mSound,
+    double editing,
+    double productDesign,
+    double music,
+    double color,
+    double directing,
+    double story,
+    double rating,
+    Timestamp cTime,
+  ) {
+    final movie = Movie(
+      title: newMovieTitle,
+      description: description,
+      year: year,
+      mSound: mSound,
+      editing: editing,
+      productDesign: productDesign,
+      music: music,
+      color: color,
+      directing: directing,
+      story: story,
+      cTime: cTime,
+      rating: rating,
     );
     // _firestore.collection('movies').add({
     //   'description' : descriptioncontroller.text,
@@ -103,8 +99,6 @@ class MovieData extends ChangeNotifier {
     _movies.add(movie);
     notifyListeners();
   }
-
-
 
   void deleteMovie(Movie movies) {
     _movies.remove(movies);

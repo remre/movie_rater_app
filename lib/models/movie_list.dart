@@ -6,7 +6,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 late User loggedInUser;
 
-
 class MovieScreenList extends StatefulWidget {
   static String id = '/movielist';
 
@@ -34,13 +33,6 @@ class _MovieScreenListState extends State<MovieScreenList> {
     } catch (e) {
       print(e);
     }
-  }
-  Future<User> getData() async {
-    final user =  await databaseReference
-        .collection("users")
-        .doc(loggedInUser.uid);
-
-    return user;
   }
 
   @override
@@ -88,16 +80,12 @@ class MoviesListData extends StatefulWidget {
 }
 
 class _MoviesListDataState extends State<MoviesListData> {
-  final Stream<QuerySnapshot> _moviesStream =
-      FirebaseFirestore.instance.collection('movies').snapshots();
-  // var uid = ( FirebaseAuth.instance.currentUser!).uid;
-  // Firestore.instance.collection('movies').where('uid', isEqualTo: uid).snapshots()
-  // var collections = FirebaseFirestore.instance.collection('movies').where('title', isEqualTo: '');.where('user', isEqualTo:loggedInUser )
-
-  // counterr () async{
-  //   var allDocs = await collections.get();
-  //   var DocId = allDocs.docs.first.id;
-  // }
+  final Stream<QuerySnapshot> _moviesStream = FirebaseFirestore.instance
+      .collection('movies')
+      .where('user', isEqualTo: loggedInUser.email)
+      .snapshots();
+  //this one is not user based
+  // FirebaseFirestore.instance.collection('movies').snapshots();
 
   @override
   Widget build(BuildContext context) {
@@ -111,21 +99,18 @@ class _MoviesListDataState extends State<MoviesListData> {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return Text("Loading");
         }
-        // QuerySnapshot<Object?>? querySnapshot = snapshot.data;
-        // List<QueryDocumentSnapshot> documents = querySnapshot!.docs;
+        QuerySnapshot<Object?>? querySnapshot = snapshot.data;
+        List<QueryDocumentSnapshot> documents = querySnapshot!.docs;
         // if (snapshot.hasData){
         final snap = snapshot.data!.docs;
-
 
         return ListView.builder(
             scrollDirection: Axis.vertical,
             shrinkWrap: true,
             primary: false,
             itemCount: snap.length,
-
             itemBuilder: (context, index) {
               final snapss = snap[index];
-
 
               // Future<List<DocumentSnapshot>> getPostsToday() async {
               // final usersnap = FirebaseFirestore.instance.collection('movies');
@@ -140,33 +125,42 @@ class _MoviesListDataState extends State<MoviesListData> {
 
               var docId = snapss.id;
 
-
-
               return ListTile(
-                // leading: Text(data['title']),
+                  // leading: Text(data['title']),
 
-                  subtitle: Text('average rating is ' + snap[index]['rating'].toString(),style: TextStyle(color: Colors.lightBlueAccent,fontSize: 18), ),
+                  subtitle: Text(
+                    'average rating is ' +
+                        snap[index]['rating'].toString(),
+                    style:
+                        TextStyle(color: Colors.lightBlueAccent, fontSize: 18),
+                  ),
                   title: Container(
-                    height:50,
+                    height: 50,
                     // alignment: AlignmentDirectional.centerStart,
                     padding: EdgeInsets.only(top: 10),
                     child:
-                    // Text(data['title'] + ' ' + data['rating'].toString() + ' rating',style: TextStyle(color: Colors.lightBlueAccent,fontSize: 24),),
+                        // Text(data['title'] + ' ' + data['rating'].toString() + ' rating',style: TextStyle(color: Colors.lightBlueAccent,fontSize: 24),),
 
-                    Material(
+                        Material(
                       color: Colors.lightBlueAccent,
                       borderRadius: BorderRadius.circular(10.0),
                       child: TextButton(
-                        child : Text(snap[index]['title'] ,style: TextStyle(color: Colors.white,fontSize: 20),),
-                        onPressed: (){
-                          Navigator.push(context,MaterialPageRoute(builder: (context) => UpdateMovie(movieItem: snapss,docId:docId),
-                          ));
+                        child: Text(
+                          snap[index]['title'],
+                          style: TextStyle(color: Colors.white, fontSize: 20),
+                        ),
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => UpdateMovie(
+                                    movieItem: snapss, docId: docId),
+                              ));
                         },
                       ),
                     ),
                   ),
-                  trailing: DeleteMovie(movieItem: snapss,docId:docId)
-              );
+                  trailing: DeleteMovie(movieItem: snapss, docId: docId));
             });
       },
     );

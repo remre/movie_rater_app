@@ -1,25 +1,46 @@
-import 'package:chatgpt_movierater_app/movie_list.dart';
+import 'package:chatgpt_movierater_app/models/movie_list.dart';
 import 'package:chatgpt_movierater_app/screens/loginscreen.dart';
 import 'registerscreen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import '../add_movie.dart';
-import '../movie.dart';
+import '../models/add_movie.dart';
+import '../models/movie.dart';
 import 'package:chatgpt_movierater_app/screens/updatescreen.dart';
 // import 'package:smooth_star_rating/smooth_star_rating.dart';
 
-User? loggedInUser;
+User ? loggedInUser;
 
 class MovieScreen extends StatefulWidget {
+
   static String id = '/movie';
+
+
+
 
   @override
   State<MovieScreen> createState() => _MovieScreenState();
 }
 
 class _MovieScreenState extends State<MovieScreen> {
+
+
+  final _auth = FirebaseAuth.instance;
+  @override
+  void initState() {
+    getCurrentUser();
+    super.initState();
+  }
+
+  void getCurrentUser() async {
+    try {
+      final userr = await _auth.currentUser!;
+      loggedInUser = userr;
+    } catch (e) {
+      print(e);
+    }
+  }
   // MovieScreen(this.rating,);
   @override
   Widget build(BuildContext context) {
@@ -51,29 +72,45 @@ class _MovieScreenState extends State<MovieScreen> {
                   ),
                   child: Column(
                     // crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.start ,
                     children: <Widget>[
-                      CircleAvatar(
-                        child: FaIcon(
-                          Icons.movie,
-                          color: Colors.lightBlueAccent,
-                          size: 40,
-                        ),
-                        backgroundColor: Colors.white,
-                        radius: 45,
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Text(
-                        'Movie Rater APp ',
-                        style: TextStyle(
-                          backgroundColor: Colors.deepOrange,
-                          color: Colors.lightBlueAccent,
-                          fontSize: 35,
-                          fontWeight: FontWeight.w900,
-                        ),
-                      ),
+                      Row(
+                        children: [
+                          Column(
+                            children: [
+                              Text('Welcome  \n' + loggedInUser!.email.toString() ,
+                                style: TextStyle(
+                                  backgroundColor: Colors.deepOrange,
+                                  color: Colors.lightBlueAccent,
+                                  fontSize: 35,
+                                  fontWeight: FontWeight.w900,
+                                ),),
+                              CircleAvatar(
+                                child: FaIcon(
+                                  Icons.movie,
+                                  color: Colors.lightBlueAccent,
+                                  size: 40,
+                                ),
+                                backgroundColor: Colors.white,
+                                radius: 45,
+                              ),
+                              SizedBox(
+                                height: 10,
+                              ),
+                              Text(
+                                'Movie Rater APp ',
+                                style: TextStyle(
+                                  backgroundColor: Colors.deepOrange,
+                                  color: Colors.lightBlueAccent,
+                                  fontSize: 35,
+                                  fontWeight: FontWeight.w900,
+                                ),
+                              ),
+                            ],
+                          )
+                      ],
+                      )
+
                     ],
                   ),
                 ),
@@ -91,11 +128,11 @@ class _MovieScreenState extends State<MovieScreen> {
                 child: Text(
                   'Save the movie data with enhanced rating system regarding on the temporary critics with notes. \n'
                   'Then check your log about the movie anytime! Easy to Use just add your movie rate it and show in the list \n'
-                  'Anytime you can delete or edit your list!    ',
+                  'Anytime you can delete or edit your list!',
                   style: TextStyle(
                     // height: 1,
                     color: Colors.deepOrange,
-                    fontSize: 29,
+                    fontSize: 27,
                     // add shiny font family
                     // fontFamily: 'Aachen',
 

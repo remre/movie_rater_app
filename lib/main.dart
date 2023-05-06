@@ -5,8 +5,8 @@ import 'screens/loginscreen.dart';
 import 'screens/welcomescreen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'add_movie.dart';
-import 'movie.dart';
+import 'models/add_movie.dart';
+import 'models/movie.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 void main() async {

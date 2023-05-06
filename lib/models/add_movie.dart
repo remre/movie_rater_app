@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
-import 'models/startextwidget.dart';
+import 'startextwidget.dart';
 import 'movie.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'models/textformwidget.dart';
-import 'models/moviestartwidget.dart';
+import 'textformwidget.dart';
+import 'moviestartwidget.dart';
 
 
 // User?  loggedInUser;

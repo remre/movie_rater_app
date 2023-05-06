@@ -4,6 +4,9 @@ import 'registerscreen.dart';
 import 'loginscreen.dart';
 import 'package:chatgpt_movierater_app/models/roundedbutton.dart';
 
+
+
+
 class WelcomeScreen extends StatefulWidget {
   static String id = 'welcome_screen';
   @override
