@@ -10,7 +10,7 @@ import '../models/startextwidget.dart';
 
 // User?  loggedInUser;
 
-late User  loggedInUser;
+// late User  loggedInUser;
 class UpdateMovie extends StatelessWidget {
 
   // static String id = '/update_movie';

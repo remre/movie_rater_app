@@ -1,15 +1,16 @@
 import 'package:chatgpt_movierater_app/models/deletemovie.dart';
 import 'package:chatgpt_movierater_app/screens/updatescreen.dart';
+import 'package:chatgpt_movierater_app/screens/moviescreen.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-late User loggedInUser;
+// late User loggedInUser;
 
 class MovieScreenList extends StatefulWidget {
   static String id = '/movielist';
 
-  MovieScreenList({Key? key}) : super(key: key);
+  // MovieScreenList({Key? key}) : super(key: key);
 
   @override
   State<MovieScreenList> createState() => _MovieScreenListState();
@@ -20,24 +21,34 @@ class _MovieScreenListState extends State<MovieScreenList> {
 
   get databaseReference => null;
 
-  @override
-  void initState() {
-    getCurrentUser();
-    super.initState();
-  }
 
-  void getCurrentUser() async {
-    try {
-      final userr = await _auth.currentUser!;
-      loggedInUser = userr;
-    } catch (e) {
-      print(e);
-    }
-  }
+
+  // void getCurrentUser()  async {
+  //   try {
+  //     final user = await _auth.currentUser!;
+  //     if (user != null) {
+  //       loggedInUser = user;
+  //       print(loggedInUser!.email);
+  //     }
+  //   }
+  //   catch(e) {
+  //     print(e);
+  //   }
+  // }
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   getCurrentUser();
+  // }
+
+  // final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
+      // key: _scaffoldKey,
+
       body: Column(
         children: <Widget>[
           Container(

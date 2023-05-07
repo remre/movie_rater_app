@@ -10,41 +10,43 @@ import '../models/movie.dart';
 import 'package:chatgpt_movierater_app/screens/updatescreen.dart';
 // import 'package:smooth_star_rating/smooth_star_rating.dart';
 
-User ? loggedInUser;
+late User  loggedInUser;
 
 class MovieScreen extends StatefulWidget {
 
   static String id = '/movie';
-
-
-
-
   @override
   State<MovieScreen> createState() => _MovieScreenState();
 }
 
 class _MovieScreenState extends State<MovieScreen> {
-
-
   final _auth = FirebaseAuth.instance;
-  @override
-  void initState() {
-    getCurrentUser();
-    super.initState();
-  }
 
-  void getCurrentUser() async {
+  void getCurrentUser()  async {
     try {
-      final userr = await _auth.currentUser!;
-      loggedInUser = userr;
-    } catch (e) {
+      final user =   _auth.currentUser!;
+      if (user != null) {
+        loggedInUser = user;
+        print(loggedInUser!.email);
+      }
+    }
+    catch(e) {
       print(e);
     }
   }
+  @override
+  void initState() {
+    super.initState();
+    getCurrentUser();
+  }
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+
   // MovieScreen(this.rating,);
+  final currentUser = loggedInUser.email.toString();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey,
       // backgroundColor: Colors.orange,
       body: Container(
         decoration: BoxDecoration(
@@ -78,13 +80,16 @@ class _MovieScreenState extends State<MovieScreen> {
                         children: [
                           Column(
                             children: [
-                              Text('Welcome  \n' + loggedInUser!.email.toString() ,
+                              Text('Welcome  \n'
+                                  // + currentUser
+                                ,
                                 style: TextStyle(
                                   backgroundColor: Colors.deepOrange,
                                   color: Colors.lightBlueAccent,
                                   fontSize: 35,
                                   fontWeight: FontWeight.w900,
-                                ),),
+                                ),
+                              ),
                               CircleAvatar(
                                 child: FaIcon(
                                   Icons.movie,

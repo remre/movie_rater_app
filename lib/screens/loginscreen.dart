@@ -17,6 +17,8 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   final _formKey = GlobalKey<FormState>();
+
+
   late String email;
   late String password;
   bool showSpinner = false;
@@ -102,7 +104,9 @@ class _LoginScreenState extends State<LoginScreen> {
                 // });
                 try {
                   final user = await _auth.signInWithEmailAndPassword(email: email, password: password);
-                  Navigator.pushNamed(context, MovieScreen.id);
+                  if(user != null) {
+                    Navigator.pushNamed(context, MovieScreen.id);
+                  }
                   setState(() {
                     showSpinner = false;
                   });
