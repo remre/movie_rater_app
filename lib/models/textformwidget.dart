@@ -72,13 +72,14 @@ class TextFormYear extends StatelessWidget {
           // if ()
           try {
              int.parse(value);
+             print(int.parse(value));
 
 
           } catch (e) {
             print(e);
             return 'this is not a year';
           }
-          if (minyear <= int.parse(value) || int.parse(value) <= maxyear) {
+          if (minyear > int.parse(value) || int.parse(value) > maxyear) {
             return 'Put some real things in it, My lord!';
           }
           return null;

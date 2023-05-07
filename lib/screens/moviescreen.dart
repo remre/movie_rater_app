@@ -10,7 +10,7 @@ import '../models/movie.dart';
 import 'package:chatgpt_movierater_app/screens/updatescreen.dart';
 // import 'package:smooth_star_rating/smooth_star_rating.dart';
 
-late User  loggedInUser;
+// late User  loggedInUser;
 
 class MovieScreen extends StatefulWidget {
 
@@ -22,23 +22,23 @@ class MovieScreen extends StatefulWidget {
 class _MovieScreenState extends State<MovieScreen> {
   final _auth = FirebaseAuth.instance;
 
-  void getCurrentUser()  async {
-    try {
-      final user =   _auth.currentUser!;
-      if (user != null) {
-        loggedInUser = user;
-        print(loggedInUser!.email);
-      }
-    }
-    catch(e) {
-      print(e);
-    }
-  }
-  @override
-  void initState() {
-    super.initState();
-    getCurrentUser();
-  }
+  // void getCurrentUser()  async {
+  //   try {
+  //     final user =   _auth.currentUser!;
+  //     if (user != null) {
+  //       loggedInUser = user;
+  //       print(loggedInUser!.email);
+  //     }
+  //   }
+  //   catch(e) {
+  //     print(e);
+  //   }
+  // }
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   getCurrentUser();
+  // }
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   // MovieScreen(this.rating,);
@@ -81,7 +81,7 @@ class _MovieScreenState extends State<MovieScreen> {
                           Column(
                             children: [
                               Text('Welcome  \n'
-                                  // + currentUser
+                                  + currentUser
                                 ,
                                 style: TextStyle(
                                   backgroundColor: Colors.deepOrange,

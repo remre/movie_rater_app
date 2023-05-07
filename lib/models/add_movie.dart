@@ -6,13 +6,14 @@ import 'startextwidget.dart';
 import 'movie.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:chatgpt_movierater_app/screens/loginscreen.dart';
 import 'textformwidget.dart';
 import 'moviestartwidget.dart';
 
 
 // User?  loggedInUser;
 
-late User  loggedInUser;
+// late User  loggedInUser;
 class AddMovie extends StatefulWidget {
   static String id = '/add_movie';
   const AddMovie({Key? key}) : super(key: key);
@@ -29,26 +30,26 @@ class _AddMovieState extends State<AddMovie> {
   final _formKey = GlobalKey<FormState>();
   final _firestore  = FirebaseFirestore.instance;
   final _auth = FirebaseAuth.instance;
-  @override
-  void initState() {
-    getCurrentUser();
-    super.initState();
-  }
+  // @override
+  // void initState() {
+  //   getCurrentUser();
+  //   super.initState();
+  // }
 
 
 
-  void getCurrentUser()  async {
-    try {
-      final user = await _auth.currentUser!;
-      if (user != null) {
-        loggedInUser = user;
-        // print(loggedInUser!.email);
-      }
-    }
-    catch(e) {
-      print(e);
-    }
-  }
+  // void getCurrentUser()  async {
+  //   try {
+  //     final user = await _auth.currentUser!;
+  //     if (user != null) {
+  //       loggedInUser = user;
+  //       // print(loggedInUser!.email);
+  //     }
+  //   }
+  //   catch(e) {
+  //     print(e);
+  //   }
+  // }
 
   TextEditingController titlecontroller = TextEditingController();
   TextEditingController descriptioncontroller = TextEditingController();
@@ -379,15 +380,15 @@ class _AddMovieState extends State<AddMovie> {
                 });
 
                 // final task = Task(name: newTasksTitle);
-                 Provider.of<MovieData>(context, listen: false)
-                    .addMovie(titlecontroller.text,descriptioncontroller.text,int.parse(yearcontroller.text),
-                   mSound,
-                   editing,
-                   productDesign,
-                   music,
-                   color, directing, story,rating,
-                   cTime,
-                 );
+                //  Provider.of<MovieData>(context, listen: false)
+                //     .addMovie(titlecontroller.text,descriptioncontroller.text,int.parse(yearcontroller.text),
+                //    mSound,
+                //    editing,
+                //    productDesign,
+                //    music,
+                //    color, directing, story,rating,
+                //    cTime,
+                //  );
 
                 // refreshText;
                 Navigator.pop(context);

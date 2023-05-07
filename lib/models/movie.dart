@@ -21,6 +21,7 @@ class Movie {
   double ratingCalculator(
       directing, productDesign, mSound, music, color, editing, story) {
     double _rrating =
+
         (directing + productDesign + mSound + music + color + editing + story) /
             7;
     return _rrating;

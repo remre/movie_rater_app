@@ -20,10 +20,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return
-      ChangeNotifierProvider(
-        create: (context) => MovieData(),
+      // ChangeNotifierProvider(
+      //   create: (context) => MovieData(),
 
-        child: MaterialApp(
+        // child:
+    MaterialApp(
           theme: ThemeData( fontFamily: 'Aachen',),
             initialRoute: '/',
             routes: {
@@ -42,8 +43,8 @@ class MyApp extends StatelessWidget {
           //             foregroundColor: MaterialStateProperty.resolveWith(
           //                     (state) => Colors.orange)))),
           //   home: WelcomeScreen()
-        ),
-      );
+        );
+      // );
 
   }
 }

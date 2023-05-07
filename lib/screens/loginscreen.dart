@@ -7,6 +7,8 @@ import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:chatgpt_movierater_app/models/constants.dart';
 import 'package:chatgpt_movierater_app/models/roundedbutton.dart';
 
+late User  loggedInUser;
+
 class LoginScreen extends StatefulWidget {
 
   static String id = '/login';
@@ -16,6 +18,24 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+
+  void getCurrentUser()  async {
+    try {
+      final user =   _auth.currentUser!;
+      if (user != null) {
+        loggedInUser = user;
+        print(loggedInUser!.email);
+      }
+    }
+    catch(e) {
+      print(e);
+    }
+  }
+  @override
+  void initState() {
+    super.initState();
+    getCurrentUser();
+  }
   final _formKey = GlobalKey<FormState>();
 
 
