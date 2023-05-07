@@ -79,7 +79,9 @@ class _MovieScreenState extends State<MovieScreen> {
                       Row(
                         children: [
                           Column(
+
                             children: [
+
                               Text('Welcome  \n'
                                   + currentUser
                                 ,
@@ -151,8 +153,9 @@ class _MovieScreenState extends State<MovieScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               // crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
+
                 Container(
-                  width: 211,
+                  width: 180,
                   height: 75,
                   // padding: EdgeInsets.only(bottom: 30, right: 20),
                   child:
@@ -171,7 +174,7 @@ class _MovieScreenState extends State<MovieScreen> {
                             BorderRadius.all(Radius.circular(9))), // extendedIc
                     label: Text(
                       'Add Movie!',
-                      style: TextStyle(fontSize: 25,
+                      style: TextStyle(fontSize: 22,
 
                       ),
                     ),
@@ -180,7 +183,7 @@ class _MovieScreenState extends State<MovieScreen> {
                     icon: FaIcon(
                       FontAwesomeIcons.plusMinus,
                       color: Colors.white,
-                      size: 30,
+                      size: 25,
                     ),
                     // Icon(Icons.add,
                     // color: Colors.lightBlueAccent,
@@ -195,7 +198,7 @@ class _MovieScreenState extends State<MovieScreen> {
                   ),
                 ),
                 Container(
-                  width: 200,
+                  width: 180,
                   height: 75,
 
                   // padding: EdgeInsets.only(bottom: 30, left: 20),
@@ -208,13 +211,13 @@ class _MovieScreenState extends State<MovieScreen> {
                     heroTag: "btn2",
                     label: Text(
                       'Go to List!',
-                      style: TextStyle(fontSize: 25),
+                      style: TextStyle(fontSize: 22),
                     ),
                     backgroundColor: Colors.lightBlueAccent,
                     icon: FaIcon(
                       FontAwesomeIcons.list,
                       color: Colors.white,
-                      size: 30,
+                      size: 25,
                     ),
                     // Icon(Icons.add,
                     // color: Colors.lightBlueAccent,
@@ -227,7 +230,22 @@ class _MovieScreenState extends State<MovieScreen> {
                               builder: (context) => MovieScreenList()));
                     },
                   ),
+
                 ),
+                Container(
+
+                  color: Colors.red,
+                  height: 75,
+                  child: IconButton(
+                    constraints: BoxConstraints(minWidth: 45),
+                      icon: FaIcon(Icons.logout),
+                      onPressed: () {
+                        _auth.signOut();
+                        Navigator.pop(context);
+
+                      }),)
+
+
               ],
             )
           ],
