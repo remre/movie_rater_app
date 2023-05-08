@@ -155,7 +155,7 @@ class _MovieScreenState extends State<MovieScreen> {
               children: <Widget>[
 
                 Container(
-                  width: 180,
+                  width: 186,
                   height: 75,
                   // padding: EdgeInsets.only(bottom: 30, right: 20),
                   child:
@@ -234,9 +234,13 @@ class _MovieScreenState extends State<MovieScreen> {
                 ),
                 Container(
 
-                  color: Colors.red,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(5),
+                    color: Colors.red,
+                  ),
                   height: 75,
-                  child: IconButton(
+                  child:
+                  IconButton(
                     constraints: BoxConstraints(minWidth: 45),
                       icon: FaIcon(Icons.logout),
                       onPressed: () {
