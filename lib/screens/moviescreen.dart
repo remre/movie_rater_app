@@ -139,7 +139,7 @@ class _MovieScreenState extends State<MovieScreen> {
                   style: TextStyle(
                     // height: 1,
                     color: Colors.deepOrange,
-                    fontSize: 27,
+                    fontSize: 25,
                     // add shiny font family
                     // fontFamily: 'Aachen',
 
